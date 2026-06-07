@@ -63,6 +63,22 @@
 				text-transform: uppercase;
 			}
 
+			/* ── BANNER SUBTITLE ── */
+			#banner .inner .subtitle {
+				font-size: 1.1rem;
+				font-weight: 600;
+				letter-spacing: 0.08em;
+				color: rgba(255,255,255,0.9);
+				margin: 0.4rem 0 0.9rem;
+				text-transform: uppercase;
+			}
+			#banner .inner .tagline {
+				font-size: 0.95rem;
+				color: rgba(255,255,255,0.7);
+				line-height: 1.7;
+				margin-bottom: 1.8rem;
+			}
+
 			/* ── STAT BADGES ── */
 			.stat-badges {
 				display: flex;
@@ -97,7 +113,7 @@
 			/* ── SKILLS ── */
 			.skills-grid {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 				gap: 2rem;
 				max-width: 900px;
 				margin: 2.5rem auto 0;
@@ -158,9 +174,7 @@
 				position: relative;
 				z-index: 1;
 			}
-			.timeline-content {
-				padding-left: 0.5rem;
-			}
+			.timeline-content { padding-left: 0.5rem; }
 			.timeline-date {
 				font-size: 0.7rem;
 				letter-spacing: 0.1em;
@@ -180,7 +194,7 @@
 				margin: 0;
 			}
 
-			/* ── SECTION HEADERS ── */
+			/* ── SECTION LABEL ── */
 			.section-label {
 				font-size: 0.72rem;
 				letter-spacing: 0.2em;
@@ -215,7 +229,6 @@
 				border-color: rgba(155,241,255,0.4);
 			}
 
-			/* ── RESPONSIVE ── */
 			@media (max-width: 600px) {
 				.stat-badges { gap: 0.6rem; }
 				.stat-badge { padding: 0.5rem 0.9rem; }
@@ -251,12 +264,15 @@
 			<section id="banner">
 				<div class="inner">
 					<h2>Christopher Collier</h2>
-					<p>Biomedical Engineering &bull; University of Delaware<br />
-					Biomechanical Engineering Minor &bull; Incoming M.S. Robotics (4+1)<br />
-					Medical Device Research &amp; Design</p>
+					<p class="subtitle">Biomedical Engineer | Medical Device R&amp;D</p>
+					<p class="tagline">
+						Senior at the University of Delaware &mdash; Graduating May 2027<br />
+						Driven towards design and development in medical devices, CAD/Prototyping and robotics
+					</p>
 					<ul class="actions special">
-						<li><a href="#projects" class="button primary scrolly">View My Work</a></li>
+						<li><a href="#projects" class="button primary scrolly">View Projects</a></li>
 						<li><a href="#contact" class="button scrolly">Get In Touch</a></li>
+						<li><a href="resume.pdf" class="button" target="_blank">Resume</a></li>
 					</ul>
 				</div>
 				<a href="#about" class="more scrolly">Learn More</a>
@@ -268,16 +284,27 @@
 					<header class="major">
 						<span class="section-label">About Me</span>
 						<h2>Building at the intersection of<br />engineering and clinical need</h2>
-						<p>I'm a Biomedical Engineering student at the University of Delaware (GPA: 3.83) with a minor
-						in Biomechanical Engineering, recently accepted into UD's 4+1 M.S. Robotics program. My research
-						spans medical device development, microfluidic systems, and physiological modeling. I'm particularly
-						interested in surgical robotics, medical imaging systems, AI implementation in medical devices,
-						and prosthetics — areas where precise engineering has direct impact on patient outcomes.</p>
+						<p>I'm a Biomedical Engineering student at the University of Delaware (GPA: 3.83) with a minor in
+						Biomechanical Engineering, and a strong foundation in medical device design, CAD/prototyping, and
+						biomechanical research. I approach engineering problems through the full design cycle — from concept
+						generation and 3D modeling to hands-on fabrication and validation testing — focused on fully meeting
+						clinical needs.</p>
+						<p style="margin-top:1rem;">I work in the Biomedical Research, Innovation, and Translation in ECLS (BRITE) Lab, performing
+						validation and leak testing on microfluidic membrane oxygenators and contributing to further device
+						development through fluid dynamics analysis, CAD design, and biomaterials work. I also hold a
+						Medical Device Design Teaching Assistant position, supporting student teams through the product
+						pathway and design process while teaching SolidWorks and CAD skills. I am an incoming M.S. student
+						in Robotics at UD and will graduate with my B.S. in Biomedical Engineering in May 2027. Outside of
+						engineering, I enjoy volleyball, weightlifting, running, traveling, music, and watching Jeopardy.</p>
 					</header>
 					<div class="stat-badges">
 						<div class="stat-badge">
 							<span class="value">3.83</span>
 							<span class="label">GPA</span>
+						</div>
+						<div class="stat-badge">
+							<span class="value">5/5</span>
+							<span class="label">Dean's List</span>
 						</div>
 						<div class="stat-badge">
 							<span class="value">4+1</span>
@@ -308,18 +335,20 @@
 						<div class="project-card">
 							<span class="project-number">01 &mdash; Lab Research</span>
 							<h3>Microfluidic Membrane Oxygenator</h3>
-							<p>Developing a PDMS-on-glass composite flat plate membrane oxygenator for blood gas exchange.
-							Device work includes 3D-printed polycarbonate flow cell fabrication modeled in OnShape, along with
-							a rigorous verification and validation testing framework covering external leak detection via
-							pressure hold and submersion, trans-membrane integrity via dye perfusion, and bubble point testing.
-							Fluid dynamic analysis addresses internal shear stress distributions and flow uniformity across the
-							membrane surface to ensure physiologically safe operating conditions.</p>
+							<p>Developing a PDMS-on-glass composite flat plate membrane oxygenator for blood gas exchange
+							in the BRITE Lab. Device work includes 3D-printed polycarbonate flow cell fabrication modeled
+							in OnShape, along with a rigorous verification and validation testing framework covering
+							external leak detection via pressure hold and submersion, trans-membrane integrity via dye
+							perfusion, and bubble point testing. Fluid dynamic analysis addresses internal shear stress
+							distributions and flow uniformity across the membrane surface to ensure physiologically safe
+							operating conditions.</p>
 							<div class="project-tags">
-								<span class="tag">OnShape CAD</span>
+								<span class="tag">OnShape</span>
 								<span class="tag">PDMS Fabrication</span>
-								<span class="tag">3D Printing</span>
+								<span class="tag">3D Prototyping</span>
 								<span class="tag">Fluid Dynamics</span>
 								<span class="tag">V&amp;V Testing</span>
+								<span class="tag">Biomaterials</span>
 							</div>
 						</div>
 
@@ -327,17 +356,17 @@
 							<span class="project-number">02 &mdash; Lab Research</span>
 							<h3>Hollow Fiber Membrane Oxygenator</h3>
 							<p>Designing a scalable oxygenator using stacked Oxyplus PMP hollow fiber membrane sheets, with
-							iterative 3D CAD modeling in OnShape to prototype and refine device geometry. Work involved
-							systematic evaluation of bonding and sealing strategies across multiple fabrication approaches,
-							ultimately converging on a centrifugal potting method with bent fiber geometry. This solution
-							eliminates corner flow stasis in the blood path, preserves fiber lumen integrity during potting,
-							and produces a curved open flow channel — independently developed and subsequently validated
-							against established industrial techniques.</p>
+							iterative 3D CAD modeling and physical prototyping in OnShape and FDM 3D printing to develop
+							and refine device geometry. Work involved systematic evaluation of bonding and sealing
+							strategies, ultimately converging on a centrifugal potting method with bent fiber geometry.
+							This solution eliminates corner flow stasis in the blood path, preserves fiber lumen integrity
+							during potting, and produces a curved open flow channel — independently developed and
+							subsequently validated against established industrial techniques.</p>
 							<div class="project-tags">
-								<span class="tag">OnShape CAD</span>
+								<span class="tag">OnShape</span>
+								<span class="tag">3D Printing</span>
 								<span class="tag">Centrifugal Potting</span>
 								<span class="tag">Hollow Fiber Membranes</span>
-								<span class="tag">3D Prototyping</span>
 								<span class="tag">Design Iteration</span>
 							</div>
 						</div>
@@ -346,31 +375,32 @@
 							<span class="project-number">03 &mdash; Junior Design</span>
 							<h3>Radial Arterial Catheterization Wrist Support</h3>
 							<p>Junior design project addressing patient comfort and procedural consistency during radial
-							arterial line placement. Developed a wrist support device that maintains optimal wrist extension
-							angle and stabilizes the insertion site. The design emphasizes structural adaptability —
-							accommodating variation in patient anatomy while maintaining reliable catheter access geometry
-							for clinical staff across a range of use conditions.</p>
+							arterial line placement. Developed a wrist support device that maintains optimal wrist
+							extension angle and stabilizes the insertion site. The design emphasizes structural
+							adaptability — accommodating variation in patient anatomy while maintaining reliable catheter
+							access geometry for clinical staff across a range of use conditions.</p>
 							<div class="project-tags">
+								<span class="tag">SolidWorks</span>
+								<span class="tag">3D Printing</span>
+								<span class="tag">Laser Cutting</span>
+								<span class="tag">Soldering</span>
 								<span class="tag">Medical Device Design</span>
-								<span class="tag">CAD</span>
-								<span class="tag">Prototyping</span>
-								<span class="tag">Clinical Application</span>
 							</div>
 						</div>
 
 						<div class="project-card">
-							<span class="project-number">04 &mdash; Computational Modeling</span>
+							<span class="project-number">04 &mdash; Pharmaceutical Modeling</span>
 							<h3>Pharmacokinetic Modeling of Propofol: Three-Compartment Simulation</h3>
 							<p>Built a three-compartment pharmacokinetic simulation of Propofol in MATLAB, modeling drug
 							distribution across plasma, peripheral tissues, and a deep tissue compartment following IV
 							administration. The simulation captures redistribution kinetics and elimination dynamics,
-							producing plasma concentration-time profiles relevant to anesthesia dosing analysis and
-							illustrating the narrow window between therapeutic and toxic exposure levels.</p>
+							producing plasma concentration-time profiles relevant to computational and compartmental
+							modeling of drug behavior in clinical pharmacology.</p>
 							<div class="project-tags">
 								<span class="tag">MATLAB</span>
 								<span class="tag">ODE Modeling</span>
-								<span class="tag">Pharmacokinetics</span>
-								<span class="tag">Anesthesia</span>
+								<span class="tag">Compartmental Modeling</span>
+								<span class="tag">Computational Modeling</span>
 							</div>
 						</div>
 
@@ -379,12 +409,14 @@
 							<h3>Squatting Biomechanics Analysis</h3>
 							<p>Analyzed lower extremity joint mechanics during squat patterns for a clinical biomechanics
 							course, examining joint loading, muscle activation strategies, and kinematic variation across
-							individuals. Findings were evaluated in the context of rehabilitation protocol design and
-							injury prevention, with implications for load management in clinical and athletic populations.</p>
+							individuals using OpenCap motion analysis. Statistical analysis was performed in JMP.
+							Findings were evaluated in the context of rehabilitation protocol design and injury
+							prevention, with implications for load management in clinical and athletic populations.</p>
 							<div class="project-tags">
+								<span class="tag">OpenCap Motion Analysis</span>
+								<span class="tag">JMP</span>
+								<span class="tag">Biostatistics</span>
 								<span class="tag">Biomechanics</span>
-								<span class="tag">Motion Analysis</span>
-								<span class="tag">Rehabilitation</span>
 								<span class="tag">Joint Kinetics</span>
 							</div>
 						</div>
@@ -415,20 +447,22 @@
 							<h4>CAD &amp; Fabrication</h4>
 							<ul>
 								<li>OnShape</li>
-								<li>3D Printing (FDM, Polycarbonate)</li>
-								<li>PDMS Soft Lithography</li>
-								<li>Microfluidic Device Assembly</li>
-								<li>Benchtop Prototyping</li>
+								<li>SolidWorks</li>
+								<li>3D Printing (FDM)</li>
+								<li>Laser Cutting</li>
+								<li>Soldering</li>
+								<li>Arduino</li>
+								<li>Biomaterials (PDMS, Spin Coating, UV Curing)</li>
 							</ul>
 						</div>
 						<div class="skill-group">
-							<h4>Programming &amp; Modeling</h4>
+							<h4>Programming &amp; Analysis</h4>
 							<ul>
 								<li>MATLAB</li>
-								<li>Numerical Simulation</li>
-								<li>Physiological Modeling</li>
+								<li>JMP Statistical Software</li>
+								<li>ImageJ</li>
 								<li>Data Analysis</li>
-								<li>HTML / CSS</li>
+								<li>Python</li>
 							</ul>
 						</div>
 						<div class="skill-group">
@@ -439,6 +473,15 @@
 								<li>Fluid Dynamics Analysis</li>
 								<li>Biomechanical Assessment</li>
 								<li>Technical Documentation</li>
+							</ul>
+						</div>
+						<div class="skill-group">
+							<h4>AI &amp; Productivity</h4>
+							<ul>
+								<li>AI Prompt Engineering</li>
+								<li>Claude</li>
+								<li>Microsoft Office 365</li>
+								<li>Google Workspace</li>
 							</ul>
 						</div>
 					</div>
@@ -458,7 +501,15 @@
 							<div class="timeline-content">
 								<div class="timeline-date">Aug 2023 – Present</div>
 								<div class="timeline-title">B.S. Biomedical Engineering</div>
-								<div class="timeline-sub">University of Delaware &mdash; GPA: 3.83</div>
+								<div class="timeline-sub">University of Delaware &mdash; GPA: 3.83 &bull; Dean's List 5/5 &bull; Presidential Scholarship</div>
+							</div>
+						</div>
+						<div class="timeline-item">
+							<div class="timeline-dot"></div>
+							<div class="timeline-content">
+								<div class="timeline-date">Aug 2024 – Present</div>
+								<div class="timeline-title">Resident Assistant</div>
+								<div class="timeline-sub">Residence Life &amp; Housing, University of Delaware</div>
 							</div>
 						</div>
 						<div class="timeline-item">
@@ -466,15 +517,23 @@
 							<div class="timeline-content">
 								<div class="timeline-date">2024 – Present</div>
 								<div class="timeline-title">Undergraduate Researcher</div>
-								<div class="timeline-sub">Biomedical Engineering Lab, University of Delaware &mdash; Microfluidic &amp; hollow fiber membrane oxygenator development</div>
+								<div class="timeline-sub">BRITE Lab, University of Delaware &mdash; Microfluidic &amp; hollow fiber membrane oxygenator development</div>
 							</div>
 						</div>
 						<div class="timeline-item">
 							<div class="timeline-dot"></div>
 							<div class="timeline-content">
-								<div class="timeline-date">Declared 2024</div>
-								<div class="timeline-title">Biomechanical Engineering Minor</div>
-								<div class="timeline-sub">University of Delaware</div>
+								<div class="timeline-date">Jan 2026 – Present</div>
+								<div class="timeline-title">Teaching Assistant — Medical Device Design</div>
+								<div class="timeline-sub">University of Delaware &mdash; SolidWorks, CAD, and medical device design process</div>
+							</div>
+						</div>
+						<div class="timeline-item">
+							<div class="timeline-dot"></div>
+							<div class="timeline-content">
+								<div class="timeline-date">Sep 2023 – Present</div>
+								<div class="timeline-title">Captain & Vice President — Men's Club Volleyball</div>
+								<div class="timeline-sub">University of Delaware &mdash; Rookie of the Year 2024 &bull; A Team MVP 2025, 2026 &bull; Defensive Player of the Year 2025, 2026</div>
 							</div>
 						</div>
 						<div class="timeline-item">
@@ -507,6 +566,9 @@
 						</a>
 						<a href="https://github.com/chriscollier3" class="contact-link" target="_blank">
 							<i class="icon brands fa-github"></i> GitHub
+						</a>
+						<a href="resume.pdf" class="contact-link" target="_blank">
+							<i class="icon solid fa-file-pdf"></i> Resume
 						</a>
 					</div>
 				</div>
