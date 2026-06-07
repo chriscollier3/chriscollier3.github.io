@@ -1,9 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-	Spectral by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>Chris Collier | Biomedical Engineering</title>
@@ -11,188 +6,532 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* ── PROJECT CARDS ── */
+			.projects-grid {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 2.5rem;
+				max-width: 900px;
+				margin: 0 auto;
+				padding: 0 1.5rem;
+			}
+			.project-card {
+				background: rgba(255,255,255,0.04);
+				border: 1px solid rgba(255,255,255,0.08);
+				border-radius: 8px;
+				padding: 2rem 2.2rem;
+				transition: border-color 0.3s, background 0.3s;
+			}
+			.project-card:hover {
+				border-color: rgba(255,255,255,0.2);
+				background: rgba(255,255,255,0.07);
+			}
+			.project-number {
+				font-size: 0.72rem;
+				letter-spacing: 0.18em;
+				text-transform: uppercase;
+				color: #9bf1ff;
+				margin-bottom: 0.5rem;
+				display: block;
+			}
+			.project-card h3 {
+				font-size: 1.25rem;
+				margin: 0 0 0.9rem 0;
+				color: #fff;
+				line-height: 1.3;
+			}
+			.project-card p {
+				font-size: 0.92rem;
+				line-height: 1.75;
+				color: rgba(255,255,255,0.72);
+				margin: 0 0 1.2rem 0;
+			}
+			.project-tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.45rem;
+			}
+			.tag {
+				background: rgba(155,241,255,0.1);
+				color: #9bf1ff;
+				border: 1px solid rgba(155,241,255,0.25);
+				border-radius: 4px;
+				font-size: 0.72rem;
+				letter-spacing: 0.06em;
+				padding: 0.25rem 0.65rem;
+				text-transform: uppercase;
+			}
+
+			/* ── STAT BADGES ── */
+			.stat-badges {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 1rem;
+				margin-top: 2rem;
+			}
+			.stat-badge {
+				background: rgba(255,255,255,0.05);
+				border: 1px solid rgba(255,255,255,0.12);
+				border-radius: 6px;
+				padding: 0.7rem 1.3rem;
+				text-align: center;
+			}
+			.stat-badge .value {
+				display: block;
+				font-size: 1.2rem;
+				font-weight: 700;
+				color: #9bf1ff;
+				line-height: 1.2;
+			}
+			.stat-badge .label {
+				display: block;
+				font-size: 0.7rem;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: rgba(255,255,255,0.55);
+				margin-top: 0.25rem;
+			}
+
+			/* ── SKILLS ── */
+			.skills-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 2rem;
+				max-width: 900px;
+				margin: 2.5rem auto 0;
+				padding: 0 1.5rem;
+				text-align: left;
+			}
+			.skill-group h4 {
+				font-size: 0.75rem;
+				letter-spacing: 0.15em;
+				text-transform: uppercase;
+				color: #9bf1ff;
+				margin: 0 0 0.9rem 0;
+				padding-bottom: 0.5rem;
+				border-bottom: 1px solid rgba(155,241,255,0.2);
+			}
+			.skill-group ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.skill-group ul li {
+				font-size: 0.88rem;
+				color: rgba(255,255,255,0.72);
+				padding: 0.3rem 0;
+				border-bottom: 1px solid rgba(255,255,255,0.05);
+			}
+
+			/* ── TIMELINE ── */
+			.timeline {
+				max-width: 700px;
+				margin: 2.5rem auto 0;
+				padding: 0 1.5rem;
+				position: relative;
+			}
+			.timeline::before {
+				content: '';
+				position: absolute;
+				left: 1.5rem;
+				top: 0;
+				bottom: 0;
+				width: 1px;
+				background: rgba(155,241,255,0.2);
+			}
+			.timeline-item {
+				display: flex;
+				gap: 1.5rem;
+				padding: 0 0 2rem 0;
+				position: relative;
+			}
+			.timeline-dot {
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background: #9bf1ff;
+				border: 2px solid #9bf1ff;
+				flex-shrink: 0;
+				margin-top: 0.35rem;
+				position: relative;
+				z-index: 1;
+			}
+			.timeline-content {
+				padding-left: 0.5rem;
+			}
+			.timeline-date {
+				font-size: 0.7rem;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: rgba(255,255,255,0.4);
+				margin-bottom: 0.2rem;
+			}
+			.timeline-title {
+				font-size: 0.98rem;
+				font-weight: 600;
+				color: #fff;
+				margin: 0 0 0.15rem 0;
+			}
+			.timeline-sub {
+				font-size: 0.83rem;
+				color: rgba(255,255,255,0.55);
+				margin: 0;
+			}
+
+			/* ── SECTION HEADERS ── */
+			.section-label {
+				font-size: 0.72rem;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+				color: #9bf1ff;
+				display: block;
+				margin-bottom: 0.5rem;
+			}
+
+			/* ── CONTACT LINKS ── */
+			.contact-links {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 1rem;
+				margin-top: 1.5rem;
+			}
+			.contact-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				color: rgba(255,255,255,0.65);
+				font-size: 0.88rem;
+				text-decoration: none;
+				border: 1px solid rgba(255,255,255,0.15);
+				border-radius: 4px;
+				padding: 0.55rem 1.1rem;
+				transition: color 0.2s, border-color 0.2s;
+			}
+			.contact-link:hover {
+				color: #9bf1ff;
+				border-color: rgba(155,241,255,0.4);
+			}
+
+			/* ── RESPONSIVE ── */
+			@media (max-width: 600px) {
+				.stat-badges { gap: 0.6rem; }
+				.stat-badge { padding: 0.5rem 0.9rem; }
+				.project-card { padding: 1.4rem 1.2rem; }
+			}
+		</style>
 	</head>
 	<body class="landing is-preload">
+		<div id="page-wrapper">
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
+			<!-- Header -->
+			<header id="header" class="alt">
+				<h1><a href="index.html">Chris Collier</a></h1>
+				<nav id="nav">
+					<ul>
+						<li class="special">
+							<a href="#menu" class="menuToggle"><span>Menu</span></a>
+							<div id="menu">
+								<ul>
+									<li><a href="#about">About</a></li>
+									<li><a href="#projects">Projects</a></li>
+									<li><a href="#skills">Skills</a></li>
+									<li><a href="#experience">Experience</a></li>
+									<li><a href="#contact">Contact</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</nav>
+			</header>
 
-				<!-- Header -->
-					<header id="header" class="alt">
-						<h1><a href="index.html">Chris Collier</a></h1>
-						<nav id="nav">
-							<ul>
-								<li class="special">
-									<a href="#menu" class="menuToggle"><span>Menu</span></a>
-									<div id="menu">
-										<ul>
-											<li><a href="index.html">Home</a></li>
-											<li><a href="#one">About</a></li>
-											<li><a href="#two">Projects</a></li>
-											<li><a href="#three">Skills</a></li>
-											<li><a href="#cta">Contact</a></li>
-										</ul>
-									</div>
-								</li>
-							</ul>
-						</nav>
+			<!-- Banner / Hero -->
+			<section id="banner">
+				<div class="inner">
+					<h2>Christopher Collier</h2>
+					<p>Biomedical Engineering &bull; University of Delaware<br />
+					Biomechanical Engineering Minor &bull; Incoming M.S. Robotics (4+1)<br />
+					Medical Device Research &amp; Design</p>
+					<ul class="actions special">
+						<li><a href="#projects" class="button primary scrolly">View My Work</a></li>
+						<li><a href="#contact" class="button scrolly">Get In Touch</a></li>
+					</ul>
+				</div>
+				<a href="#about" class="more scrolly">Learn More</a>
+			</section>
+
+			<!-- About -->
+			<section id="about" class="wrapper style1 special">
+				<div class="inner">
+					<header class="major">
+						<span class="section-label">About Me</span>
+						<h2>Building at the intersection of<br />engineering and clinical need</h2>
+						<p>I'm a Biomedical Engineering student at the University of Delaware (GPA: 3.83) with a minor
+						in Biomechanical Engineering, recently accepted into UD's 4+1 M.S. Robotics program. My research
+						spans medical device development, microfluidic systems, and physiological modeling. I'm particularly
+						interested in surgical robotics, medical imaging systems, AI implementation in medical devices,
+						and prosthetics — areas where precise engineering has direct impact on patient outcomes.</p>
 					</header>
-
-				<!-- Banner -->
-					<section id="banner">
-						<div class="inner">
-							<h2>Christopher Collier</h2>
-							<p>Biomedical Engineering Student at the University of Delaware<br />
-							Biomechanical Engineering Minor &bull; Incoming M.S. Robotics (4+1)<br />
-							Medical Device Researcher &amp; Designer</p>
-							<ul class="actions special">
-								<li><a href="#two" class="button primary">View My Work</a></li>
-							</ul>
+					<div class="stat-badges">
+						<div class="stat-badge">
+							<span class="value">3.83</span>
+							<span class="label">GPA</span>
 						</div>
-						<a href="#one" class="more scrolly">Learn More</a>
-					</section>
-
-				<!-- One: About -->
-					<section id="one" class="wrapper style1 special">
-						<div class="inner">
-							<header class="major">
-								<h2>About Me</h2>
-								<p>I'm a Biomedical Engineering student at the University of Delaware (GPA: 3.83) with a minor in
-								Biomechanical Engineering, recently accepted into UD's 4+1 M.S. Robotics program. My research spans
-								medical device development, microfluidic systems, and physiological modeling. I'm particularly
-								interested in surgical robotics, medical imaging systems, AI implementation in medical devices,
-								and prosthetics — areas where precise engineering has direct impact on patient outcomes.</p>
-							</header>
-							<ul class="icons major">
-								<li><span class="icon solid fa-flask major style1"><span class="label">Research</span></span></li>
-								<li><span class="icon solid fa-drafting-compass major style2"><span class="label">Design</span></span></li>
-								<li><span class="icon solid fa-robot major style3"><span class="label">Robotics</span></span></li>
-							</ul>
+						<div class="stat-badge">
+							<span class="value">4+1</span>
+							<span class="label">M.S. Robotics</span>
 						</div>
-					</section>
+						<div class="stat-badge">
+							<span class="value">BME</span>
+							<span class="label">Biomech. Minor</span>
+						</div>
+						<div class="stat-badge">
+							<span class="value">UD</span>
+							<span class="label">Univ. of Delaware</span>
+						</div>
+					</div>
+				</div>
+			</section>
 
-				<!-- Two: Projects -->
-					<section id="two" class="wrapper alt style2">
-						<section class="spotlight">
-							<div class="image"><img src="images/pic01.jpg" alt="Microfluidic Membrane Oxygenator" /></div>
-							<div class="content">
-								<h2>Microfluidic Membrane Oxygenator</h2>
-								<p>Developing a PDMS-on-glass composite flat plate membrane oxygenator for blood gas exchange.
-								Device work includes 3D-printed polycarbonate flow cell fabrication modeled in OnShape, along with
-								a rigorous verification and validation testing framework covering external leak detection via
-								pressure hold and submersion, trans-membrane integrity via dye perfusion, bubble point testing,
-								and channel geometry characterization. Fluid dynamic analysis addresses internal shear stress
-								distributions and flow uniformity across the membrane surface to ensure physiologically safe
-								operating conditions.</p>
+			<!-- Projects -->
+			<section id="projects" class="wrapper alt style2">
+				<div class="inner">
+					<header class="major" style="text-align:center; margin-bottom:2.5rem;">
+						<span class="section-label">Research &amp; Design</span>
+						<h2>Projects</h2>
+						<p>Engineering work spanning medical device development, physiological modeling, and biomechanics.</p>
+					</header>
+					<div class="projects-grid">
+
+						<div class="project-card">
+							<span class="project-number">01 &mdash; Lab Research</span>
+							<h3>Microfluidic Membrane Oxygenator</h3>
+							<p>Developing a PDMS-on-glass composite flat plate membrane oxygenator for blood gas exchange.
+							Device work includes 3D-printed polycarbonate flow cell fabrication modeled in OnShape, along with
+							a rigorous verification and validation testing framework covering external leak detection via
+							pressure hold and submersion, trans-membrane integrity via dye perfusion, and bubble point testing.
+							Fluid dynamic analysis addresses internal shear stress distributions and flow uniformity across the
+							membrane surface to ensure physiologically safe operating conditions.</p>
+							<div class="project-tags">
+								<span class="tag">OnShape CAD</span>
+								<span class="tag">PDMS Fabrication</span>
+								<span class="tag">3D Printing</span>
+								<span class="tag">Fluid Dynamics</span>
+								<span class="tag">V&amp;V Testing</span>
 							</div>
-						</section>
-						<section class="spotlight">
-							<div class="image"><img src="images/pic02.jpg" alt="Hollow Fiber Membrane Oxygenator" /></div>
-							<div class="content">
-								<h2>Hollow Fiber Membrane Oxygenator</h2>
-								<p>Designing a scalable oxygenator using stacked Oxyplus PMP hollow fiber membrane sheets, with
-								3D CAD modeling in OnShape to prototype and iterate on device geometry. Work involved systematic
-								evaluation of bonding and sealing strategies across multiple fabrication approaches, ultimately
-								converging on a centrifugal potting method with bent fiber geometry. This solution eliminates
-								corner flow stasis in the blood path, preserves fiber lumen integrity during potting, and
-								produces a curved open flow channel — independently developed and subsequently validated
-								against established industrial techniques.</p>
-							</div>
-						</section>
-						<section class="spotlight">
-							<div class="image"><img src="images/pic03.jpg" alt="Radial Arterial Catheterization Wrist Support" /></div>
-							<div class="content">
-								<h2>Radial Arterial Catheterization Wrist Support</h2>
-								<p>Junior design project addressing patient comfort and procedural consistency during radial
-								arterial line placement. Developed a wrist support device that maintains optimal wrist extension
-								angle and stabilizes the insertion site. The design emphasizes structural adaptability —
-								accommodating variation in patient anatomy while maintaining reliable catheter access geometry
-								for clinical staff across a range of use conditions.</p>
-							</div>
-						</section>
-					</section>
+						</div>
 
-				<!-- Three: Skills & Additional Projects -->
-					<section id="three" class="wrapper style3 special">
-						<div class="inner">
-							<header class="major">
-								<h2>Additional Projects &amp; Skills</h2>
-								<p>A broader look at my coursework, technical skills, and ongoing work.</p>
-							</header>
-							<ul class="features">
-								<li class="icon solid fa-chart-line">
-									<h3>Pharmacokinetic Modeling</h3>
-									<p>Built a three-compartment PK simulation of Propofol in MATLAB, modeling drug distribution,
-									metabolism, and plasma concentration over time for anesthesia dosing analysis.</p>
-								</li>
-								<li class="icon solid fa-walking">
-									<h3>Squatting Biomechanics</h3>
-									<p>Analyzed lower extremity joint mechanics during squat patterns for a clinical biomechanics
-									course, examining muscle activation, joint loading, and implications for rehabilitation
-									and injury prevention.</p>
-								</li>
-								<li class="icon solid fa-drafting-compass">
-									<h3>CAD &amp; Prototyping</h3>
-									<p>Proficient in OnShape for parametric 3D modeling and design iteration. Hands-on experience
-									with FDM 3D printing in polycarbonate, PDMS soft lithography, and microfluidic device
-									assembly and benchtop testing.</p>
-								</li>
-								<li class="icon solid fa-microchip">
-									<h3>MATLAB &amp; Simulation</h3>
-									<p>Experienced in numerical modeling, physiological simulation, and data analysis in MATLAB
-									across pharmacokinetics, biomechanics, and biomedical systems applications.</p>
-								</li>
-								<li class="icon solid fa-robot">
-									<h3>Robotics (Incoming M.S.)</h3>
-									<p>Accepted into the University of Delaware's 4+1 M.S. in Robotics program, building toward
-									work at the intersection of robotic systems, surgical devices, and medical AI.</p>
-								</li>
-								<li class="icon solid fa-graduation-cap">
-									<h3>Senior Design (In Progress)</h3>
-									<p>Currently entering senior capstone design. Portfolio will be updated as the project
-									develops throughout the academic year.</p>
-								</li>
+						<div class="project-card">
+							<span class="project-number">02 &mdash; Lab Research</span>
+							<h3>Hollow Fiber Membrane Oxygenator</h3>
+							<p>Designing a scalable oxygenator using stacked Oxyplus PMP hollow fiber membrane sheets, with
+							iterative 3D CAD modeling in OnShape to prototype and refine device geometry. Work involved
+							systematic evaluation of bonding and sealing strategies across multiple fabrication approaches,
+							ultimately converging on a centrifugal potting method with bent fiber geometry. This solution
+							eliminates corner flow stasis in the blood path, preserves fiber lumen integrity during potting,
+							and produces a curved open flow channel — independently developed and subsequently validated
+							against established industrial techniques.</p>
+							<div class="project-tags">
+								<span class="tag">OnShape CAD</span>
+								<span class="tag">Centrifugal Potting</span>
+								<span class="tag">Hollow Fiber Membranes</span>
+								<span class="tag">3D Prototyping</span>
+								<span class="tag">Design Iteration</span>
+							</div>
+						</div>
+
+						<div class="project-card">
+							<span class="project-number">03 &mdash; Junior Design</span>
+							<h3>Radial Arterial Catheterization Wrist Support</h3>
+							<p>Junior design project addressing patient comfort and procedural consistency during radial
+							arterial line placement. Developed a wrist support device that maintains optimal wrist extension
+							angle and stabilizes the insertion site. The design emphasizes structural adaptability —
+							accommodating variation in patient anatomy while maintaining reliable catheter access geometry
+							for clinical staff across a range of use conditions.</p>
+							<div class="project-tags">
+								<span class="tag">Medical Device Design</span>
+								<span class="tag">CAD</span>
+								<span class="tag">Prototyping</span>
+								<span class="tag">Clinical Application</span>
+							</div>
+						</div>
+
+						<div class="project-card">
+							<span class="project-number">04 &mdash; Computational Modeling</span>
+							<h3>Pharmacokinetic Modeling of Propofol: Three-Compartment Simulation</h3>
+							<p>Built a three-compartment pharmacokinetic simulation of Propofol in MATLAB, modeling drug
+							distribution across plasma, peripheral tissues, and a deep tissue compartment following IV
+							administration. The simulation captures redistribution kinetics and elimination dynamics,
+							producing plasma concentration-time profiles relevant to anesthesia dosing analysis and
+							illustrating the narrow window between therapeutic and toxic exposure levels.</p>
+							<div class="project-tags">
+								<span class="tag">MATLAB</span>
+								<span class="tag">ODE Modeling</span>
+								<span class="tag">Pharmacokinetics</span>
+								<span class="tag">Anesthesia</span>
+							</div>
+						</div>
+
+						<div class="project-card">
+							<span class="project-number">05 &mdash; Clinical Biomechanics</span>
+							<h3>Squatting Biomechanics Analysis</h3>
+							<p>Analyzed lower extremity joint mechanics during squat patterns for a clinical biomechanics
+							course, examining joint loading, muscle activation strategies, and kinematic variation across
+							individuals. Findings were evaluated in the context of rehabilitation protocol design and
+							injury prevention, with implications for load management in clinical and athletic populations.</p>
+							<div class="project-tags">
+								<span class="tag">Biomechanics</span>
+								<span class="tag">Motion Analysis</span>
+								<span class="tag">Rehabilitation</span>
+								<span class="tag">Joint Kinetics</span>
+							</div>
+						</div>
+
+						<div class="project-card">
+							<span class="project-number">06 &mdash; Senior Design</span>
+							<h3>Senior Capstone Design <span style="font-weight:400; color:rgba(255,255,255,0.4); font-size:0.9rem;">(In Progress)</span></h3>
+							<p>Currently entering senior capstone design. Project focus to be determined — this portfolio
+							will be updated as the project develops throughout the academic year.</p>
+							<div class="project-tags">
+								<span class="tag">Coming Soon</span>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section>
+
+			<!-- Skills -->
+			<section id="skills" class="wrapper style3 special">
+				<div class="inner">
+					<header class="major">
+						<span class="section-label">Technical Capabilities</span>
+						<h2>Skills</h2>
+					</header>
+					<div class="skills-grid">
+						<div class="skill-group">
+							<h4>CAD &amp; Fabrication</h4>
+							<ul>
+								<li>OnShape</li>
+								<li>3D Printing (FDM, Polycarbonate)</li>
+								<li>PDMS Soft Lithography</li>
+								<li>Microfluidic Device Assembly</li>
+								<li>Benchtop Prototyping</li>
 							</ul>
 						</div>
-					</section>
-
-				<!-- CTA: Contact -->
-					<section id="cta" class="wrapper style4">
-						<div class="inner">
-							<header>
-								<h2>Get In Touch</h2>
-								<p>I'm always open to research collaborations, internship opportunities, or conversations
-								about biomedical engineering and medical devices.</p>
-							</header>
-							<ul class="actions stacked">
-								<li><a href="mailto:chriscol@udel.edu" class="button fit primary">Email Me</a></li>
-								<li><a href="https://www.linkedin.com/in/christopher-collier-" class="button fit" target="_blank">LinkedIn</a></li>
+						<div class="skill-group">
+							<h4>Programming &amp; Modeling</h4>
+							<ul>
+								<li>MATLAB</li>
+								<li>Numerical Simulation</li>
+								<li>Physiological Modeling</li>
+								<li>Data Analysis</li>
+								<li>HTML / CSS</li>
 							</ul>
 						</div>
-					</section>
+						<div class="skill-group">
+							<h4>Lab &amp; Research</h4>
+							<ul>
+								<li>V&amp;V Testing Protocols</li>
+								<li>Leak Detection &amp; Characterization</li>
+								<li>Fluid Dynamics Analysis</li>
+								<li>Biomechanical Assessment</li>
+								<li>Technical Documentation</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/christopher-collier-" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
-							<li><a href="https://github.com/chriscollier3" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
-							<li><a href="mailto:chriscol@udel.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-						</ul>
-						<ul class="copyright">
-							<li>&copy; Christopher Collier</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</footer>
+			<!-- Experience Timeline -->
+			<section id="experience" class="wrapper style2 special">
+				<div class="inner">
+					<header class="major">
+						<span class="section-label">Background</span>
+						<h2>Experience &amp; Education</h2>
+					</header>
+					<div class="timeline">
+						<div class="timeline-item">
+							<div class="timeline-dot"></div>
+							<div class="timeline-content">
+								<div class="timeline-date">Aug 2023 – Present</div>
+								<div class="timeline-title">B.S. Biomedical Engineering</div>
+								<div class="timeline-sub">University of Delaware &mdash; GPA: 3.83</div>
+							</div>
+						</div>
+						<div class="timeline-item">
+							<div class="timeline-dot"></div>
+							<div class="timeline-content">
+								<div class="timeline-date">2024 – Present</div>
+								<div class="timeline-title">Undergraduate Researcher</div>
+								<div class="timeline-sub">Biomedical Engineering Lab, University of Delaware &mdash; Microfluidic &amp; hollow fiber membrane oxygenator development</div>
+							</div>
+						</div>
+						<div class="timeline-item">
+							<div class="timeline-dot"></div>
+							<div class="timeline-content">
+								<div class="timeline-date">Declared 2024</div>
+								<div class="timeline-title">Biomechanical Engineering Minor</div>
+								<div class="timeline-sub">University of Delaware</div>
+							</div>
+						</div>
+						<div class="timeline-item">
+							<div class="timeline-dot"></div>
+							<div class="timeline-content">
+								<div class="timeline-date">Aug 2026 (Upcoming)</div>
+								<div class="timeline-title">M.S. Robotics — 4+1 Program</div>
+								<div class="timeline-sub">University of Delaware &mdash; Focus on surgical robotics &amp; medical AI</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-			</div>
+			<!-- Contact -->
+			<section id="contact" class="wrapper style4">
+				<div class="inner">
+					<header>
+						<span class="section-label">Get In Touch</span>
+						<h2>Contact</h2>
+						<p>Open to research collaborations, internship opportunities, or conversations
+						about biomedical engineering and medical devices.</p>
+					</header>
+					<div class="contact-links">
+						<a href="mailto:chriscol@udel.edu" class="contact-link">
+							<i class="icon solid fa-envelope"></i> chriscol@udel.edu
+						</a>
+						<a href="https://www.linkedin.com/in/christopher-collier-" class="contact-link" target="_blank">
+							<i class="icon brands fa-linkedin"></i> LinkedIn
+						</a>
+						<a href="https://github.com/chriscollier3" class="contact-link" target="_blank">
+							<i class="icon brands fa-github"></i> GitHub
+						</a>
+					</div>
+				</div>
+			</section>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="https://www.linkedin.com/in/christopher-collier-" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+					<li><a href="https://github.com/chriscollier3" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+					<li><a href="mailto:chriscol@udel.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Christopher Collier</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</footer>
 
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
 	</body>
 </html>
