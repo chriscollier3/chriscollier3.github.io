@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Squatting Biomechanics Analysis | Chris Collier</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<style>
+			body { background: #1e2a3a; }
+			#header { background: rgba(30,42,58,0.95); }
+			.project-hero { padding: 8rem 2rem 4rem; max-width: 860px; margin: 0 auto; text-align: left; }
+			.project-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #9bf1ff; display: block; margin-bottom: 1rem; }
+			.project-hero h1 { font-size: 2.8rem; font-weight: 700; color: #fff; line-height: 1.15; margin: 0 0 1.5rem 0; }
+			.project-tagline { font-size: 1.1rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin: 0 0 2.5rem 0; max-width: 600px; }
+			.specs-row { display: flex; flex-wrap: wrap; gap: 2rem; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 3rem; }
+			.spec-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); display: block; margin-bottom: 0.3rem; }
+			.spec-value { font-size: 0.92rem; color: #fff; font-weight: 500; }
+			.project-overview { max-width: 860px; margin: 0 auto; padding: 0 2rem 3rem; }
+			.project-overview p { font-size: 1rem; line-height: 1.85; color: rgba(255,255,255,0.75); margin: 0 0 1.2rem 0; }
+			.project-image-placeholder { max-width: 860px; margin: 0 auto 3rem; padding: 0 2rem; }
+			.project-image-placeholder .placeholder { width: 100%; aspect-ratio: 16/9; background: rgba(155,241,255,0.04); border: 1px solid rgba(155,241,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+			.project-image-placeholder .placeholder span { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(155,241,255,0.25); }
+			.project-image-placeholder .caption { font-size: 0.78rem; color: rgba(255,255,255,0.3); margin-top: 0.6rem; text-align: center; }
+			.breakdown { max-width: 860px; margin: 0 auto; padding: 0 2rem 4rem; }
+			.breakdown h2 { font-size: 1.6rem; font-weight: 700; color: #fff; margin: 0 0 2.5rem 0; line-height: 1.2; }
+			.breakdown-item { display: flex; gap: 2rem; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.06); }
+			.breakdown-number { font-size: 0.72rem; letter-spacing: 0.15em; color: #9bf1ff; flex-shrink: 0; padding-top: 0.25rem; width: 2rem; }
+			.breakdown-content h3 { font-size: 1.05rem; font-weight: 600; color: #fff; margin: 0 0 0.7rem 0; }
+			.breakdown-content p { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.65); margin: 0 0 1rem 0; }
+			.breakdown-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+			.btag { background: rgba(155,241,255,0.08); color: #9bf1ff; border: 1px solid rgba(155,241,255,0.2); border-radius: 4px; font-size: 0.68rem; letter-spacing: 0.06em; padding: 0.2rem 0.6rem; text-transform: uppercase; }
+			.project-footer-nav { max-width: 860px; margin: 0 auto; padding: 2rem 2rem 4rem; display: flex; gap: 1rem; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.08); }
+			.project-footer-nav a { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.6); font-size: 0.85rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.55rem 1.1rem; transition: color 0.2s, border-color 0.2s; }
+			.project-footer-nav a:hover { color: #9bf1ff; border-color: rgba(155,241,255,0.35); }
+			#menu { background: #2a2e35 !important; }
+		</style>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<header id="header">
+				<h1><a href="../index.html">Chris Collier</a></h1>
+				<nav id="nav">
+					<ul>
+						<li class="special">
+							<a href="#menu" class="menuToggle"><span>Menu</span></a>
+							<div id="menu">
+								<ul>
+									<li><a href="../index.html#about">About</a></li>
+									<li><a href="../index.html#projects">Projects</a></li>
+									<li><a href="../index.html#experience">Experience</a></li>
+									<li><a href="../index.html#contact">Contact</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</nav>
+			</header>
+
+			<div class="project-hero">
+				<span class="project-label">05 &mdash; Clinical Biomechanics</span>
+				<h1>Squatting Biomechanics<br />Analysis</h1>
+				<p class="project-tagline">Lower extremity joint mechanics during squat patterns — kinematic and kinetic analysis using OpenCap motion capture with statistical evaluation in JMP.</p>
+			</div>
+
+			<div class="project-overview">
+				<div class="specs-row">
+					<div class="spec-item">
+						<span class="spec-label">Course</span>
+						<span class="spec-value">Clinical Biomechanics</span>
+					</div>
+					<div class="spec-item">
+						<span class="spec-label">Motion Analysis</span>
+						<span class="spec-value">OpenCap</span>
+					</div>
+					<div class="spec-item">
+						<span class="spec-label">Statistical Analysis</span>
+						<span class="spec-value">JMP</span>
+					</div>
+					<div class="spec-item">
+						<span class="spec-label">Focus</span>
+						<span class="spec-value">Joint Kinetics &amp; Kinematics</span>
+					</div>
+					<div class="spec-item">
+						<span class="spec-label">Application</span>
+						<span class="spec-value">Rehabilitation &amp; Injury Prevention</span>
+					</div>
+				</div>
+
+				<p>The squat is one of the most fundamental movement patterns in both clinical rehabilitation and athletic performance contexts — and one of the most biomechanically complex. Joint loading at the knee, hip, and ankle during squatting varies significantly with technique, foot position, depth, and individual anatomy. Understanding these mechanics has direct implications for rehabilitation protocol design, injury prevention, and load management in clinical and athletic populations.</p>
+				<p>This project analyzed lower extremity joint mechanics during squat patterns using OpenCap, a markerless motion capture system, to collect kinematic data. Joint loading, muscle activation strategies, and kinematic variation across individuals were examined, with statistical analysis performed in JMP to evaluate significance of observed differences.</p>
+			</div>
+
+			<div class="project-image-placeholder">
+				<div class="placeholder"><span>Motion Capture Data Coming Soon</span></div>
+				<p class="caption">OpenCap motion analysis — lower extremity kinematics during squat pattern</p>
+			</div>
+
+			<div class="breakdown">
+				<h2>Analysis<br />Breakdown</h2>
+
+				<div class="breakdown-item">
+					<span class="breakdown-number">01</span>
+					<div class="breakdown-content">
+						<h3>OpenCap Motion Capture</h3>
+						<p>OpenCap is a markerless motion capture system that uses smartphone cameras and computer vision to extract 3D body segment kinematics without the need for reflective markers or specialized lab equipment. Squat trials were recorded and processed through the OpenCap pipeline to generate joint angle time series and segment position data for analysis. The markerless approach reduces setup time and participant burden compared to traditional marker-based systems while maintaining sufficient accuracy for clinical biomechanics applications.</p>
+						<div class="breakdown-tags">
+							<span class="btag">OpenCap</span>
+							<span class="btag">Markerless Motion Capture</span>
+							<span class="btag">3D Kinematics</span>
+							<span class="btag">Computer Vision</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="breakdown-item">
+					<span class="breakdown-number">02</span>
+					<div class="breakdown-content">
+						<h3>Joint Kinetics &amp; Loading Analysis</h3>
+						<p>Joint reaction forces and moments at the knee, hip, and ankle were estimated from kinematic data using inverse dynamics. Knee joint loading was a primary focus given its clinical relevance — patellofemoral compressive force and tibiofemoral shear force both vary substantially with squat depth and trunk lean angle. Analysis examined how individual technique differences translate to different joint loading profiles and what implications those differences carry for clinical populations with knee pathology.</p>
+						<div class="breakdown-tags">
+							<span class="btag">Joint Kinetics</span>
+							<span class="btag">Inverse Dynamics</span>
+							<span class="btag">Knee Loading</span>
+							<span class="btag">Patellofemoral Force</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="breakdown-item">
+					<span class="breakdown-number">03</span>
+					<div class="breakdown-content">
+						<h3>Statistical Analysis in JMP</h3>
+						<p>Kinematic and kinetic outcomes were analyzed statistically in JMP to evaluate the significance of observed between-subject variation and technique differences. Descriptive statistics, hypothesis testing, and visualization tools in JMP were used to characterize the distribution of joint angles and loading metrics across participants and identify variables that showed meaningful systematic differences across squat conditions.</p>
+						<div class="breakdown-tags">
+							<span class="btag">JMP</span>
+							<span class="btag">Biostatistics</span>
+							<span class="btag">Hypothesis Testing</span>
+							<span class="btag">Data Visualization</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="breakdown-item">
+					<span class="breakdown-number">04</span>
+					<div class="breakdown-content">
+						<h3>Rehabilitation &amp; Clinical Implications</h3>
+						<p>Findings were interpreted in the context of rehabilitation protocol design and injury prevention. The analysis examined how squat technique modifications — changes in depth, foot width, toe angle, and trunk position — alter joint loading in ways that are clinically meaningful for populations with knee osteoarthritis, ACL reconstruction, or patellofemoral pain. These insights connect quantitative biomechanical data to practical decisions about exercise prescription and load management in clinical and athletic settings.</p>
+						<div class="breakdown-tags">
+							<span class="btag">Rehabilitation</span>
+							<span class="btag">Injury Prevention</span>
+							<span class="btag">Load Management</span>
+							<span class="btag">Clinical Application</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="project-footer-nav">
+				<a href="propofol.html">&larr; Previous Project</a>
+				<a href="../index.html#projects">&larr; Back to Projects</a>
+				<a href="capstone.html">Next Project &rarr;</a>
+				<a href="mailto:chriscol@udel.edu">Discuss This Project</a>
+			</div>
+
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="https://www.linkedin.com/in/christopher-collier-" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+					<li><a href="https://github.com/chriscollier3" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+					<li><a href="mailto:chriscol@udel.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Christopher Collier</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</footer>
+
+		</div>
+
+		<script src="../assets/js/jquery.min.js"></script>
+		<script src="../assets/js/jquery.scrollex.min.js"></script>
+		<script src="../assets/js/jquery.scrolly.min.js"></script>
+		<script src="../assets/js/browser.min.js"></script>
+		<script src="../assets/js/breakpoints.min.js"></script>
+		<script src="../assets/js/util.js"></script>
+		<script src="../assets/js/main.js"></script>
+	</body>
+</html>
