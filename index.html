@@ -322,10 +322,10 @@
 			</section>
 
 		<!-- Skills -->
-		<section id="skills" class="wrapper style3 special" style="padding-top: 4rem; background-color: #f5f5f5 !important;">
+		<section id="skills" class="wrapper style3 special" style="padding-top: 4rem; background-color: #1e2a3a !important;">
 			<div class="inner">
 				<header class="major">
-					<h2 style="color: #111;">Skills</h2>
+					<h2>Skills</h2>
 				</header>
 			</div>
 			<div class="ekg-skills-wrap">
@@ -358,7 +358,7 @@
 					align-items: center;
 					gap: 8px;
 					transform: translateX(-50%);
-					width: 100px;
+					width: 110px;
 				}
 				.ekg-skill-icon {
 					width: 100px;
@@ -378,7 +378,6 @@
 				.ekg-skill span {
 					display: none;
 				}
-				
 			</style>
 			<script>
 			(function() {
@@ -393,7 +392,7 @@
 				];
 		
 				const BASELINE = 230, SPIKE = 90, PERIOD = 200, SPEED = 0.85, H = 300;
-				const FADE_IN = 80, FADE_OUT = 120, START_OFFSET = 80;
+				const FADE_OUT = 120;
 				const ICON_TOP = 10;
 		
 				const canvas = document.getElementById('ekgSkills');
@@ -427,58 +426,78 @@
 					return r >= 0.405 && r <= 0.425;
 				}
 		
-				let history = [], t = 0, popups = [], skillIdx = 0, lastSpike = -PERIOD;
+				// Each point has a "world x" that increases with time
+				// Screen x = W - (t - point.worldX) so newest point is on the RIGHT
+				// and older points move LEFT as time passes
+				let points = [], t = 0, popups = [], skillIdx = 0, lastSpike = -PERIOD;
 		
 				function frame() {
 					t += SPEED;
-					history.push({ t, y: ekgY(t) });
-					if (history.length > W + 20) history.shift();
+		
+					// Add new point at the right edge
+					points.push({ worldX: t, y: ekgY(t) });
+					// Remove points that have scrolled off the left
+					points = points.filter(p => (t - p.worldX) < W + 20);
 		
 					ctx.clearRect(0, 0, W, H);
 		
-					ctx.strokeStyle = 'rgba(0,0,0,0.06)';
+					// grid
+					ctx.strokeStyle = 'rgba(155,241,255,0.05)';
 					ctx.lineWidth = 0.5;
 					for (let gx = 0; gx < W; gx += 28) { ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke(); }
 					for (let gy = 0; gy < H; gy += 22) { ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke(); }
 		
-					const startT = t - (W - START_OFFSET);
+					// draw line — newest points on right, oldest on left
+					// only draw up to the current tip (no future points shown)
+					// fade out on the left side only
+					for (let i = 1; i < points.length; i++) {
+						const age0 = t - points[i-1].worldX;
+						const age1 = t - points[i].worldX;
+						const px0 = W - age0;
+						const px1 = W - age1;
+						if (px0 < -2 || px1 > W + 2) continue;
 		
-					for (let i = 1; i < history.length; i++) {
-						const px0 = history[i-1].t - startT;
-						const px1 = history[i].t - startT;
-						if (px1 < 0 || px0 > W) continue;
+						// fade only on left
 						const midX = (px0 + px1) / 2;
 						let alpha = 1;
-						if (midX > W - START_OFFSET - FADE_IN) alpha = Math.max(0, (W - START_OFFSET - midX) / FADE_IN);
-						if (midX < FADE_OUT) alpha = Math.min(alpha, midX / FADE_OUT);
+						if (midX < FADE_OUT) alpha = Math.max(0, midX / FADE_OUT);
+		
 						ctx.beginPath();
-						ctx.strokeStyle = `rgba(30,42,58,${alpha * 0.8})`;
+						ctx.strokeStyle = `rgba(155,241,255,${alpha * 0.9})`;
 						ctx.lineWidth = 1.8;
-						ctx.moveTo(px0, history[i-1].y);
-						ctx.lineTo(px1, history[i].y);
+						ctx.moveTo(px0, points[i-1].y);
+						ctx.lineTo(px1, points[i].y);
 						ctx.stroke();
 					}
 		
+					// glowing tip dot at right edge
+					const tipY = ekgY(t);
+					ctx.beginPath();
+					ctx.arc(W, tipY, 3, 0, Math.PI*2);
+					ctx.fillStyle = 'rgba(155,241,255,0.9)';
+					ctx.fill();
+		
+					// spawn popup on spike
 					if (isSpikePeak(t) && t - lastSpike > PERIOD * 0.85) {
 						lastSpike = t;
-						popups.push({ skill: skills[skillIdx % skills.length], spawnT: t });
+						popups.push({ skill: skills[skillIdx % skills.length], spawnWorldX: t });
 						skillIdx++;
 					}
 		
+					// render popups — follow their point as it scrolls left
 					iconsEl.innerHTML = '';
-					popups = popups.filter(p => t - p.spawnT < W + 80);
+					popups = popups.filter(p => (t - p.spawnWorldX) < W + 80);
 					popups.forEach(p => {
-						const px = p.spawnT - startT;
+						const age = t - p.spawnWorldX;
+						const px = W - age;
 						if (px < -80 || px > W + 80) return;
-						let alpha = 1;
-						if (px > W - START_OFFSET - FADE_IN) alpha = Math.max(0, (W - START_OFFSET - px) / FADE_IN);
-						if (px < FADE_OUT) alpha = Math.min(alpha, px / FADE_OUT);
+						const alpha = px < FADE_OUT ? Math.max(0, px / FADE_OUT) : 1;
 						const div = document.createElement('div');
 						div.className = 'ekg-skill';
 						div.style.left = px + 'px';
 						div.style.top = ICON_TOP + 'px';
 						div.style.opacity = alpha;
-						div.innerHTML = `<div class="ekg-skill-icon"><img src="${p.skill.src}" alt="${p.skill.name}" /></div><span>${p.skill.name}</span>`;
+						div.innerHTML = `<div class="ekg-skill-icon"><img src="${p.skill.src}" alt="${p.skill.name}" /></div>`;
 						iconsEl.appendChild(div);
 					});
 		
@@ -490,6 +509,7 @@
 			})();
 			</script>
 		</section>
+
 
 
 			<!-- Projects -->
