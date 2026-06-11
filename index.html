@@ -87,27 +87,29 @@
 				flex: 1;
 			}
 			.about-right {
-				flex-shrink: 0;
-				display: flex;
-				flex-direction: column;
-				gap: 0.8rem;
-				padding-top: 0.5rem;
+			    flex-shrink: 0;
+			    display: grid;
+			    grid-template-columns: 1fr 1fr;
+			    gap: 0.8rem;
+			    padding-top: 0.5rem;
 			}
+			
 			.about-category {
-				font-size: 2.2rem;
-				font-weight: 700;
-				color: #fff;
-				letter-spacing: 0.04em;
-				margin: 0 0 0.3rem 0;
-				line-height: 1.1;
+			    font-size: 1.1rem;
+			    font-weight: 400;
+			    color: rgba(255,255,255,0.5);
+			    letter-spacing: 0.08em;
+			    margin: 0 0 0.4rem 0;
+			    line-height: 1.1;
+			    text-transform: uppercase;
 			}
 			.about-title {
-				font-size: 2.2rem;
-				font-weight: 700;
-				color: #fff;
-				letter-spacing: 0.04em;
-				margin: 0 0 1.2rem 0;
-				line-height: 1.1;
+			    font-size: 3rem;
+			    font-weight: 700;
+			    color: #fff;
+			    letter-spacing: 0.04em;
+			    margin: 0 0 1.2rem 0;
+			    line-height: 1.1;
 			}
 			.about-text {
 				font-size: 1rem;
@@ -325,8 +327,8 @@
 			<section id="about" class="wrapper style2 special" style="padding-top: 4rem; background-color: #1e2a3a !important;">
 				<div class="about-layout">
 					<div class="about-left">
-						<p class="about-category">Biomedical Engineering</p>
 						<p class="about-title">About Me</p>
+						<p class="about-category">Biomedical Engineering</p>
 						<p class="about-text">East Northport, NY — Turning concepts into clinically-ready devices. I'm a Biomedical Engineering student at the University of Delaware entering a 4+1 M.S. in Robotics, with a foundation in medical device design, CAD/prototyping, and hands-on validation testing. Outside of engineering I enjoy volleyball, music, traveling, and lifting.</p>
 					</div>
 					<div class="about-right">
