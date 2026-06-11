@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Pharmacokinetic Modeling of Propofol | Chris Collier</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<style>
+			body { background: #1e2a3a; }
+			#header { background: rgba(30,42,58,0.95); }
+			.project-hero { padding: 8rem 2rem 4rem; max-width: 860px; margin: 0 auto; text-align: left; }
+			.project-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #9bf1ff; display: block; margin-bottom: 1rem; }
+			.project-hero h1 { font-size: 2.8rem; font-weight: 700; color: #fff; line-height: 1.15; margin: 0 0 1.5rem 0; }
+			.project-tagline { font-size: 1.1rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin: 0 0 2.5rem 0; max-width: 600px; }
+			.specs-row { display: flex; flex-wrap: wrap; gap: 2rem; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 3rem; }
+			.spec-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); display: block; margin-bottom: 0.3rem; }
+			.spec-value { font-size: 0.92rem; color: #fff; font-weight: 500; }
+			.project-overview { max-width: 860px; margin: 0 auto; padding: 0 2rem 3rem; }
+			.project-overview p { font-size: 1rem; line-height: 1.85; color: rgba(255,255,255,0.75); margin: 0 0 1.2rem 0; }
+			.project-image-placeholder { max-width: 860px; margin: 0 auto 3rem; padding: 0 2rem; }
+			.project-image-placeholder .placeholder { width: 100%; aspect-ratio: 16/9; background: rgba(155,241,255,0.04); border: 1px solid rgba(155,241,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+			.project-image-placeholder .placeholder span { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(155,241,255,0.25); }
+			.project-image-placeholder .caption { font-size: 0.78rem; color: rgba(255,255,255,0.3); margin-top: 0.6rem; text-align: center; }
+			.breakdown { max-width: 860px; margin: 0 auto; padding: 0 2rem 4rem; }
+			.breakdown h2 { font-size: 1.6rem; font-weight: 700; color: #fff; margin: 0 0 2.5rem 0; line-height: 1.2; }
+			.breakdown-item { display: flex; gap: 2rem; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.06); }
+			.breakdown-number { font-size: 0.72rem; letter-spacing: 0.15em; color: #9bf1ff; flex-shrink: 0; padding-top: 0.25rem; width: 2rem; }
+			.breakdown-content h3 { font-size: 1.05rem; font-weight: 600; color: #fff; margin: 0 0 0.7rem 0; }
+			.breakdown-content p { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.65); margin: 0 0 1rem 0; }
+			.breakdown-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+			.btag { background: rgba(155,241,255,0.08); color: #9bf1ff; border: 1px solid rgba(155,241,255,0.2); border-radius: 4px; font-size: 0.68rem; letter-spacing: 0.06em; padding: 0.2rem 0.6rem; text-transform: uppercase; }
+			.project-footer-nav { max-width: 860px; margin: 0 auto; padding: 2rem 2rem 4rem; display: flex; gap: 1rem; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.08); }
+			.project-footer-nav a { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.6); font-size: 0.85rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.55rem 1.1rem; transition: color 0.2s, border-color 0.2s; }
+			.project-footer-nav a:hover { color: #9bf1ff; border-color: rgba(155,241,255,0.35); }
+			#menu { background: #2a2e35 !important; }
+		</style>
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<header id="header">
+				<h1><a href="../index.html">Chris Collier</a></h1>
+				<nav id="nav">
+					<ul>
+						<li class="special">
+							<a href="#menu" class="menuToggle"><span>Menu</span></a>
+							<div id="menu">
+								<ul>
+									<li><a href="../index.html#about">About</a></li>
+									<li><a href="../index.html#projects">Projects</a></li>
+									<li><a href="../index.html#experience">Experience</a></li>
+									<li><a href="../index.html#contact">Contact</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</nav>
+			</header>
+
+			<div class="project-hero">
+				<span class="project-label">04 &mdash; Pharmaceutical Modeling</span>
+				<h1>Pharmacokinetic Modeling<br />of Propofol</h1>
+				<p class="project-tagline">A three-compartment computational simulation of Propofol pharmacokinetics built in MATLAB — modeling drug distribution, redistribution, and elimination dynamics following IV administration.</p>
+			</div>
+
+			<div class="project-overview">
+				<div class="specs-row">
+					<div class="spec-item">
+						<span class="spec-label">Course</span>
+						<span class="spec-value">Pharmaceutical Modeling</span>
+					</div>
+					<div class="spec-item">
+						<span class="spec-label">Software</span>
+						<span class="spec-value">MATLAB</span>
+					</div>
+					<div class="spec-item">
+						<span class="spec-label">Model Type</span>
+						<span class="spec-value">Three-Compartment PK Model</span>
+					</div>
+					<div class="spec-item">
+						<span class="spec-label">Drug</span>
+						<span class="spec-value">Propofol (IV anesthetic)</span>
+					</div>
+					<div class="spec-item">
+						<span class="spec-label">Method</span>
+						<span class="spec-value">ODE System — Compartmental Analysis</span>
+					</div>
+				</div>
+
+				<p>Propofol is one of the most widely used intravenous anesthetics in clinical practice, valued for its rapid onset and short duration of action. Its pharmacokinetic behavior is well-described by a three-compartment model — a central plasma compartment connected to a rapidly-equilibrating peripheral compartment and a slowly-equilibrating deep tissue compartment. Understanding the kinetics across these compartments is essential for predicting plasma concentration over time and maintaining therapeutic dosing without toxicity.</p>
+				<p>This project built a full three-compartment PK simulation of Propofol from first principles in MATLAB, using a system of ordinary differential equations to model drug transfer between compartments and elimination from plasma. The simulation produces plasma concentration-time profiles that capture the characteristic rapid redistribution phase and slower elimination phase seen clinically after IV bolus administration.</p>
+			</div>
+
+			<div class="project-image-placeholder">
+				<div class="placeholder"><span>Simulation Output Coming Soon</span></div>
+				<p class="caption">Plasma concentration-time profile — Propofol three-compartment model simulation output</p>
+			</div>
+
+			<div class="breakdown">
+				<h2>Model Design &amp;<br />Implementation</h2>
+
+				<div class="breakdown-item">
+					<span class="breakdown-number">01</span>
+					<div class="breakdown-content">
+						<h3>Three-Compartment Model Structure</h3>
+						<p>The model consists of three compartments connected by first-order rate constants: a central compartment (plasma and highly perfused tissues), a peripheral compartment (moderately perfused tissues), and a deep compartment (slowly perfused tissues like fat and muscle). Drug is administered as an IV bolus into the central compartment and eliminated from the central compartment via hepatic metabolism and renal excretion. Transfer between compartments is governed by intercompartmental clearance rate constants k12, k21, k13, and k31.</p>
+						<div class="breakdown-tags">
+							<span class="btag">Three-Compartment Model</span>
+							<span class="btag">Compartmental Analysis</span>
+							<span class="btag">Rate Constants</span>
+							<span class="btag">IV Bolus</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="breakdown-item">
+					<span class="breakdown-number">02</span>
+					<div class="breakdown-content">
+						<h3>ODE System &amp; MATLAB Implementation</h3>
+						<p>The compartmental model translates directly into a system of three coupled ordinary differential equations describing the rate of change of drug mass in each compartment over time. The system was implemented in MATLAB using ode45 for numerical integration, with literature-validated pharmacokinetic parameters for Propofol (volumes of distribution, clearance values, and intercompartmental rate constants). Initial conditions reflect drug mass immediately after IV bolus injection.</p>
+						<div class="breakdown-tags">
+							<span class="btag">MATLAB</span>
+							<span class="btag">ODE System</span>
+							<span class="btag">ode45</span>
+							<span class="btag">Numerical Integration</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="breakdown-item">
+					<span class="breakdown-number">03</span>
+					<div class="breakdown-content">
+						<h3>Concentration-Time Profile Analysis</h3>
+						<p>Simulation outputs were converted from drug mass to plasma concentration using compartment volumes, producing the characteristic biphasic concentration-time curve seen clinically with Propofol. The initial steep decline reflects rapid redistribution from plasma into peripheral tissues, while the slower terminal phase reflects hepatic elimination. The simulation illustrates the narrow window between therapeutic plasma concentrations and toxic levels, highlighting why continuous infusion with dose adjustment is used for prolonged anesthesia.</p>
+						<div class="breakdown-tags">
+							<span class="btag">Plasma Concentration</span>
+							<span class="btag">Redistribution Kinetics</span>
+							<span class="btag">Elimination Phase</span>
+							<span class="btag">Data Visualization</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="breakdown-item">
+					<span class="breakdown-number">04</span>
+					<div class="breakdown-content">
+						<h3>Clinical Relevance &amp; Interpretation</h3>
+						<p>The model demonstrates why Propofol's clinical behavior — rapid induction, short duration of action after a single bolus, and accumulation during prolonged infusion — emerges directly from its compartmental pharmacokinetics. Context-sensitive half-time, the time for plasma concentration to fall by 50% after stopping an infusion, increases with infusion duration as peripheral compartments saturate and return drug to plasma. These insights connect mathematical modeling directly to clinical anesthesia practice.</p>
+						<div class="breakdown-tags">
+							<span class="btag">Context-Sensitive Half-Time</span>
+							<span class="btag">Clinical Pharmacology</span>
+							<span class="btag">Anesthesia</span>
+							<span class="btag">Computational Modeling</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="project-footer-nav">
+				<a href="catheter.html">&larr; Previous Project</a>
+				<a href="../index.html#projects">&larr; Back to Projects</a>
+				<a href="biomechanics.html">Next Project &rarr;</a>
+				<a href="mailto:chriscol@udel.edu">Discuss This Project</a>
+			</div>
+
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="https://www.linkedin.com/in/christopher-collier-" class="icon brands fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+					<li><a href="https://github.com/chriscollier3" class="icon brands fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+					<li><a href="mailto:chriscol@udel.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Christopher Collier</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</footer>
+
+		</div>
+
+		<script src="../assets/js/jquery.min.js"></script>
+		<script src="../assets/js/jquery.scrollex.min.js"></script>
+		<script src="../assets/js/jquery.scrolly.min.js"></script>
+		<script src="../assets/js/browser.min.js"></script>
+		<script src="../assets/js/breakpoints.min.js"></script>
+		<script src="../assets/js/util.js"></script>
+		<script src="../assets/js/main.js"></script>
+	</body>
+</html>
