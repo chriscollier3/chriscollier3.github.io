@@ -433,7 +433,7 @@
 				</div>
 			</section>
 
-					<!-- Skills -->
+		<!-- Skills -->
 		<section id="skills" class="wrapper style3 special" style="padding-top: 4rem; background-color: #1e2a3a !important;">
 			<div class="inner">
 				<header class="major">
@@ -448,19 +448,19 @@
 				.ekg-skills-wrap {
 					position: relative;
 					width: 100%;
-					height: 200px;
+					height: 260px;
 					overflow: hidden;
 					margin-top: 1rem;
 				}
 				#ekgSkills {
 					display: block;
 					width: 100%;
-					height: 200px;
+					height: 260px;
 				}
 				#ekgSkillsIcons {
 					position: absolute;
 					top: 0; left: 0;
-					width: 100%; height: 200px;
+					width: 100%; height: 260px;
 					pointer-events: none;
 				}
 				.ekg-skill {
@@ -468,170 +468,146 @@
 					display: flex;
 					flex-direction: column;
 					align-items: center;
-					gap: 5px;
+					gap: 8px;
 					transform: translateX(-50%);
+					width: 80px;
 				}
-				.ekg-skill img {
-					width: 32px;
-					height: 32px;
-					object-fit: contain;
-					filter: brightness(0) invert(1);
-					opacity: 0.85;
-				}
-				.ekg-skill .ekg-icon-fa {
-					width: 32px;
-					height: 32px;
+				.ekg-skill-icon {
+					width: 56px;
+					height: 56px;
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					font-size: 22px;
+					flex-shrink: 0;
+				}
+				.ekg-skill-icon img {
+					width: 56px;
+					height: 56px;
+					object-fit: contain;
+					filter: brightness(0) invert(1);
+					opacity: 0.9;
+					display: block;
+				}
+				.ekg-skill-icon i {
+					font-size: 38px;
 					color: #9bf1ff;
-					opacity: 0.85;
+					opacity: 0.9;
 				}
 				.ekg-skill span {
 					font-size: 9px;
-					letter-spacing: 0.12em;
+					letter-spacing: 0.1em;
 					text-transform: uppercase;
 					color: rgba(255,255,255,0.55);
 					white-space: nowrap;
 					font-family: sans-serif;
-				}
-				.ekg-skill .ekg-dot {
-					width: 4px;
-					height: 4px;
-					border-radius: 50%;
-					background: #9bf1ff;
+					text-align: center;
 				}
 			</style>
 			<script>
 			(function() {
 				const skills = [
-					{ name: 'OnShape',      type: 'img', src: 'images/skills/onshape.png' },
-					{ name: 'SolidWorks',   type: 'img', src: 'images/skills/solidworks.png' },
-					{ name: 'MATLAB',       type: 'img', src: 'images/skills/matlab.png' },
-					{ name: 'Python',       type: 'img', src: 'images/skills/python.png' },
-					{ name: 'Arduino',      type: 'img', src: 'images/skills/arduino.png' },
-					{ name: 'Bambu',        type: 'img', src: 'images/skills/bambu.png' },
-					{ name: 'JMP',          type: 'img', src: 'images/skills/jmp.png' },
-					{ name: 'Laser Cutting',type: 'fa',  icon: 'fa-bolt' },
-					{ name: 'Soldering',    type: 'fa',  icon: 'fa-fire' },
-					{ name: 'PDMS',         type: 'fa',  icon: 'fa-vial' },
+					{ name: 'OnShape',       type: 'img', src: 'images/skills/onshape.png' },
+					{ name: 'SolidWorks',    type: 'img', src: 'images/skills/solidworks.png' },
+					{ name: 'MATLAB',        type: 'img', src: 'images/skills/matlab.png' },
+					{ name: 'Python',        type: 'img', src: 'images/skills/python.png' },
+					{ name: 'Arduino',       type: 'img', src: 'images/skills/arduino.png' },
+					{ name: 'Bambu',         type: 'img', src: 'images/skills/bambu.png' },
+					{ name: 'JMP',           type: 'img', src: 'images/skills/jmp.png' },
+					{ name: 'Laser Cutting', type: 'fa',  icon: 'fa-bolt' },
+					{ name: 'Soldering',     type: 'fa',  icon: 'fa-fire' },
+					{ name: 'PDMS',          type: 'fa',  icon: 'fa-vial' },
 				];
 		
-				const BASELINE = 130;
-				const SPIKE = 85;
-				const PERIOD = 180;
-				const SPEED = 0.9;
-				const H = 200;
+				const BASELINE = 200, SPIKE = 90, PERIOD = 200, SPEED = 0.85, H = 260;
+				const FADE_IN = 80, FADE_OUT = 120, START_OFFSET = 80;
+				const ICON_TOP = 10;
 		
 				const canvas = document.getElementById('ekgSkills');
 				const iconsEl = document.getElementById('ekgSkillsIcons');
-				let ctx = canvas.getContext('2d');
-				let dpr = window.devicePixelRatio || 1;
-				let W = 680;
+				const ctx = canvas.getContext('2d');
+				let dpr = window.devicePixelRatio || 1, W = 680;
 		
 				function setup() {
 					W = canvas.parentElement.offsetWidth || 680;
-					canvas.width = W * dpr;
-					canvas.height = H * dpr;
-					canvas.style.width = W + 'px';
-					canvas.style.height = H + 'px';
-					ctx.setTransform(1,0,0,1,0,0);
-					ctx.scale(dpr, dpr);
+					canvas.width = W * dpr; canvas.height = H * dpr;
+					canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+					ctx.setTransform(1,0,0,1,0,0); ctx.scale(dpr, dpr);
 				}
 				setup();
 		
 				function ekgY(x) {
-					const p = ((x % PERIOD) + PERIOD) % PERIOD;
-					const r = p / PERIOD;
+					const p = ((x % PERIOD) + PERIOD) % PERIOD, r = p / PERIOD;
 					if (r < 0.28) return BASELINE;
-					if (r < 0.33) return BASELINE - (r-0.28)/0.05 * 10;
-					if (r < 0.38) return BASELINE - 10 + (r-0.33)/0.05 * 18;
-					if (r < 0.41) return BASELINE + 8 - (r-0.38)/0.03 * SPIKE;
-					if (r < 0.45) return BASELINE + 8 - SPIKE + (r-0.41)/0.04 * (SPIKE + 22);
-					if (r < 0.50) return BASELINE + 22 - (r-0.45)/0.05 * 26;
-					if (r < 0.55) return BASELINE - 4 + (r-0.50)/0.05 * 8;
-					if (r < 0.63) return BASELINE + 4 - (r-0.55)/0.08 * 8;
+					if (r < 0.33) return BASELINE - (r-0.28)/0.05*10;
+					if (r < 0.38) return BASELINE - 10 + (r-0.33)/0.05*18;
+					if (r < 0.41) return BASELINE + 8 - (r-0.38)/0.03*SPIKE;
+					if (r < 0.45) return BASELINE + 8 - SPIKE + (r-0.41)/0.04*(SPIKE+22);
+					if (r < 0.50) return BASELINE + 22 - (r-0.45)/0.05*26;
+					if (r < 0.55) return BASELINE - 4 + (r-0.50)/0.05*8;
+					if (r < 0.63) return BASELINE + 4 - (r-0.55)/0.08*8;
 					return BASELINE;
 				}
 		
 				function isSpikePeak(x) {
-					const p = ((x % PERIOD) + PERIOD) % PERIOD;
-					const r = p / PERIOD;
+					const p = ((x % PERIOD) + PERIOD) % PERIOD, r = p / PERIOD;
 					return r >= 0.405 && r <= 0.425;
 				}
 		
-				let history = [];
-				let t = 0;
-				let popups = [];
-				let skillIdx = 0;
-				let lastSpike = -PERIOD;
+				let history = [], t = 0, popups = [], skillIdx = 0, lastSpike = -PERIOD;
 		
 				function frame() {
 					t += SPEED;
-					const y = ekgY(t);
-					history.push({ t, y });
+					history.push({ t, y: ekgY(t) });
 					if (history.length > W + 20) history.shift();
 		
 					ctx.clearRect(0, 0, W, H);
 		
-					// grid
 					ctx.strokeStyle = 'rgba(155,241,255,0.05)';
 					ctx.lineWidth = 0.5;
-					for (let gx = 0; gx < W; gx += 28) {
-						ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke();
-					}
-					for (let gy = 0; gy < H; gy += 22) {
-						ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke();
+					for (let gx = 0; gx < W; gx += 28) { ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke(); }
+					for (let gy = 0; gy < H; gy += 22) { ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke(); }
+		
+					const startT = t - (W - START_OFFSET);
+		
+					for (let i = 1; i < history.length; i++) {
+						const px0 = history[i-1].t - startT;
+						const px1 = history[i].t - startT;
+						if (px1 < 0 || px0 > W) continue;
+						const midX = (px0 + px1) / 2;
+						let alpha = 1;
+						if (midX > W - START_OFFSET - FADE_IN) alpha = Math.max(0, (W - START_OFFSET - midX) / FADE_IN);
+						if (midX < FADE_OUT) alpha = Math.min(alpha, midX / FADE_OUT);
+						ctx.beginPath();
+						ctx.strokeStyle = `rgba(155,241,255,${alpha * 0.9})`;
+						ctx.lineWidth = 1.5;
+						ctx.moveTo(px0, history[i-1].y);
+						ctx.lineTo(px1, history[i].y);
+						ctx.stroke();
 					}
 		
-					// line
-					const startT = t - W;
-					ctx.beginPath();
-					ctx.strokeStyle = '#9bf1ff';
-					ctx.lineWidth = 1.5;
-					let first = true;
-					for (let i = 0; i < history.length; i++) {
-						const px = history[i].t - startT;
-						if (px < 0 || px > W) continue;
-						first ? ctx.moveTo(px, history[i].y) : ctx.lineTo(px, history[i].y);
-						first = false;
-					}
-					ctx.stroke();
-		
-					// tip dot
-					ctx.beginPath();
-					ctx.arc(Math.min(t - startT, W), y, 3, 0, Math.PI*2);
-					ctx.fillStyle = '#ffffff';
-					ctx.fill();
-		
-					// spawn popup on spike
 					if (isSpikePeak(t) && t - lastSpike > PERIOD * 0.85) {
 						lastSpike = t;
-						popups.push({ skill: skills[skillIdx % skills.length], spawnT: t, spawnY: y });
+						popups.push({ skill: skills[skillIdx % skills.length], spawnT: t });
 						skillIdx++;
 					}
 		
-					// render popups
 					iconsEl.innerHTML = '';
-					popups = popups.filter(p => t - p.spawnT < W + 60);
+					popups = popups.filter(p => t - p.spawnT < W + 80);
 					popups.forEach(p => {
 						const px = p.spawnT - startT;
-						if (px < -60 || px > W + 60) return;
-						const age = t - p.spawnT;
-						const opacity = age < 20 ? age/20 : age > W - 70 ? Math.max(0,(W-age)/70) : 1;
+						if (px < -80 || px > W + 80) return;
+						let alpha = 1;
+						if (px > W - START_OFFSET - FADE_IN) alpha = Math.max(0, (W - START_OFFSET - px) / FADE_IN);
+						if (px < FADE_OUT) alpha = Math.min(alpha, px / FADE_OUT);
 						const div = document.createElement('div');
 						div.className = 'ekg-skill';
 						div.style.left = px + 'px';
-						div.style.top = (p.spawnY - 62) + 'px';
-						div.style.opacity = opacity;
-						let iconHtml = '';
-						if (p.skill.type === 'img') {
-							iconHtml = `<img src="${p.skill.src}" alt="${p.skill.name}" />`;
-						} else {
-							iconHtml = `<div class="ekg-icon-fa"><i class="icon solid ${p.skill.icon}"></i></div>`;
-						}
-						div.innerHTML = `${iconHtml}<span>${p.skill.name}</span><div class="ekg-dot"></div>`;
+						div.style.top = ICON_TOP + 'px';
+						div.style.opacity = alpha;
+						const iconHtml = p.skill.type === 'img'
+							? `<div class="ekg-skill-icon"><img src="${p.skill.src}" alt="${p.skill.name}" /></div>`
+							: `<div class="ekg-skill-icon"><i class="icon solid ${p.skill.icon}"></i></div>`;
+						div.innerHTML = `${iconHtml}<span>${p.skill.name}</span>`;
 						iconsEl.appendChild(div);
 					});
 		
@@ -643,6 +619,8 @@
 			})();
 			</script>
 		</section>
+
+					
 
 
 			<!-- Experience Timeline -->
