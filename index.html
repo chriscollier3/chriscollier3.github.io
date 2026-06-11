@@ -69,14 +69,18 @@
 				font-weight: 600;
 				letter-spacing: 0.08em;
 				color: rgba(255,255,255,0.9);
-				margin: 0.4rem 0 0.9rem;
+				margin: 0.4rem 0 1.8rem;
 				text-transform: uppercase;
 			}
-			#banner .inner .tagline {
-				font-size: 0.95rem;
-				color: rgba(255,255,255,0.7);
-				line-height: 1.7;
-				margin-bottom: 1.8rem;
+
+			/* ── ABOUT CATEGORY HEADER ── */
+			.about-category {
+				font-size: 2.2rem;
+				font-weight: 700;
+				color: #fff;
+				letter-spacing: 0.04em;
+				margin: 0 0 1.2rem 0;
+				line-height: 1.1;
 			}
 
 			/* ── STAT BADGES ── */
@@ -145,13 +149,13 @@
 			.timeline {
 				max-width: 700px;
 				margin: 2.5rem auto 0;
-				padding: 0 1.5rem;
+				padding: 0 1.5rem 0 3.5rem;
 				position: relative;
 			}
 			.timeline::before {
 				content: '';
 				position: absolute;
-				left: 1.775rem;
+				left: 0.95rem;
 				top: 0;
 				bottom: 0;
 				width: 1px;
@@ -176,25 +180,25 @@
 			}
 			.timeline-content { padding-left: 0; }
 			.timeline-date {
-			    font-size: 0.7rem;
-			    letter-spacing: 0.1em;
-			    text-transform: uppercase;
-			    color: rgba(255,255,255,0.4);
-			    margin-bottom: 0.2rem;
-			    text-align: left;
+				font-size: 0.7rem;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: rgba(255,255,255,0.4);
+				margin-bottom: 0.2rem;
+				text-align: left;
 			}
 			.timeline-title {
-			    font-size: 0.98rem;
-			    font-weight: 600;
-			    color: #fff;
-			    margin: 0 0 0.15rem 0;
-			    text-align: left;
+				font-size: 0.98rem;
+				font-weight: 600;
+				color: #fff;
+				margin: 0 0 0.15rem 0;
+				text-align: left;
 			}
 			.timeline-sub {
-			    font-size: 0.83rem;
-			    color: rgba(255,255,255,0.55);
-			    margin: 0;
-			    text-align: left;
+				font-size: 0.83rem;
+				color: rgba(255,255,255,0.55);
+				margin: 0;
+				text-align: left;
 			}
 
 			/* ── SECTION LABEL ── */
@@ -232,8 +236,8 @@
 				border-color: rgba(155,241,255,0.4);
 			}
 			#menu {
-    		background: #2a2e35 !important;
-	}
+				background: #2a2e35 !important;
+			}
 			@media (max-width: 600px) {
 				.stat-badges { gap: 0.6rem; }
 				.stat-badge { padding: 0.5rem 0.9rem; }
@@ -271,10 +275,6 @@
 				<div class="inner" style="position: relative; z-index: 1;">
 					<h2>Christopher Collier</h2>
 					<p class="subtitle">Biomedical Engineer | Medical Device R&amp;D</p>
-					<p class="tagline">
-						Senior at the University of Delaware &mdash; Graduating May 2027<br />
-						Driven towards design and development in medical devices, CAD/Prototyping and robotics
-					</p>
 					<ul class="actions special">
 						<li><a href="#projects" class="button scrolly">View Projects</a></li>
 						<li><a href="#contact" class="button scrolly">Get In Touch</a></li>
@@ -288,20 +288,13 @@
 			<section id="about" class="wrapper style2 special" style="padding-top: 4rem; background-color: #1a2235 !important;">
 				<div class="inner">
 					<header class="major">
-						<h2>About Me</h2>
-						<p>I'm a Biomedical Engineering student at the University of Delaware with a minor in
-						Biomechanical Engineering, and a strong foundation in medical device design, CAD/prototyping, and
-						biomechanical research. I approach engineering problems through the full design cycle — from concept
-						generation and 3D modeling to hands-on fabrication and validation testing — focused on fully meeting
-						clinical needs.</p>
-						<p style="margin-top:1rem;">I work in the Biomedical Research, Innovation, and Translation in ECLS (BRITE) Lab at Nemours Children's Hospital, performing
-						validation and leak testing on microfluidic membrane oxygenators and contributing to further device
-						development through fluid dynamics analysis, CAD design, and biomaterials work. I also held a
-						Medical Device Design Teaching Assistant position, supporting student teams through the product
-						pathway and design process while teaching SolidWorks and CAD skills.</p>
-
-						<p style="margin-top:1rem;">I am an incoming M.S. student in Robotics at UD and will graduate with my B.S. in Biomedical Engineering in May 2027. Outside of
-						engineering, I enjoy volleyball, weightlifting, running, traveling, music, and watching Jeopardy.</p>
+						<p class="about-category">Biomedical Engineering</p>
+						<p style="font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto;">
+							East Northport, NY — Turning concepts into clinically-ready devices. I'm a Biomedical Engineering
+							student at the University of Delaware entering a 4+1 M.S. in Robotics, with a foundation in
+							medical device design, CAD/prototyping, and hands-on validation testing. Outside of engineering
+							I enjoy volleyball, music, traveling, and lifting.
+						</p>
 					</header>
 					<div class="stat-badges">
 						<div class="stat-badge">
@@ -494,61 +487,61 @@
 
 			<!-- Experience Timeline -->
 			<section id="experience" class="wrapper style2 special" style="padding-top: 4rem; background-color: #181e28 !important;">
-			    <div class="inner">
-			        <header class="major">
-			            <h2>Experience &amp; Education</h2>
-			        </header>
-			        <div class="timeline">
-			            <div class="timeline-item">
-			                <div class="timeline-dot"></div>
-			                <div class="timeline-content">
-			                    <div class="timeline-date">Aug 2023 – Present</div>
-			                    <div class="timeline-title">B.S. Biomedical Engineering</div>
-			                    <div class="timeline-sub">University of Delaware &mdash; GPA: 3.83 &bull; Dean's List 6/6 &bull; Presidential Scholarship</div>
-			                </div>
-			            </div>
-			            <div class="timeline-item">
-			                <div class="timeline-dot"></div>
-			                <div class="timeline-content">
-			                    <div class="timeline-date">Sep 2023 – Present</div>
-			                    <div class="timeline-title">Captain &amp; Vice President — Men's Club Volleyball</div>
-			                    <div class="timeline-sub">University of Delaware &mdash; Rookie of the Year 2024 &bull; A Team MVP 2025, 2026 &bull; Defensive Player of the Year 2025, 2026</div>
-			                </div>
-			            </div>
-			            <div class="timeline-item">
-			                <div class="timeline-dot"></div>
-			                <div class="timeline-content">
-			                    <div class="timeline-date">Aug 2024 – Present</div>
-			                    <div class="timeline-title">Resident Assistant</div>
-			                    <div class="timeline-sub">Residence Life &amp; Housing, University of Delaware</div>
-			                </div>
-			            </div>
-			            <div class="timeline-item">
-			                <div class="timeline-dot"></div>
-			                <div class="timeline-content">
-			                    <div class="timeline-date">Jan 2026 – Present</div>
-			                    <div class="timeline-title">Teaching Assistant — Medical Device Design</div>
-			                    <div class="timeline-sub">University of Delaware &mdash; SolidWorks, CAD, and medical device design process</div>
-			                </div>
-			            </div>
-			            <div class="timeline-item">
-			                <div class="timeline-dot"></div>
-			                <div class="timeline-content">
-			                    <div class="timeline-date">May 2026 – Present</div>
-			                    <div class="timeline-title">Undergraduate Researcher</div>
-			                    <div class="timeline-sub">BRITE Lab, Nemours Children's Hospital &mdash; Microfluidic &amp; hollow fiber membrane oxygenator development</div>
-			                </div>
-			            </div>
-			            <div class="timeline-item">
-			                <div class="timeline-dot"></div>
-			                <div class="timeline-content">
-			                    <div class="timeline-date">Aug 2027 (Upcoming)</div>
-			                    <div class="timeline-title">M.S. Robotics — 4+1 Program</div>
-			                    <div class="timeline-sub">University of Delaware &mdash; Focus on surgical robotics &amp; medical AI</div>
-			                </div>
-			            </div>
-			        </div>
-			    </div>
+				<div class="inner">
+					<header class="major">
+						<h2>Experience &amp; Education</h2>
+					</header>
+					<div class="timeline">
+						<div class="timeline-item">
+							<div class="timeline-dot"></div>
+							<div class="timeline-content">
+								<div class="timeline-date">Aug 2023 – Present</div>
+								<div class="timeline-title">B.S. Biomedical Engineering</div>
+								<div class="timeline-sub">University of Delaware &mdash; GPA: 3.83 &bull; Dean's List 6/6 &bull; Presidential Scholarship</div>
+							</div>
+						</div>
+						<div class="timeline-item">
+							<div class="timeline-dot"></div>
+							<div class="timeline-content">
+								<div class="timeline-date">Sep 2023 – Present</div>
+								<div class="timeline-title">Captain &amp; Vice President — Men's Club Volleyball</div>
+								<div class="timeline-sub">University of Delaware &mdash; Rookie of the Year 2024 &bull; A Team MVP 2025, 2026 &bull; Defensive Player of the Year 2025, 2026</div>
+							</div>
+						</div>
+						<div class="timeline-item">
+							<div class="timeline-dot"></div>
+							<div class="timeline-content">
+								<div class="timeline-date">Aug 2024 – Present</div>
+								<div class="timeline-title">Resident Assistant</div>
+								<div class="timeline-sub">Residence Life &amp; Housing, University of Delaware</div>
+							</div>
+						</div>
+						<div class="timeline-item">
+							<div class="timeline-dot"></div>
+							<div class="timeline-content">
+								<div class="timeline-date">Jan 2026 – May 2026</div>
+								<div class="timeline-title">Teaching Assistant — Medical Device Design</div>
+								<div class="timeline-sub">University of Delaware &mdash; Supported student teams through the medical device design process, SolidWorks instruction, and design documentation</div>
+							</div>
+						</div>
+						<div class="timeline-item">
+							<div class="timeline-dot"></div>
+							<div class="timeline-content">
+								<div class="timeline-date">May 2026 – Present</div>
+								<div class="timeline-title">Undergraduate Researcher — BRITE Lab</div>
+								<div class="timeline-sub">Nemours Children's Hospital &mdash; Developing microfluidic and hollow fiber membrane oxygenators for pediatric ECLS applications. Work spans fluid dynamics analysis, CAD/prototyping in OnShape, biomaterials fabrication, and V&amp;V leak testing.</div>
+							</div>
+						</div>
+						<div class="timeline-item">
+							<div class="timeline-dot"></div>
+							<div class="timeline-content">
+								<div class="timeline-date">Aug 2027 (Upcoming)</div>
+								<div class="timeline-title">M.S. Robotics — 4+1 Program</div>
+								<div class="timeline-sub">University of Delaware &mdash; Focus on surgical robotics &amp; medical AI</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</section>
 
 			<!-- Contact -->
