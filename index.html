@@ -10,9 +10,9 @@
 			/* ── PROJECT CARDS ── */
 			.projects-grid {
 				display: grid;
-				grid-template-columns: 1fr;
-				gap: 2.5rem;
-				max-width: 900px;
+				grid-template-columns: 1fr 1fr;
+				gap: 2rem;
+				max-width: 960px;
 				margin: 0 auto;
 				padding: 0 1.5rem;
 			}
@@ -20,47 +20,64 @@
 				background: rgba(255,255,255,0.04);
 				border: 1px solid rgba(255,255,255,0.08);
 				border-radius: 8px;
-				padding: 2rem 2.2rem;
-				transition: border-color 0.3s, background 0.3s;
+				overflow: hidden;
+				text-decoration: none;
+				display: block;
+				transition: border-color 0.3s, background 0.3s, transform 0.3s;
 			}
 			.project-card:hover {
 				border-color: rgba(255,255,255,0.2);
 				background: rgba(255,255,255,0.07);
+				transform: translateY(-3px);
+			}
+			.project-card-image {
+				width: 100%;
+				aspect-ratio: 16/9;
+				background: rgba(155,241,255,0.05);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				overflow: hidden;
+			}
+			.project-card-image img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+			.project-card-image .placeholder-text {
+				font-size: 0.75rem;
+				letter-spacing: 0.15em;
+				text-transform: uppercase;
+				color: rgba(155,241,255,0.3);
+			}
+			.project-card-body {
+				padding: 1.2rem 1.4rem 1.4rem;
 			}
 			.project-number {
-				font-size: 0.72rem;
+				font-size: 0.68rem;
 				letter-spacing: 0.18em;
 				text-transform: uppercase;
 				color: #9bf1ff;
-				margin-bottom: 0.5rem;
+				margin-bottom: 0.4rem;
 				display: block;
 			}
-			.project-card h3 {
-				font-size: 1.25rem;
-				margin: 0 0 0.9rem 0;
+			.project-card-body h3 {
+				font-size: 1.05rem;
+				margin: 0 0 0.8rem 0;
 				color: #fff;
 				line-height: 1.3;
 			}
-			.project-card p {
-				font-size: 0.92rem;
-				line-height: 1.75;
-				color: rgba(255,255,255,0.72);
-				margin: 0 0 1.2rem 0;
-			}
-			.project-tags {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 0.45rem;
-			}
-			.tag {
-				background: rgba(155,241,255,0.1);
-				color: #9bf1ff;
-				border: 1px solid rgba(155,241,255,0.25);
-				border-radius: 4px;
-				font-size: 0.72rem;
-				letter-spacing: 0.06em;
-				padding: 0.25rem 0.65rem;
+			.project-link {
+				font-size: 0.78rem;
+				letter-spacing: 0.1em;
 				text-transform: uppercase;
+				color: #9bf1ff;
+				display: inline-flex;
+				align-items: center;
+				gap: 0.4rem;
+			}
+			@media (max-width: 640px) {
+				.projects-grid { grid-template-columns: 1fr; }
 			}
 
 			/* ── BANNER SUBTITLE ── */
@@ -83,33 +100,30 @@
 				padding: 0 1.5rem;
 				text-align: left;
 			}
-			.about-left {
-				flex: 1;
-			}
+			.about-left { flex: 1; }
 			.about-right {
-			    flex-shrink: 0;
-			    display: grid;
-			    grid-template-columns: 1fr 1fr;
-			    gap: 0.8rem;
-			    padding-top: 0.5rem;
+				flex-shrink: 0;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 0.8rem;
+				padding-top: 0.5rem;
 			}
-			
 			.about-category {
-			    font-size: 1.1rem;
-			    font-weight: 400;
-			    color: rgba(255,255,255,0.5);
-			    letter-spacing: 0.08em;
-			    margin: 0 0 0.4rem 0;
-			    line-height: 1.1;
-			    text-transform: uppercase;
+				font-size: 1.1rem;
+				font-weight: 400;
+				color: rgba(255,255,255,0.5);
+				letter-spacing: 0.08em;
+				margin: 0 0 0.4rem 0;
+				line-height: 1.1;
+				text-transform: uppercase;
 			}
 			.about-title {
-			    font-size: 3rem;
-			    font-weight: 700;
-			    color: #fff;
-			    letter-spacing: 0.04em;
-			    margin: 0 0 1.2rem 0;
-			    line-height: 1.1;
+				font-size: 3rem;
+				font-weight: 700;
+				color: #fff;
+				letter-spacing: 0.04em;
+				margin: 0 0 1.2rem 0;
+				line-height: 1.1;
 			}
 			.about-text {
 				font-size: 1rem;
@@ -198,7 +212,7 @@
 				position: relative;
 			}
 			.timeline::before {
-				content: '';
+				content: \'\';
 				position: absolute;
 				left: 0.95rem;
 				top: 0; bottom: 0;
@@ -371,16 +385,12 @@
 						{ name: 'Bambu',      src: 'images/skills/bambu.png' },
 						{ name: 'JMP',        src: 'images/skills/jmp.png' },
 					];
-
 					const BASELINE = 230, SPIKE = 90, PERIOD = 200, SPEED = 0.85, H = 300;
-					const FADE_OUT = 160;
-					const ICON_TOP = 40;
-
+					const FADE_OUT = 160, ICON_TOP = 40;
 					const canvas = document.getElementById('ekgSkills');
 					const iconsEl = document.getElementById('ekgSkillsIcons');
 					const ctx = canvas.getContext('2d');
 					let dpr = window.devicePixelRatio || 1, W = 680;
-
 					function setup() {
 						W = canvas.parentElement.offsetWidth || 680;
 						canvas.width = W * dpr; canvas.height = H * dpr;
@@ -388,7 +398,6 @@
 						ctx.setTransform(1,0,0,1,0,0); ctx.scale(dpr, dpr);
 					}
 					setup();
-
 					function ekgY(x) {
 						const p = ((x % PERIOD) + PERIOD) % PERIOD, r = p / PERIOD;
 						if (r < 0.28) return BASELINE;
@@ -401,26 +410,20 @@
 						if (r < 0.63) return BASELINE + 4 - (r-0.55)/0.08*8;
 						return BASELINE;
 					}
-
 					function isSpikePeak(x) {
 						const p = ((x % PERIOD) + PERIOD) % PERIOD, r = p / PERIOD;
 						return r >= 0.405 && r <= 0.425;
 					}
-
 					let points = [], t = 0, popups = [], skillIdx = 0, lastSpike = -PERIOD;
-
 					function frame() {
 						t += SPEED;
 						points.push({ worldX: t, y: ekgY(t) });
 						points = points.filter(p => (t - p.worldX) < W - 60 + 20);
-
 						ctx.clearRect(0, 0, W, H);
-
 						ctx.strokeStyle = 'rgba(155,241,255,0.05)';
 						ctx.lineWidth = 0.5;
 						for (let gx = 0; gx < W; gx += 28) { ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke(); }
 						for (let gy = 0; gy < H; gy += 22) { ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke(); }
-
 						for (let i = 1; i < points.length; i++) {
 							const age0 = t - points[i-1].worldX;
 							const age1 = t - points[i].worldX;
@@ -437,19 +440,16 @@
 							ctx.lineTo(px1, points[i].y);
 							ctx.stroke();
 						}
-
 						const tipY = ekgY(t);
 						ctx.beginPath();
 						ctx.arc(W - 60, tipY, 3, 0, Math.PI*2);
 						ctx.fillStyle = 'rgba(155,241,255,0.9)';
 						ctx.fill();
-
 						if (isSpikePeak(t) && t - lastSpike > PERIOD * 0.85) {
 							lastSpike = t;
 							popups.push({ skill: skills[skillIdx % skills.length], spawnWorldX: t });
 							skillIdx++;
 						}
-
 						iconsEl.innerHTML = '';
 						popups = popups.filter(p => (t - p.spawnWorldX) < W + 80);
 						popups.forEach(p => {
@@ -465,10 +465,8 @@
 							div.innerHTML = `<div class="ekg-skill-icon"><img src="${p.skill.src}" alt="${p.skill.name}" style="${p.skill.size ? 'width:' + p.skill.size + 'px;height:' + p.skill.size + 'px;' : ''}" /></div>`;
 							iconsEl.appendChild(div);
 						});
-
 						requestAnimationFrame(frame);
 					}
-
 					frame();
 					window.addEventListener('resize', setup);
 				})();
@@ -484,79 +482,71 @@
 					</header>
 					<div class="projects-grid">
 
-						<div class="project-card">
-							<span class="project-number">01 &mdash; Engineering Research &amp; Development</span>
-							<h3>Microfluidic Membrane Oxygenator</h3>
-							<p>Developing a PDMS-on-glass composite flat plate membrane oxygenator for blood gas exchange in the BRITE Lab. Device work includes 3D-printed polycarbonate flow cell fabrication modeled in OnShape, along with a rigorous verification and validation testing framework covering external leak detection via pressure hold and submersion, trans-membrane integrity via dye perfusion, and bubble point testing. Fluid dynamic analysis addresses internal shear stress distributions and flow uniformity across the membrane surface to ensure physiologically safe operating conditions.</p>
-							<div class="project-tags">
-								<span class="tag">OnShape</span>
-								<span class="tag">PDMS Fabrication</span>
-								<span class="tag">3D Prototyping</span>
-								<span class="tag">Fluid Dynamics</span>
-								<span class="tag">V&amp;V Testing</span>
-								<span class="tag">Biomaterials</span>
+						<a class="project-card" href="projects/microfluidic.html">
+							<div class="project-card-image">
+								<span class="placeholder-text">Photo Coming Soon</span>
 							</div>
-						</div>
+							<div class="project-card-body">
+								<span class="project-number">01 &mdash; Engineering Research &amp; Development</span>
+								<h3>Microfluidic Membrane Oxygenator</h3>
+								<span class="project-link">View Project &rarr;</span>
+							</div>
+						</a>
 
-						<div class="project-card">
-							<span class="project-number">02 &mdash; Engineering Research &amp; Development</span>
-							<h3>Hollow Fiber Membrane Oxygenator</h3>
-							<p>Designing a scalable oxygenator using stacked Oxyplus PMP hollow fiber membrane sheets, with iterative 3D CAD modeling and physical prototyping in OnShape and FDM 3D printing to develop and refine device geometry. Work involved systematic evaluation of bonding and sealing strategies, ultimately converging on a centrifugal potting method with bent fiber geometry. This solution eliminates corner flow stasis in the blood path, preserves fiber lumen integrity during potting, and produces a curved open flow channel — independently developed and subsequently validated against established industrial techniques.</p>
-							<div class="project-tags">
-								<span class="tag">OnShape</span>
-								<span class="tag">3D Printing</span>
-								<span class="tag">Centrifugal Potting</span>
-								<span class="tag">Hollow Fiber Membranes</span>
-								<span class="tag">Design Iteration</span>
+						<a class="project-card" href="projects/hfm.html">
+							<div class="project-card-image">
+								<span class="placeholder-text">Photo Coming Soon</span>
 							</div>
-						</div>
+							<div class="project-card-body">
+								<span class="project-number">02 &mdash; Engineering Research &amp; Development</span>
+								<h3>Hollow Fiber Membrane Oxygenator</h3>
+								<span class="project-link">View Project &rarr;</span>
+							</div>
+						</a>
 
-						<div class="project-card">
-							<span class="project-number">03 &mdash; Junior Design</span>
-							<h3>Radial Arterial Catheterization Wrist Support</h3>
-							<p>Junior design project addressing patient comfort and procedural consistency during radial arterial line placement. Developed a wrist support device that maintains optimal wrist extension angle and stabilizes the insertion site. The design emphasizes structural adaptability — accommodating variation in patient anatomy while maintaining reliable catheter access geometry for clinical staff across a range of use conditions.</p>
-							<div class="project-tags">
-								<span class="tag">SolidWorks</span>
-								<span class="tag">3D Printing</span>
-								<span class="tag">Laser Cutting</span>
-								<span class="tag">Soldering</span>
-								<span class="tag">Medical Device Design</span>
+						<a class="project-card" href="projects/catheter.html">
+							<div class="project-card-image">
+								<span class="placeholder-text">Photo Coming Soon</span>
 							</div>
-						</div>
+							<div class="project-card-body">
+								<span class="project-number">03 &mdash; Junior Design</span>
+								<h3>Radial Arterial Catheterization Wrist Support</h3>
+								<span class="project-link">View Project &rarr;</span>
+							</div>
+						</a>
 
-						<div class="project-card">
-							<span class="project-number">04 &mdash; Pharmaceutical Modeling</span>
-							<h3>Pharmacokinetic Modeling of Propofol: Three-Compartment Simulation</h3>
-							<p>Built a three-compartment pharmacokinetic simulation of Propofol in MATLAB, modeling drug distribution across plasma, peripheral tissues, and a deep tissue compartment following IV administration. The simulation captures redistribution kinetics and elimination dynamics, producing plasma concentration-time profiles relevant to computational and compartmental modeling of drug behavior in clinical pharmacology.</p>
-							<div class="project-tags">
-								<span class="tag">MATLAB</span>
-								<span class="tag">ODE Modeling</span>
-								<span class="tag">Compartmental Modeling</span>
-								<span class="tag">Computational Modeling</span>
+						<a class="project-card" href="projects/propofol.html">
+							<div class="project-card-image">
+								<span class="placeholder-text">Photo Coming Soon</span>
 							</div>
-						</div>
+							<div class="project-card-body">
+								<span class="project-number">04 &mdash; Pharmaceutical Modeling</span>
+								<h3>Pharmacokinetic Modeling of Propofol</h3>
+								<span class="project-link">View Project &rarr;</span>
+							</div>
+						</a>
 
-						<div class="project-card">
-							<span class="project-number">05 &mdash; Clinical Biomechanics</span>
-							<h3>Squatting Biomechanics Analysis</h3>
-							<p>Analyzed lower extremity joint mechanics during squat patterns for a clinical biomechanics course, examining joint loading, muscle activation strategies, and kinematic variation across individuals using OpenCap motion analysis. Statistical analysis was performed in JMP. Findings were evaluated in the context of rehabilitation protocol design and injury prevention, with implications for load management in clinical and athletic populations.</p>
-							<div class="project-tags">
-								<span class="tag">OpenCap Motion Analysis</span>
-								<span class="tag">JMP</span>
-								<span class="tag">Biostatistics</span>
-								<span class="tag">Biomechanics</span>
-								<span class="tag">Joint Kinetics</span>
+						<a class="project-card" href="projects/biomechanics.html">
+							<div class="project-card-image">
+								<span class="placeholder-text">Photo Coming Soon</span>
 							</div>
-						</div>
+							<div class="project-card-body">
+								<span class="project-number">05 &mdash; Clinical Biomechanics</span>
+								<h3>Squatting Biomechanics Analysis</h3>
+								<span class="project-link">View Project &rarr;</span>
+							</div>
+						</a>
 
-						<div class="project-card">
-							<span class="project-number">06 &mdash; Senior Design</span>
-							<h3>Senior Capstone Design <span style="font-weight:400; color:rgba(255,255,255,0.4); font-size:0.9rem;">(In Progress)</span></h3>
-							<p>Currently entering senior capstone design. Project focus to be determined — this portfolio will be updated as the project develops throughout the academic year.</p>
-							<div class="project-tags">
-								<span class="tag">Coming Soon</span>
+						<a class="project-card" href="projects/capstone.html">
+							<div class="project-card-image">
+								<span class="placeholder-text">Coming Soon</span>
 							</div>
-						</div>
+							<div class="project-card-body">
+								<span class="project-number">06 &mdash; Senior Design</span>
+								<h3>Senior Capstone Design</h3>
+								<span class="project-link">View Project &rarr;</span>
+							</div>
+						</a>
 
 					</div>
 				</div>
@@ -572,7 +562,7 @@
 						<div class="timeline-item">
 							<div class="timeline-dot"></div>
 							<div class="timeline-content">
-								<div class="timeline-date">Aug 2023 – Present</div>
+								<div class="timeline-date">Aug 2023 &ndash; Present</div>
 								<div class="timeline-title">B.S. Biomedical Engineering</div>
 								<div class="timeline-sub">University of Delaware &mdash; GPA: 3.83 &bull; Dean's List 6/6 &bull; Presidential Scholarship</div>
 							</div>
@@ -580,15 +570,15 @@
 						<div class="timeline-item">
 							<div class="timeline-dot"></div>
 							<div class="timeline-content">
-								<div class="timeline-date">Sep 2023 – Present</div>
-								<div class="timeline-title">Captain &amp; Vice President — Men's Club Volleyball</div>
+								<div class="timeline-date">Sep 2023 &ndash; Present</div>
+								<div class="timeline-title">Captain &amp; Vice President &mdash; Men's Club Volleyball</div>
 								<div class="timeline-sub">University of Delaware &mdash; Rookie of the Year 2024 &bull; A Team MVP 2025, 2026 &bull; Defensive Player of the Year 2025, 2026</div>
 							</div>
 						</div>
 						<div class="timeline-item">
 							<div class="timeline-dot"></div>
 							<div class="timeline-content">
-								<div class="timeline-date">Aug 2024 – Present</div>
+								<div class="timeline-date">Aug 2024 &ndash; Present</div>
 								<div class="timeline-title">Resident Assistant</div>
 								<div class="timeline-sub">Residence Life &amp; Housing, University of Delaware</div>
 							</div>
@@ -596,16 +586,16 @@
 						<div class="timeline-item">
 							<div class="timeline-dot"></div>
 							<div class="timeline-content">
-								<div class="timeline-date">Jan 2026 – May 2026</div>
-								<div class="timeline-title">Teaching Assistant — Medical Device Design</div>
+								<div class="timeline-date">Jan 2026 &ndash; May 2026</div>
+								<div class="timeline-title">Teaching Assistant &mdash; Medical Device Design</div>
 								<div class="timeline-sub">University of Delaware &mdash; Supported student teams through the medical device design process, SolidWorks instruction, and design documentation</div>
 							</div>
 						</div>
 						<div class="timeline-item">
 							<div class="timeline-dot"></div>
 							<div class="timeline-content">
-								<div class="timeline-date">May 2026 – Present</div>
-								<div class="timeline-title">Undergraduate Researcher — BRITE Lab</div>
+								<div class="timeline-date">May 2026 &ndash; Present</div>
+								<div class="timeline-title">Undergraduate Researcher &mdash; BRITE Lab</div>
 								<div class="timeline-sub">Nemours Children's Hospital &mdash; Developing microfluidic and hollow fiber membrane oxygenators for pediatric ECLS applications. Work spans fluid dynamics analysis, CAD/prototyping in OnShape, biomaterials fabrication, and V&amp;V leak testing.</div>
 							</div>
 						</div>
@@ -613,7 +603,7 @@
 							<div class="timeline-dot"></div>
 							<div class="timeline-content">
 								<div class="timeline-date">Aug 2027 (Upcoming)</div>
-								<div class="timeline-title">M.S. Robotics — 4+1 Program</div>
+								<div class="timeline-title">M.S. Robotics &mdash; 4+1 Program</div>
 								<div class="timeline-sub">University of Delaware &mdash; Focus on surgical robotics &amp; medical AI</div>
 							</div>
 						</div>
