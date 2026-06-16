@@ -467,6 +467,16 @@
 						});
 						requestAnimationFrame(frame);
 					}
+					// Pre-populate so icons are visible on load
+					for (let i = 0; i < 800; i++) {
+					    t += SPEED;
+					    points.push({ worldX: t, y: ekgY(t) });
+					    if (isSpikePeak(t) && t - lastSpike > PERIOD * 0.85) {
+					        lastSpike = t;
+					        popups.push({ skill: skills[skillIdx % skills.length], spawnWorldX: t });
+					        skillIdx++;
+					    }
+					}
 					frame();
 					window.addEventListener('resize', setup);
 				})();
