@@ -388,6 +388,7 @@
 					];
 					const BASELINE = 230, SPIKE = 90, PERIOD = 200, SPEED = 0.85, H = 300;
 					const FADE_OUT = 160, ICON_TOP = 40;
+					const FADE_IN = 80;
 					const canvas = document.getElementById('ekgSkills');
 					const iconsEl = document.getElementById('ekgSkillsIcons');
 					const ctx = canvas.getContext('2d');
@@ -434,6 +435,7 @@
 							const midX = (px0 + px1) / 2;
 							let alpha = 1;
 							if (midX < FADE_OUT) alpha = Math.max(0, midX / FADE_OUT);
+							if (midX > W - 60 - FADE_IN) alpha = Math.min(alpha, Math.max(0, (W - 60 - midX) / FADE_IN));
 							ctx.beginPath();
 							ctx.strokeStyle = `rgba(155,241,255,${alpha * 0.9})`;
 							ctx.lineWidth = 1.8;
@@ -457,7 +459,8 @@
 							const age = t - p.spawnWorldX;
 							const px = (W - 60) - age;
 							if (px < -80 || px > W + 80) return;
-							const alpha = px < FADE_OUT ? Math.max(0, px / FADE_OUT) : 1;
+							let alpha = px < FADE_OUT ? Math.max(0, px / FADE_OUT) : 1;
+							if (px > W - 60 - FADE_IN) alpha = Math.min(alpha, Math.max(0, (W - 60 - px) / FADE_IN));
 							const div = document.createElement('div');
 							div.className = 'ekg-skill';
 							div.style.left = px + 'px';
