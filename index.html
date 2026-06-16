@@ -434,7 +434,7 @@
 							if (px0 < -2 || px1 > W + 2) continue;
 							const midX = (px0 + px1) / 2;
 							let alpha = 1;
-							if (midX < FADE_OUT) alpha = Math.max(0, midX / FADE_OUT);
+							if (midX < FADE_OUT) alpha = Math.max(0, (midX - 100) / (FADE_OUT - 100));
 							if (midX > W - 120 - FADE_IN) alpha = Math.min(alpha, Math.max(0, (W - 120 - midX) / FADE_IN));
 							ctx.beginPath();
 							ctx.strokeStyle = `rgba(155,241,255,${alpha * 0.9})`;
