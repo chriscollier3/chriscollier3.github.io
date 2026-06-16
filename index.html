@@ -414,7 +414,7 @@
 						const p = ((x % PERIOD) + PERIOD) % PERIOD, r = p / PERIOD;
 						return r >= 0.405 && r <= 0.425;
 					}
-					let points = [], t = 0, popups = [], skillIdx = 0, lastSpike = -PERIOD;
+					let points = [], t = W * 3, popups = [], skillIdx = 0, lastSpike = -PERIOD;
 					function frame() {
 						t += SPEED;
 						points.push({ worldX: t, y: ekgY(t) });
