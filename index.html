@@ -420,7 +420,7 @@
 					function frame() {
 						t += SPEED;
 						points.push({ worldX: t, y: ekgY(t) });
-						points = points.filter(p => (t - p.worldX) < W - 60 + 20);
+						points = points.filter(p => (t - p.worldX) < W - 120 + 20);
 						ctx.clearRect(0, 0, W, H);
 						ctx.strokeStyle = 'rgba(155,241,255,0.05)';
 						ctx.lineWidth = 0.5;
@@ -429,13 +429,13 @@
 						for (let i = 1; i < points.length; i++) {
 							const age0 = t - points[i-1].worldX;
 							const age1 = t - points[i].worldX;
-							const px0 = (W - 60) - age0;
-							const px1 = (W - 60) - age1;
+							const px0 = (W - 120) - age0;
+							const px1 = (W - 120) - age1;
 							if (px0 < -2 || px1 > W + 2) continue;
 							const midX = (px0 + px1) / 2;
 							let alpha = 1;
 							if (midX < FADE_OUT) alpha = Math.max(0, midX / FADE_OUT);
-							if (midX > W - 60 - FADE_IN) alpha = Math.min(alpha, Math.max(0, (W - 60 - midX) / FADE_IN));
+							if (midX > W - 120 - FADE_IN) alpha = Math.min(alpha, Math.max(0, (W - 120 - midX) / FADE_IN));
 							ctx.beginPath();
 							ctx.strokeStyle = `rgba(155,241,255,${alpha * 0.9})`;
 							ctx.lineWidth = 1.8;
@@ -445,7 +445,7 @@
 						}
 						const tipY = ekgY(t);
 						ctx.beginPath();
-						ctx.arc(W - 60, tipY, 3, 0, Math.PI*2);
+						ctx.arc(W - 120, tipY, 3, 0, Math.PI*2);
 						ctx.fillStyle = 'rgba(155,241,255,0.9)';
 						ctx.fill();
 						if (isSpikePeak(t) && t - lastSpike > PERIOD * 0.85) {
@@ -457,10 +457,10 @@
 						popups = popups.filter(p => (t - p.spawnWorldX) < W + 80);
 						popups.forEach(p => {
 							const age = t - p.spawnWorldX;
-							const px = (W - 60) - age;
+							const px = (W - 120) - age;
 							if (px < -80 || px > W + 80) return;
 							let alpha = px < FADE_OUT ? Math.max(0, px / FADE_OUT) : 1;
-							if (px > W - 60 - FADE_IN) alpha = Math.min(alpha, Math.max(0, (W - 60 - px) / FADE_IN));
+							if (px > W - 120 - FADE_IN) alpha = Math.min(alpha, Math.max(0, (W - 120 - px) / FADE_IN));
 							const div = document.createElement('div');
 							div.className = 'ekg-skill';
 							div.style.left = px + 'px';
