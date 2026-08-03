@@ -90,70 +90,67 @@
 			</div>
 
 			<div class="breakdown">
-				<h2>Design &amp; Development</h2>
-				
-				<div class="breakdown-grid">
+	<h2>Design &amp; Development</h2>
 
-					<div class="breakdown-item">
-            			<h3>01 — Flow Cell Design &amp; Sealing</h3>
-							<p>The polycarbonate flow cell was modeled in OnShape, defining the blood channel geometry, gasket seating surfaces, and fastener pattern. Viton cord stock serves a dual purpose as both defining the channel height and the gasket seal. This feature simplifies assembly while providing consistent channel geometry and compression sealing in a single component.</p>
-							<p>Two sealing approaches were evaluated: a 302-3M epoxy with C-clamp assembly and a mechanically fastened design using 8 Torx screws driven with a calibrated torque screwdriver. The Torx screw design proved superior, eliminating the variability of adhesive cure and clamp placement, and enabled the key finding that torque directly and predictably controls channel height.</p>
-							<div class="breakdown-tags">
-								<span class="btag">OnShape</span>
-								<span class="btag">Polycarbonate</span>
-								<span class="btag">Design Iteration</span>
-							</div>
-						</div>
-					</div>
-	
-					<div class="breakdown-item">
-            		<h3>02 — PDMS Membrane Fabrication</h3>
-							<p>The gas transfer membrane is a thin PDMS film coated on a glass slide, produced using spin coating. PDMS provides high gas permeability for O₂ and CO₂ transfer while maintaining biocompatibility. The glass backing provides stability and a bonding surface for assembly into the flow cell.</p>
-							<div class="breakdown-tags">
-								<span class="btag">PDMS</span>
-								<span class="btag">Spin Coating</span>
-								<span class="btag">Biomaterials</span>
-							</div>
-						</div>
-					</div>
-	
-					<div class="breakdown-item">
-          				<h3>03 — Channel Height Refinement</h3>
-							<p>Controlling the channel height is critical as it determines flow resistance, residence time, and gas transfer efficiency. Channel height was measured using two methods: micrometer measurement of assembled devices and CT scan verification of the internal blood channel geometry. Results confirmed that applied torque directly determines channel height in the Torx screw design. At 80 cN·m, devices consistently produced channel heights within the 125–175 µm target window. Over-torquing at 100 cN·m collapsed the channel to 70 µm, confirming that assembly protocol compliance is critical to reproducibility.</p>
-							<div class="breakdown-tags">
-								<span class="btag">Micrometer Measurement</span>
-								<span class="btag">CT Scan Verification</span>
-								<span class="btag">Torque Control</span>
-								<span class="btag">Reproducibility</span>
-							</div>
-						</div>
-					</div>
-	
-					<div class="breakdown-item">
-          				<h3>04 — Manifold Design &amp; Sealing</h3>
-							<p>Scaling the single-channel device to a 32-channel system requires a blood distribution manifold which is a component that connects to the flow cell ports and distributes blood flow across all channels in parallel. The manifold is designed in OnShape and printed on a Formlabs resin printer for dimensional accuracy. Three manifold sealing iterations were developed and tested: an unsealed baseline, adhesive grooves, and a grooves & O-ring face seal as the current design.</p>
-							<p>O-ring sizing followed the Parker O-Ring Handbook, using measured stretch-fit understanding to select the correct O-ring for each manifold runner port. The grooves & O-ring approach is currently undergoing pressure hold testing to confirm sealing before integration with the full flow cell assembly. This manifold work is a key step toward the 32-channel device goal.</p>
-							<div class="breakdown-tags">
-								<span class="btag">OnShape</span>
-								<span class="btag">Formlabs Resin</span>
-								<span class="btag">O-ring Sealing</span>
-								<span class="btag">Parker Handbook</span>
-							</div>
-					</div>
-				</div>
+	<div class="breakdown-grid">
 
-					<div class="breakdown-item full-width">
-            			<h3>05 — Verification &amp; Validation Testing</h3>
-							<p>A structured V&amp;V protocol was developed to characterize device integrity at each stage of development. External leak testing uses a pressure hold protocol by pressurizing the assembled device and monitoring for leaking and a submersion test to visually locate leakage. Flow cell testing was evaluated via dye perfusion, confirming that blood flow remains within its channel. The manifold assembly has also been pressure hold tested at psi to evaluate its seal under loading and compared to blood pressure readings in mmHg.</p>
-							<div class="breakdown-tags">
-								<span class="btag">V&amp;V Testing</span>
-								<span class="btag">Dye Perfusion</span>
-								<span class="btag">Manifold Testing</span>
-							</div>
-					</div>
-				</div>
-
+		<div class="breakdown-item">
+			<h3>01 — Flow Cell Design &amp; Sealing</h3>
+			<p>The polycarbonate flow cell was modeled in OnShape, defining the blood channel geometry, gasket seating surfaces, and fastener pattern. Viton cord stock serves a dual purpose as both defining the channel height and the gasket seal. This feature simplifies assembly while providing consistent channel geometry and compression sealing in a single component.</p>
+			<p>Two sealing approaches were evaluated: a 302-3M epoxy with C-clamp assembly and a mechanically fastened design using 8 Torx screws driven with a calibrated torque screwdriver. The Torx screw design proved superior, eliminating the variability of adhesive cure and clamp placement, and enabled the key finding that torque directly and predictably controls channel height.</p>
+			<div class="breakdown-tags">
+				<span class="btag">OnShape</span>
+				<span class="btag">Polycarbonate</span>
+				<span class="btag">Design Iteration</span>
 			</div>
+		</div>
+
+		<div class="breakdown-item">
+			<h3>02 — PDMS Membrane Fabrication</h3>
+			<p>The gas transfer membrane is a thin PDMS film coated on a glass slide, produced using spin coating. PDMS provides high gas permeability for O₂ and CO₂ transfer while maintaining biocompatibility. The glass backing provides stability and a bonding surface for assembly into the flow cell.</p>
+			<div class="breakdown-tags">
+				<span class="btag">PDMS</span>
+				<span class="btag">Spin Coating</span>
+				<span class="btag">Biomaterials</span>
+			</div>
+		</div>
+
+		<div class="breakdown-item">
+			<h3>03 — Channel Height Refinement</h3>
+			<p>Controlling the channel height is critical as it determines flow resistance, residence time, and gas transfer efficiency. Channel height was measured using two methods: micrometer measurement of assembled devices and CT scan verification of the internal blood channel geometry. Results confirmed that applied torque directly determines channel height in the Torx screw design. At 80 cN·m, devices consistently produced channel heights within the 125–175 µm target window. Over-torquing at 100 cN·m collapsed the channel to 70 µm, confirming that assembly protocol compliance is critical to reproducibility.</p>
+			<div class="breakdown-tags">
+				<span class="btag">Micrometer Measurement</span>
+				<span class="btag">CT Scan Verification</span>
+				<span class="btag">Torque Control</span>
+				<span class="btag">Reproducibility</span>
+			</div>
+		</div>
+
+		<div class="breakdown-item">
+			<h3>04 — Manifold Design &amp; Sealing</h3>
+			<p>Scaling the single-channel device to a 32-channel system requires a blood distribution manifold which is a component that connects to the flow cell ports and distributes blood flow across all channels in parallel. The manifold is designed in OnShape and printed on a Formlabs resin printer for dimensional accuracy. Three manifold sealing iterations were developed and tested: an unsealed baseline, adhesive grooves, and a grooves &amp; O-ring face seal as the current design.</p>
+			<p>O-ring sizing followed the Parker O-Ring Handbook, using measured stretch-fit understanding to select the correct O-ring for each manifold runner port. The grooves &amp; O-ring approach is currently undergoing pressure hold testing to confirm sealing before integration with the full flow cell assembly. This manifold work is a key step toward the 32-channel device goal.</p>
+			<div class="breakdown-tags">
+				<span class="btag">OnShape</span>
+				<span class="btag">Formlabs Resin</span>
+				<span class="btag">O-ring Sealing</span>
+				<span class="btag">Parker Handbook</span>
+			</div>
+		</div>
+
+		<div class="breakdown-item full-width">
+			<h3>05 — Verification &amp; Validation Testing</h3>
+			<p>A structured V&amp;V protocol was developed to characterize device integrity at each stage of development. External leak testing uses a pressure hold protocol by pressurizing the assembled device and monitoring for leaking and a submersion test to visually locate leakage. Flow cell testing was evaluated via dye perfusion, confirming that blood flow remains within its channel. The manifold assembly has also been pressure hold tested at psi to evaluate its seal under loading and compared to blood pressure readings in mmHg.</p>
+			<div class="breakdown-tags">
+				<span class="btag">V&amp;V Testing</span>
+				<span class="btag">Dye Perfusion</span>
+				<span class="btag">Manifold Testing</span>
+			</div>
+		</div>
+
+	</div>
+</div>
+
 
 			<div class="project-footer-nav">
 				<a href="../index.html#projects">&larr; Back to Projects</a>
@@ -183,3 +180,7 @@
 		<script src="../assets/js/main.js"></script>
 	</body>
 </html>
+
+
+
+
