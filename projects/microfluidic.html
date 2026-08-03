@@ -22,14 +22,39 @@
 			.project-image-placeholder .placeholder { width: 100%; aspect-ratio: 16/9; background: rgba(155,241,255,0.04); border: 1px solid rgba(155,241,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
 			.project-image-placeholder .placeholder span { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(155,241,255,0.25); }
 			.project-image-placeholder .caption { font-size: 0.78rem; color: rgba(255,255,255,0.3); margin-top: 0.6rem; text-align: center; }
+			.project-image-placeholder img { width: 100%; border-radius: 8px; display: block; }
+
+			/* ── BREAKDOWN ── */
 			.breakdown { max-width: 860px; margin: 0 auto; padding: 0 2rem 4rem; }
-			.breakdown h2 { font-size: 1.6rem; font-weight: 700; color: #fff; margin: 0 0 2.5rem 0; line-height: 1.2; }
-			.breakdown-item { display: flex; gap: 2rem; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.06); }
-			.breakdown-number { font-size: 0.72rem; letter-spacing: 0.15em; color: #9bf1ff; flex-shrink: 0; padding-top: 0.25rem; width: 2rem; }
-			.breakdown-content h3 { font-size: 1.05rem; font-weight: 600; color: #fff; margin: 0 0 0.7rem 0; }
+			.breakdown h2 { font-size: 1.6rem; font-weight: 700; color: #fff; margin: 0 0 2rem 0; line-height: 1.2; }
+			.breakdown-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1.5rem;
+			}
+			.breakdown-item {
+				display: flex;
+				flex-direction: column;
+				gap: 0.8rem;
+				padding: 1.8rem;
+				border: 1px solid rgba(255,255,255,0.06);
+				border-radius: 8px;
+				background: rgba(255,255,255,0.02);
+			}
+			.breakdown-item.full-width {
+				grid-column: 1 / -1;
+			}
+			.breakdown-number { font-size: 0.72rem; letter-spacing: 0.15em; color: #9bf1ff; }
+			.breakdown-content h3 { font-size: 1.05rem; font-weight: 600; color: #fff; margin: 0 0 0.5rem 0; }
 			.breakdown-content p { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.65); margin: 0 0 1rem 0; }
 			.breakdown-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 			.btag { background: rgba(155,241,255,0.08); color: #9bf1ff; border: 1px solid rgba(155,241,255,0.2); border-radius: 4px; font-size: 0.68rem; letter-spacing: 0.06em; padding: 0.2rem 0.6rem; text-transform: uppercase; }
+
+			@media (max-width: 640px) {
+				.breakdown-grid { grid-template-columns: 1fr; }
+				.breakdown-item.full-width { grid-column: 1; }
+			}
+
 			.project-footer-nav { max-width: 860px; margin: 0 auto; padding: 2rem 2rem 4rem; display: flex; gap: 1rem; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.08); }
 			.project-footer-nav a { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.6); font-size: 0.85rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.55rem 1.1rem; transition: color 0.2s, border-color 0.2s; }
 			.project-footer-nav a:hover { color: #9bf1ff; border-color: rgba(155,241,255,0.35); }
@@ -61,9 +86,8 @@
 			<div class="project-hero">
 				<span class="project-label">01 &mdash; Engineering Research &amp; Development</span>
 				<h1>Microfluidic Glass-Elastomer<br />Membrane (GEM) Oxygenator</h1>
-				<p class="project-tagline">A flat-plate microfludiic oxygenator using a PDMS-coated glass membrane for blood gas exchange. Assisted with design and fabrication of flow cell in OnShape, assembly protocol development for consistent channel heights, manifold design and sealing iterations for multi-channel scaling, and a structured V&V testing framework for leak detection, dye perfusion and pressure hold testing. 
+				<p class="project-tagline">A PDMS-coated glass plate membrane device for blood gas exchange — designed, fabricated, and validated at the BRITE Lab, Nemours Children's Health, under PI Dr. David Blauvelt, MD.</p>
 			</div>
-
 
 			<div class="project-overview">
 				<div class="specs-row">
@@ -75,90 +99,118 @@
 						<span class="spec-label">PI</span>
 						<span class="spec-value">Dr. David Blauvelt, MD</span>
 					</div>
+					<div class="spec-item">
+						<span class="spec-label">Device Type</span>
+						<span class="spec-value">Flat Plate Membrane Oxygenator</span>
+					</div>
+					<div class="spec-item">
+						<span class="spec-label">Membrane</span>
+						<span class="spec-value">PDMS-coated glass</span>
+					</div>
+					<div class="spec-item">
+						<span class="spec-label">CAD</span>
+						<span class="spec-value">OnShape</span>
+					</div>
+					<div class="spec-item">
+						<span class="spec-label">Target Scale</span>
+						<span class="spec-value">32-channel manifold device</span>
+					</div>
 				</div>
 
-				<p>Extracorporeal Membrane Oxygenation (ECMO) is an advanced therapy for cardiac and respiratory support that mimics alveolar gas exchange outside the body. Current commercial oxygenators carry significant limitations such as large priming volumes, increased anticoagulation requirements, and uncontrolled internal flow patterns that can lead to hemolysis. These issues are seen in pediatric and neonatal populations, where device size and blood-contacting surface area must be minimized.</p>
-				<p>Prior lab work developed a silicon PDMS flat-plate oxygenator, but was limited to channel heights of ~500 µm due to 3D printing constraints and failed sealing above 15 psi. The GEM Oxygenator addresses both limitations: replacing the silicon PDMS membrane substrate with a glass slide produces a thinner, more dimensionally stable membrane, and a new polycarbonate flow cell with a mechanically fastened assembly achieves reliable, reproducible sealing. The ultimate goal is a reproducible 32-channel blood distribution device for clinical-scale gas exchange.</p>
-				<p>My work spans the full development cycle. CAD modeling in OnShape, fabrication and assembly, channel height validation, manifold design and sealing iteration, and a structured V&amp;V testing framework to validate device compliance before advancing to biological testing.</p>
+				<p>Extracorporeal Membrane Oxygenation (ECMO) is an advanced therapy for cardiac and respiratory support that mimics alveolar gas exchange outside the body. Current commercial oxygenators carry significant limitations — large priming volumes, increased anticoagulation requirements, and uncontrolled internal flow patterns that can lead to hemolysis. These issues are particularly acute in pediatric and neonatal populations, where device size and blood-contacting surface area must be minimized.</p>
+				<p>Prior lab work developed a silicon PDMS flat-plate oxygenator, but was limited to channel heights of ~500 µm due to 3D printing constraints and failed sealing above 15 psi. The GEM Oxygenator addresses both limitations: replacing the silicon PDMS membrane substrate with a glass slide produces a thinner, more dimensionally stable membrane, and a new polycarbonate flow cell with a mechanically fastened assembly achieves reliable, reproducible sealing. The ultimate goal is a reproducible single-channel device scalable into a 32-channel blood distribution manifold for clinical-scale gas exchange.</p>
+				<p>My work spans the full development cycle — CAD modeling in OnShape, fabrication and assembly, channel height characterization, manifold design and sealing iteration, and a structured V&amp;V testing framework to validate device integrity before advancing to biological testing.</p>
 			</div>
 
 			<div class="project-image-placeholder">
 				<div class="placeholder"><span>Lab Photo Coming Soon</span></div>
-				<p class="caption">GEM oxygenator assembly with polycarbonate flow cell and PDMS-coated glass membrane</p>
+				<p class="caption">GEM oxygenator assembly — polycarbonate flow cell with PDMS-coated glass membrane</p>
 			</div>
 
 			<div class="breakdown">
-				<h2>Design &amp; Development</h2>
+				<h2>Design &amp; Development<br />Breakdown</h2>
 
-				<div class="breakdown-item">
-					<span class="breakdown-number">01</span>
-					<div class="breakdown-content">
-						<h3>Flow Cell Design &amp; Sealing</h3>
-						<p>The polycarbonate flow cell was modeled in OnShape, defining the blood channel geometry, gasket seating surfaces, and fastener pattern. Viton cord stock serves a dual purpose as both defining the channel height and the gasket seal. This feature simplifies assembly while providing consistent channel geometry and compression sealing in a single component.</p>
-						<p>Two sealing approaches were evaluated: a 302-3M epoxy with C-clamp assembly and a mechanically fastened design using 8 Torx screws driven with a calibrated torque screwdriver. The Torx screw design proved superior, eliminating the variability of adhesive cure and clamp placement, and enabled the key finding that torque directly and predictably controls channel height.</p>
-						<div class="breakdown-tags">
-							<span class="btag">OnShape</span>
-							<span class="btag">Polycarbonate</span>
-							<span class="btag">Design Iteration</span>
+				<div class="breakdown-grid">
+
+					<div class="breakdown-item">
+						<span class="breakdown-number">01</span>
+						<div class="breakdown-content">
+							<h3>Flow Cell Design &amp; Sealing</h3>
+							<p>The polycarbonate flow cell was modeled in OnShape, defining the blood-side channel geometry, gasket seating surfaces, and fastener pattern. Viton cord stock serves a dual purpose as both the channel-defining boundary and the lateral seal — a key design feature that simplifies assembly while providing consistent channel geometry and compression sealing in a single component.</p>
+							<p>Two sealing approaches were evaluated: a 302-3M epoxy with C-clamp assembly and a mechanically fastened design using 8 Torx screws driven with a calibrated torque screwdriver. The torqued screw design proved superior — it eliminated the variability of adhesive cure and clamp placement, and enabled the key finding that torque directly and predictably controls channel height. The epoxy approach produced a mean channel height of ~229 µm with high variability; the torqued screw design at 80 cN·m produced a consistent ~144 µm, within the target range of 125–175 µm.</p>
+							<div class="breakdown-tags">
+								<span class="btag">OnShape</span>
+								<span class="btag">Polycarbonate</span>
+								<span class="btag">Viton Cord Stock</span>
+								<span class="btag">Torx Fasteners</span>
+								<span class="btag">Design Iteration</span>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="breakdown-item">
-					<span class="breakdown-number">02</span>
-					<div class="breakdown-content">
-						<h3>PDMS Membrane Fabrication</h3>
-						<p>The gas transfer membrane is a thin PDMS film coated on a glass slide, produced using spin coating. PDMS provides high gas permeability for O₂ and CO₂ transfer while maintaining biocompatibility. The glass backing provides stability and a bonding surface for assembly into the flow cell.</p>
-						<div class="breakdown-tags">
-							<span class="btag">PDMS</span>
-							<span class="btag">Spin Coating</span>
-							<span class="btag">Biomaterials</span>
+					<div class="breakdown-item">
+						<span class="breakdown-number">02</span>
+						<div class="breakdown-content">
+							<h3>PDMS Membrane Fabrication</h3>
+							<p>The gas transfer membrane is a thin PDMS film cast on a glass slide substrate, produced via spin coating. PDMS provides high gas permeability for O₂ and CO₂ transfer while maintaining biocompatibility. The glass backing provides dimensional stability, a flat bonding surface for assembly into the flow cell, and eliminates the channel height variability seen with purely PDMS substrates in prior devices. The membrane is handled with care during assembly to avoid contamination or deformation of the gas transfer surface.</p>
+							<div class="breakdown-tags">
+								<span class="btag">PDMS</span>
+								<span class="btag">Spin Coating</span>
+								<span class="btag">Glass Substrate</span>
+								<span class="btag">Biomaterials</span>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="breakdown-item">
-					<span class="breakdown-number">03</span>
-					<div class="breakdown-content">
-						<h3>Channel Height Refinement</h3>
-						<p>Controlling the channel height is critical as it determines flow resistance, residence time, and gas transfer efficiency. Channel height was measured using two methods: micrometer measurement of assembled devices and CT scan verification of the internal blood channel geometry. Results confirmed that applied torque directly determines channel height in the Torx screw design. At 80 cN·m, devices consistently produced channel heights within the 125–175 µm target window. Over-torquing at 100 cN·m collapsed the channel to 70 µm, confirming that assembly protocol compliance is critical to reproducibility.</p>
-						<div class="breakdown-tags">
-							<span class="btag">Micrometer Measurement</span>
-							<span class="btag">CT Scan Verification</span>
-							<span class="btag">Torque Control</span>
-							<span class="btag">Reproducibility</span>
+					<div class="breakdown-item">
+						<span class="breakdown-number">03</span>
+						<div class="breakdown-content">
+							<h3>Channel Height Characterization</h3>
+							<p>Controlling channel height is critical — it governs flow resistance, residence time, and gas transfer efficiency. Channel height was measured using two methods: micrometer measurement of assembled devices and CT scan verification of the internal blood channel geometry. Results confirmed that applied torque directly determines channel height in the torqued screw design. At 80 cN·m, devices consistently produced channel heights of ~144 µm, within the 125–175 µm target window. Over-torquing at 100 cN·m collapsed the channel to ~70 µm, confirming that assembly protocol compliance is critical to reproducibility.</p>
+							<div class="breakdown-tags">
+								<span class="btag">Channel Height</span>
+								<span class="btag">Micrometer Measurement</span>
+								<span class="btag">CT Scan Verification</span>
+								<span class="btag">Torque Control</span>
+								<span class="btag">Reproducibility</span>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="breakdown-item">
-					<span class="breakdown-number">04</span>
-					<div class="breakdown-content">
-						<h3>Manifold Design &amp; Sealing</h3>
-						<p>Scaling the single-channel device to a 32-channel system requires a blood distribution manifold which is a component that connects to the flow cell ports and distributes blood flow across all channels in parallel. The manifold is designed in OnShape and printed on a Formlabs resin printer for dimensional accuracy. Three manifold sealing iterations were developed and tested: an unsealed baseline, adhesive grooves, and a grooves & O-ring face seal as the current design.</p>
-						<p>O-ring sizing followed the Parker O-Ring Handbook, using measured stretch-fit understanding to select the correct O-ring for each manifold runner port. The grooves & O-ring approach is currently undergoing pressure hold testing to confirm sealing before integration with the full flow cell assembly. This manifold work is a key step toward the 32-channel device goal.</p>
-						<div class="breakdown-tags">
-							<span class="btag">OnShape</span>
-							<span class="btag">Formlabs Resin</span>
-							<span class="btag">O-ring Sealing</span>
-							<span class="btag">Parker Handbook</span>
+					<div class="breakdown-item">
+						<span class="breakdown-number">04</span>
+						<div class="breakdown-content">
+							<h3>Manifold Design &amp; Sealing</h3>
+							<p>Scaling the single-channel device to a 32-channel system requires a blood distribution manifold — a component that connects to the flow cell ports and distributes blood flow across all channels in parallel. The manifold is designed in OnShape and printed on a Formlabs SLA resin printer for dimensional accuracy. Three manifold sealing iterations were developed and tested: an unsealed baseline, adhesive grooves, and a grooves-plus-O-ring face seal as the current design.</p>
+							<p>O-ring sizing followed the Parker O-Ring Handbook, using perimeter-matched stretch-fit logic to select the correct O-ring for each manifold runner port. The grooves-plus-O-ring approach is currently undergoing pressure hold testing to confirm seal integrity before integration with the full flow cell assembly. This manifold work is a key step toward the 32-channel device goal.</p>
+							<div class="breakdown-tags">
+								<span class="btag">OnShape</span>
+								<span class="btag">Formlabs SLA Resin</span>
+								<span class="btag">O-ring Sealing</span>
+								<span class="btag">Parker Handbook</span>
+								<span class="btag">Manifold Design</span>
+								<span class="btag">Scaling</span>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="breakdown-item">
-					<span class="breakdown-number">05</span>
-					<div class="breakdown-content">
-						<h3>Verification &amp; Validation Testing</h3>
-						<p>A structured V&amp;V protocol was developed to characterize device integrity at each stage of development. External leak testing uses a pressure hold protocol by pressurizing the assembled device and monitoring for leaking and a submersion test to visually locate leakage. Flow cell testing was evaluated via dye perfusion, confirming that blood flow remains within its channel. The manifold assembly has also been pressure hold tested at psi to evaluate its seal under loading and compared to blood pressure readings in mmHg.</p>
-						<div class="breakdown-tags">
-							<span class="btag">V&amp;V Testing</span>
-							<span class="btag">Dye Perfusion</span>
-							<span class="btag">Manifold Testing</span>
+					<div class="breakdown-item full-width">
+						<span class="breakdown-number">05</span>
+						<div class="breakdown-content">
+							<h3>Verification &amp; Validation Testing</h3>
+							<p>A structured V&amp;V protocol was developed to characterize device integrity at each stage of development. External leak testing uses a pressure hold protocol — pressurizing the assembled device and monitoring for pressure decay — and a submersion test to visually confirm housing seal integrity. Trans-membrane integrity is evaluated via dye perfusion, confirming that blood and gas compartments remain fully separated across the PDMS membrane. Bubble point testing characterizes the membrane's defect threshold pressure. The manifold assembly has also been pressure hold tested at 30 psi to evaluate the O-ring seal under physiologically relevant loading. Results are documented photographically at each stage.</p>
+							<div class="breakdown-tags">
+								<span class="btag">V&amp;V Testing</span>
+								<span class="btag">Pressure Hold</span>
+								<span class="btag">Submersion Test</span>
+								<span class="btag">Dye Perfusion</span>
+								<span class="btag">Bubble Point</span>
+								<span class="btag">Manifold Testing</span>
+							</div>
 						</div>
 					</div>
-				</div>
 
+				</div>
 			</div>
 
 			<div class="project-footer-nav">
