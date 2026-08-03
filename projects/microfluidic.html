@@ -27,10 +27,6 @@
 			.project-figure { max-width: 860px; margin: 0 auto 3rem; padding: 0 2rem; }
 			.project-figure .fig-panel { aspect-ratio: 16 / 9; padding: 1.5rem; }
 
-			.breakdown-figure { margin: 0 0 1.3rem 0; }
-			.breakdown-figure .fig-panel { aspect-ratio: 4 / 3; padding: 1rem; }
-			.breakdown-figure .fig-caption { font-size: 0.72rem; margin-top: 0.55rem; text-align: left; }
-
 			.breakdown { max-width: 860px; margin: 0 auto; padding: 0 2rem 4rem; }
 			.breakdown h2 { font-size: 1.6rem; font-weight: 700; color: #fff; margin: 0 0 2.5rem 0; line-height: 1.2; }
 			.breakdown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -38,9 +34,17 @@
 			.breakdown-item.full-width { grid-column: 1 / -1; }
 			.breakdown-item h3 { font-size: 1.05rem; font-weight: 600; color: #fff; margin: 0 0 0.9rem 0; }
 			.breakdown-item p { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.65); margin: 0 0 1.2rem 0; }
-			.breakdown-number { font-size: 0.72rem; letter-spacing: 0.15em; color: #9bf1ff; flex-shrink: 0; padding-top: 0.25rem; width: 2rem; }
 			.breakdown-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
 			.btag { background: rgba(155,241,255,0.08); color: #9bf1ff; border: 1px solid rgba(155,241,255,0.2); border-radius: 4px; font-size: 0.68rem; letter-spacing: 0.06em; padding: 0.2rem 0.6rem; text-transform: uppercase; }
+
+			/* ---- horizontal split cards (01 and 04) ---- */
+			.breakdown-item.split { flex-direction: row; gap: 2rem; align-items: stretch; }
+			.breakdown-item.split.media-right { flex-direction: row-reverse; }
+			.split-media { flex: 0 0 40%; margin: 0; display: flex; flex-direction: column; justify-content: center; }
+			.split-media .fig-panel { aspect-ratio: 4 / 3; padding: 1rem; }
+			.split-media .fig-caption { font-size: 0.72rem; margin-top: 0.55rem; text-align: left; }
+			.split-body { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+
 			.project-footer-nav { max-width: 860px; margin: 0 auto; padding: 2rem 2rem 4rem; display: flex; gap: 1rem; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.08); }
 			.project-footer-nav a { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.6); font-size: 0.85rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.55rem 1.1rem; transition: color 0.2s, border-color 0.2s; }
 			.project-footer-nav a:hover { color: #9bf1ff; border-color: rgba(155,241,255,0.35); }
@@ -48,6 +52,9 @@
 
 			@media screen and (max-width: 736px) {
 				.breakdown-grid { grid-template-columns: 1fr; }
+				.breakdown-item.split,
+				.breakdown-item.split.media-right { flex-direction: column; gap: 0; }
+				.split-media { flex: none; margin-bottom: 1.3rem; }
 				.project-hero h1 { font-size: 2rem; }
 			}
 		</style>
@@ -101,7 +108,7 @@
 				<div class="fig-panel">
 					<img src="../images/gem-assembly-sequence.png" alt="Assembly sequence: PDMS-coated glass membrane and polycarbonate flow cell, the assembled single-channel device, and the stacked 32-channel configuration." />
 				</div>
-				<figcaption class="fig-caption">GEM oxygenator assembly with polycarbonate flow cell and PDMS-coated glass membrane.</figcaption>
+				<figcaption class="fig-caption">Device architecture from single layer to stack: PDMS-coated glass membrane seated into the polycarbonate flow cell, the assembled single-channel device, and the target 32-channel configuration.</figcaption>
 			</figure>
 
 			<div class="breakdown">
@@ -109,19 +116,21 @@
 
 				<div class="breakdown-grid">
 
-					<div class="breakdown-item">
-						<h3>01 — Flow Cell Design &amp; Sealing</h3>
-						<figure class="breakdown-figure">
+					<div class="breakdown-item full-width split">
+						<figure class="split-media">
 							<div class="fig-panel">
 								<img src="../images/flow-cell-epoxy-vs-torx.png" alt="Side by side comparison of the epoxy-bonded flow cell and the Torx screw fastened flow cell." />
 							</div>
 							<figcaption class="fig-caption">A: epoxy-bonded flow cell. B: Torx screw flow cell.</figcaption>
 						</figure>
-						<p>The polycarbonate flow cell was modeled in OnShape, defining blood channel geometry, gasket seating surfaces, and the fastener pattern. Viton cord stock serves a dual purpose, setting channel height while acting as the compression seal. Two assembly methods were evaluated: 302-3M epoxy with C-clamps, and eight Torx screws driven to a set torque. The screw design proved superior, removing adhesive cure variability and making channel height a direct function of applied torque.</p>
-						<div class="breakdown-tags">
-							<span class="btag">OnShape</span>
-							<span class="btag">Polycarbonate</span>
-							<span class="btag">Design Iteration</span>
+						<div class="split-body">
+							<h3>01 — Flow Cell Design &amp; Sealing</h3>
+							<p>The polycarbonate flow cell was modeled in OnShape, defining blood channel geometry, gasket seating surfaces, and the fastener pattern. Viton cord stock serves a dual purpose, setting channel height while acting as the compression seal. Two assembly methods were evaluated: 302-3M epoxy with C-clamps, and eight Torx screws driven to a set torque. The screw design proved superior, removing adhesive cure variability and making channel height a direct function of applied torque.</p>
+							<div class="breakdown-tags">
+								<span class="btag">OnShape</span>
+								<span class="btag">Polycarbonate</span>
+								<span class="btag">Design Iteration</span>
+							</div>
 						</div>
 					</div>
 
@@ -146,20 +155,22 @@
 						</div>
 					</div>
 
-					<div class="breakdown-item">
-						<h3>04 — Manifold Design &amp; Sealing</h3>
-						<figure class="breakdown-figure">
+					<div class="breakdown-item full-width split media-right">
+						<figure class="split-media">
 							<div class="fig-panel">
 								<img src="../images/manifold-sealing-iterations.png" alt="Three CAD renders of the blood distribution manifold showing the unsealed baseline, adhesive groove, and O-ring face seal iterations." />
 							</div>
 							<figcaption class="fig-caption">Sealing iterations, left to right: unsealed baseline, adhesive grooves, grooves with O-ring face seal.</figcaption>
 						</figure>
-						<p>Scaling to a 32-channel system requires a blood distribution manifold that connects to the flow cell ports and feeds every channel in parallel. The manifold was designed in OnShape and printed on a Formlabs resin printer for dimensional accuracy. Three sealing iterations were tested: an unsealed baseline, adhesive grooves, and the current grooves with O-ring face seal, sized per the Parker O-Ring Handbook using measured stretch fit.</p>
-						<div class="breakdown-tags">
-							<span class="btag">OnShape</span>
-							<span class="btag">Formlabs Resin</span>
-							<span class="btag">O-ring Sealing</span>
-							<span class="btag">Parker Handbook</span>
+						<div class="split-body">
+							<h3>04 — Manifold Design &amp; Sealing</h3>
+							<p>Scaling to a 32-channel system requires a blood distribution manifold that connects to the flow cell ports and feeds every channel in parallel. The manifold was designed in OnShape and printed on a Formlabs resin printer for dimensional accuracy. Three sealing iterations were tested: an unsealed baseline, adhesive grooves, and the current grooves with O-ring face seal, sized per the Parker O-Ring Handbook using measured stretch fit.</p>
+							<div class="breakdown-tags">
+								<span class="btag">OnShape</span>
+								<span class="btag">Formlabs Resin</span>
+								<span class="btag">O-ring Sealing</span>
+								<span class="btag">Parker Handbook</span>
+							</div>
 						</div>
 					</div>
 
