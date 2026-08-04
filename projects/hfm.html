@@ -206,20 +206,22 @@
 			<div class="project-hero">
 				<span class="project-label">02 &mdash; Engineering Research &amp; Development</span>
 				<h1>Hollow Fiber Membrane<br />Oxygenator</h1>
-				<p class="project-tagline">A novel bonding system for stacked Oxyplus PMP hollow fiber membrane sheets — developed through systematic approach elimination, robotic UV adhesive dispensing, and custom tooling design at the BRITE Lab, Nemours Children's Hospital.</p>
+				<p class="project-tagline">An automated bonding system for stacked Oxyplus PMP hollow fiber membrane sheets. Developed through systematic approach elimination, robotic UV adhesive dispensing, and custom tooling design.</p>
 			</div>
-
+			
 			<!-- Specs -->
+
 			<div class="project-overview">
 				<div class="specs-row">
 					<div class="spec-item">
 						<span class="spec-label">Lab</span>
-						<span class="spec-value">BRITE Lab, Nemours Children's Hospital</span>
+						<span class="spec-value">BRITE Lab, Nemours Children's Health</span>
 					</div>
 					<div class="spec-item">
-						<span class="spec-label">Membrane</span>
-						<span class="spec-value">Oxyplus PMP 90/200 (3M Membrana)</span>
+						<span class="spec-label">PI</span>
+						<span class="spec-value">Dr. David Blauvelt, MD</span>
 					</div>
+			
 					<div class="spec-item">
 						<span class="spec-label">Bonding Method</span>
 						<span class="spec-value">UV Adhesive Robotic Dispensing</span>
@@ -228,26 +230,10 @@
 						<span class="spec-label">Dispensing Robot</span>
 						<span class="spec-value">Nordson EFD E3V</span>
 					</div>
-					<div class="spec-item">
-						<span class="spec-label">Adhesive</span>
-						<span class="spec-value">Panacol Vitralit UV</span>
-					</div>
-					<div class="spec-item">
-						<span class="spec-label">CAD</span>
-						<span class="spec-value">OnShape</span>
-					</div>
-					<div class="spec-item">
-						<span class="spec-label">Prototyping</span>
-						<span class="spec-value">FDM 3D Printing (Bambu X1 Carbon)</span>
-					</div>
-					<div class="spec-item">
-						<span class="spec-label">Status</span>
-						<span class="spec-value">Mock sheet validation complete, Oxyplus sheets pending</span>
-					</div>
 				</div>
-
-				<p>The hollow fiber membrane oxygenator project involves developing a novel bonding system for stacking sheets of Oxyplus PMP 90/200 hollow fiber membranes from 3M Membrana into a functional multi-layer oxygenator. PMP (polymethylpentene) is the industry standard material for high-performance oxygenator membranes due to its excellent gas permeability, low plasma leakage resistance, and established biocompatibility profile.</p>
-				<p>The core engineering challenge is sealing stacked fiber sheets together without causing corner flow stasis — a known thrombosis risk in rectangular membrane geometries — while ensuring bonds are verifiable layer by layer and that no adhesive wicks into the fiber lumens. My work involved systematically evaluating and eliminating candidate bonding approaches, then developing and validating an automated UV adhesive dispensing system using a Nordson EFD E3V robot to deposit a precise circular adhesive ring on each sheet, eliminating corner stasis by design. Bond strength was validated on PLA mock sheets, with substrate-level failure observed on peel testing — indicating adhesive bond strength exceeding the substrate material.</p>
+					
+				<p>The hollow fiber membrane oxygenator project involves developing a bonding method for stacking Oxyplus PMP 90/200 hollow fiber membrane sheets into a functional multi-layer oxygenator. PMP (polymethylpentene) is the industry standard material for high-performance oxygenator membranes due to its gas permeability, low plasma leakage resistance, and biocompatibility profile.</p>
+				<p>The core engineering challenge is sealing stacked fiber sheets together without causing corner flow stasis where blood can clot, while ensuring bonds are verifiable layer by layer. Multiple bonding strategies were evaluated and eliminated before using a robotic UV adheisve dispensing approach. A Nordson EFD E3V deposited a precise circular adhesive bead on each sheet, eliminating statis, and then cured using a UWAVE UV pen. D E3V robot to deposit a precise circular adhesive ring on each sheet, eliminating corner stasis by design.</p>
 			</div>
 
 			<!-- Image placeholder -->
@@ -264,10 +250,9 @@
 					<span class="breakdown-number">01</span>
 					<div class="breakdown-content">
 						<h3>Problem Definition &amp; Approach Elimination</h3>
-						<p>Before committing to any bonding strategy, candidate approaches were systematically evaluated and eliminated against a defined set of constraints: no axial fiber compression (which crushes lumens and eliminates CO2 transfer, per Heyer et al. 2025), no unverifiable interior bonds, no leachable materials in the blood path, and a circular/elliptical blood flow boundary to eliminate corner stasis. Approaches ruled out included adhesive transfer tape (leaching risk), mechanical gasket compression (fiber crushing), TPU printed rings (no adhesion to PMP-like surfaces), and edge potting (no flow boundary geometry control).</p>
+						<p>Bonding approcahes were evaluated among four constraints: no axial fiber compression, no unverifiable interior bonding, no blood-contacting solubles, and a circular flow bopundary to prevent corner stasis. Adhesive tape, mechanical gaskets, TPU rings, and edge potting were ruled out before converging on a UV adhesive automated dispensing system.</p>
 						<div class="breakdown-tags">
 							<span class="btag">Design Constraints</span>
-							<span class="btag">Literature Review</span>
 							<span class="btag">Systematic Elimination</span>
 							<span class="btag">Biocompatibility</span>
 						</div>
@@ -278,12 +263,10 @@
 					<span class="breakdown-number">02</span>
 					<div class="breakdown-content">
 						<h3>Robotic UV Adhesive Dispensing System</h3>
-						<p>The validated approach uses a Nordson EFD E3V automated dispensing robot programmed in its proprietary SRC command language to deposit a precise circular bead of Panacol Vitralit UV-curable adhesive on each sheet. The circular bead geometry eliminates corner stasis by design — the adhesive ring defines a circular blood flow channel, with the sheet corners sitting outside the active flow path. The full program automates dispensing, two-stage UV cure sweeps, layer wait periods, and Z-axis stepping for each successive sheet, requiring only manual sheet placement between cycles. Bond strength on PLA mock sheets exceeded substrate strength on peel testing.</p>
+						<p>A Nordson EFD E3V dispensing robot was programmed in SRC to deposit a circular Panacol Vitralit UV adhesive bead on each sheet. The circular geometry eliminated corner stasis where the rign defines the blood flow boundary. The full program automates dispensing, UV cure sweeps, wait periods, and Z-axis stepping between layers, requiring only manual sheet placement between each cycle.</p>
 						<div class="breakdown-tags">
 							<span class="btag">Nordson EFD E3V</span>
 							<span class="btag">SRC Programming</span>
-							<span class="btag">UV Adhesive</span>
-							<span class="btag">Panacol Vitralit</span>
 							<span class="btag">Automation</span>
 						</div>
 					</div>
@@ -293,10 +276,9 @@
 					<span class="breakdown-number">03</span>
 					<div class="breakdown-content">
 						<h3>UV Cure Protocol Development</h3>
-						<p>UV adhesive curing required developing a precise two-stage protocol. A fast initial sweep (175 mm/s) gels the adhesive to a tacky state without over-curing the surface — over-curing eliminates surface reactivity and prevents the next sheet from bonding. A second sweep after sheet placement and compression locks the sheet before a 30-second full cure at a fixed position directly above the sheet. Ambient light degradation of the adhesive in the syringe was identified as a key process variable and mitigated by wrapping the syringe in aluminum foil from the point of loading. PSI and sweep speed parameters were systematically optimized through experimental iteration on mock sheets.</p>
+						<p>UV adhesive curing required a two-stage approach. A fast initial sweep at 175mm/s which partially cures the adhesiver without fully curing it, allowing the next sheet to bond without adhesive spreading across. A second sweep after compression locks the sheet in with a 30 second full cure at a fixed position. Ambient light degrades the adhesive in the syringe which was mitigated using alumnium foil wrapping at the point of loading.</p>
 						<div class="breakdown-tags">
 							<span class="btag">UV Curing</span>
-							<span class="btag">Two-Stage Protocol</span>
 							<span class="btag">Process Optimization</span>
 							<span class="btag">UWAVE UTARGET-365</span>
 						</div>
@@ -307,12 +289,10 @@
 					<span class="breakdown-number">04</span>
 					<div class="breakdown-content">
 						<h3>UV Pen Mount Design</h3>
-						<p>A custom mount was designed in OnShape and printed on the Bambu X1 Carbon to hold the UWAVE UTARGET-365 UV pen on the Nordson EFD E3V Z-axis carriage. The mount design had to accommodate the pen's tapered body geometry — wider at the emitter end and narrower toward the top — requiring a stepped bore and set screw to lock the pen in place without it slipping through under gravity. The CL04 optical head was also identified and quoted from UWAVE to reduce the beam spot from 7-9mm to 2-3mm at 8-10mm working distance, enabling more precise ring-width curing in future iterations.</p>
+						<p>A custom mount was designed in Onshape and printed on the Bambu X1 Carbon to attach the UWAVE UV pen to the Nordson Z-axis holder. The pen's tapered design required a clip in feature and set screws for the mount to prevent slipping under gravity. The UWAVE CL04 was also quoted to reduce beam size from 7-9 mm to 2-3 mm for a more precise ring width curing in future iterations.</p>
 						<div class="breakdown-tags">
-							<span class="btag">OnShape</span>
-							<span class="btag">FDM 3D Printing</span>
-							<span class="btag">Custom Tooling</span>
-							<span class="btag">UWAVE CL04</span>
+							<span class="btag">Onshape</span>
+							<span class="btag">3D Printing</span>
 							<span class="btag">Nordson Integration</span>
 						</div>
 					</div>
