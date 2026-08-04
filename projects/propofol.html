@@ -59,6 +59,10 @@
 				.split-media { flex: none; margin-bottom: 1.3rem; }
 				.project-hero h1 { font-size: 2rem; }
 			}
+			.fig-panel img { cursor: zoom-in; }
+			#lightbox { position: fixed; inset: 0; background: rgba(15,22,32,0.94); display: none; align-items: center; justify-content: center; z-index: 9999; padding: 3rem; cursor: zoom-out; }
+			#lightbox.open { display: flex; }
+			#lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; background: #fff; border-radius: 8px; padding: 1rem; }
 		</style>
 	</head>
 	<body class="is-preload">
@@ -195,7 +199,7 @@
 					<li>&copy; Christopher Collier</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 				</ul>
 			</footer>
-
+			<div id="lightbox"><img src="" alt="" /></div>
 		</div>
 
 		<script src="../assets/js/jquery.min.js"></script>
@@ -205,5 +209,22 @@
 		<script src="../assets/js/breakpoints.min.js"></script>
 		<script src="../assets/js/util.js"></script>
 		<script src="../assets/js/main.js"></script>
+		<script>
+			(function() {
+				var box = document.getElementById('lightbox');
+				var boxImg = box.querySelector('img');
+				document.querySelectorAll('.fig-panel img').forEach(function(img) {
+					img.addEventListener('click', function() {
+						boxImg.src = img.src;
+						boxImg.alt = img.alt;
+						box.classList.add('open');
+					});
+				});
+				box.addEventListener('click', function() { box.classList.remove('open'); });
+				document.addEventListener('keydown', function(e) {
+					if (e.key === 'Escape') box.classList.remove('open');
+				});
+			})();
+		</script>
 	</body>
 </html>
