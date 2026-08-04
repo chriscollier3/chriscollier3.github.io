@@ -47,6 +47,9 @@
 			/* wide figures need more room */
 			.split-media.wide { flex: 0 0 55%; }
 			.split-media.wide .fig-panel { aspect-ratio: 16 / 9; padding: 0.5rem; }
+			.breakdown-item.figure-only { padding: 0; border: none; background: none; }
+			.fig-panel.auto { aspect-ratio: auto; padding: 1rem; }
+			.fig-panel.auto img { height: auto; }
 
 			.project-footer-nav { max-width: 860px; margin: 0 auto; padding: 2rem 2rem 4rem; display: flex; gap: 1rem; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.08); }
 			.project-footer-nav a { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.6); font-size: 0.85rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.55rem 1.1rem; transition: color 0.2s, border-color 0.2s; }
@@ -161,6 +164,16 @@
 						</div>
 					</div>
 
+
+					<div class="breakdown-item full-width figure-only">
+						<figure style="margin:0;">
+							<div class="fig-panel auto">
+								<img src="../images/project_images/catheter-engineering-drawings.png" alt="Dimensioned engineering drawings of the hand and forearm components with isometric views, section views, and title blocks." />
+							</div>
+							<figcaption class="fig-caption">Hand and forearm component drawings — third angle projection, dimensions in inches.</figcaption>
+						</figure>
+					</div>
+					
 					<div class="breakdown-item full-width split media-right">
 						<figure class="split-media">
 							<div class="fig-panel">
