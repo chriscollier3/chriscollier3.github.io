@@ -18,22 +18,48 @@
 			.spec-value { font-size: 0.92rem; color: #fff; font-weight: 500; }
 			.project-overview { max-width: 860px; margin: 0 auto; padding: 0 2rem 3rem; }
 			.project-overview p { font-size: 1rem; line-height: 1.85; color: rgba(255,255,255,0.75); margin: 0 0 1.2rem 0; }
-			.project-image-placeholder { max-width: 860px; margin: 0 auto 3rem; padding: 0 2rem; }
-			.project-image-placeholder .placeholder { width: 100%; aspect-ratio: 16/9; background: rgba(155,241,255,0.04); border: 1px solid rgba(155,241,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-			.project-image-placeholder .placeholder span { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(155,241,255,0.25); }
-			.project-image-placeholder .caption { font-size: 0.78rem; color: rgba(255,255,255,0.3); margin-top: 0.6rem; text-align: center; }
+
+			/* ---- figures ---- */
+			.fig-panel { background: #fff; border-radius: 8px; border: 1px solid rgba(155,241,255,0.12); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+			.fig-panel img { width: 100%; height: 100%; object-fit: contain; display: block; }
+			.fig-caption { font-size: 0.78rem; line-height: 1.6; color: rgba(255,255,255,0.35); margin: 0.7rem 0 0 0; text-align: center; }
+
+			.project-figure { max-width: 860px; margin: 0 auto 3rem; padding: 0 2rem; }
+			.project-figure .fig-panel { aspect-ratio: 16 / 9; padding: 1.5rem; }
+
 			.breakdown { max-width: 860px; margin: 0 auto; padding: 0 2rem 4rem; }
 			.breakdown h2 { font-size: 1.6rem; font-weight: 700; color: #fff; margin: 0 0 2.5rem 0; line-height: 1.2; }
-			.breakdown-item { display: flex; gap: 2rem; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.06); }
-			.breakdown-number { font-size: 0.72rem; letter-spacing: 0.15em; color: #9bf1ff; flex-shrink: 0; padding-top: 0.25rem; width: 2rem; }
-			.breakdown-content h3 { font-size: 1.05rem; font-weight: 600; color: #fff; margin: 0 0 0.7rem 0; }
-			.breakdown-content p { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.65); margin: 0 0 1rem 0; }
-			.breakdown-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+			.breakdown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+			.breakdown-item { display: flex; flex-direction: column; padding: 2rem; border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; background: rgba(255,255,255,0.02); }
+			.breakdown-item.full-width { grid-column: 1 / -1; }
+			.breakdown-item h3 { font-size: 1.05rem; font-weight: 600; color: #fff; margin: 0 0 0.9rem 0; }
+			.breakdown-item p { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.65); margin: 0 0 1.2rem 0; }
+			.breakdown-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
 			.btag { background: rgba(155,241,255,0.08); color: #9bf1ff; border: 1px solid rgba(155,241,255,0.2); border-radius: 4px; font-size: 0.68rem; letter-spacing: 0.06em; padding: 0.2rem 0.6rem; text-transform: uppercase; }
+
+			/* ---- horizontal split cards ---- */
+			.breakdown-item.split { flex-direction: row; gap: 2rem; align-items: stretch; }
+			.breakdown-item.split.media-right { flex-direction: row-reverse; }
+			.split-media { flex: 0 0 40%; margin: 0; display: flex; flex-direction: column; justify-content: center; }
+			.split-media .fig-panel { aspect-ratio: 4 / 3; padding: 1rem; }
+			.split-media .fig-caption { font-size: 0.72rem; margin-top: 0.55rem; text-align: left; }
+			.split-body { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+			/* wide figures need more room */
+			.split-media.wide { flex: 0 0 55%; }
+			.split-media.wide .fig-panel { aspect-ratio: 16 / 9; padding: 0.5rem; }
+
 			.project-footer-nav { max-width: 860px; margin: 0 auto; padding: 2rem 2rem 4rem; display: flex; gap: 1rem; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.08); }
 			.project-footer-nav a { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.6); font-size: 0.85rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.55rem 1.1rem; transition: color 0.2s, border-color 0.2s; }
 			.project-footer-nav a:hover { color: #9bf1ff; border-color: rgba(155,241,255,0.35); }
 			#menu { background: #2a2e35 !important; }
+
+			@media screen and (max-width: 736px) {
+				.breakdown-grid { grid-template-columns: 1fr; }
+				.breakdown-item.split,
+				.breakdown-item.split.media-right { flex-direction: column; gap: 0; }
+				.split-media, .split-media.wide { flex: none; margin-bottom: 1.3rem; }
+				.project-hero h1 { font-size: 2rem; }
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -61,94 +87,138 @@
 			<div class="project-hero">
 				<span class="project-label">03 &mdash; Junior Design</span>
 				<h1>Radial Arterial Catheterization<br />Wrist Support</h1>
-				<p class="project-tagline">A structurally adaptable wrist support device designed to improve patient comfort and procedural consistency during radial arterial line placement.</p>
+				<p class="project-tagline">A two-piece wrist brace that locks the wrist between 0° and 20° extension for radial arterial line placement, with integrated catheter and tubing securement. Designed, prototyped, and verified against ISO and IEC standards.</p>
 			</div>
 
 			<div class="project-overview">
 				<div class="specs-row">
 					<div class="spec-item">
 						<span class="spec-label">Course</span>
-						<span class="spec-value">Junior Design</span>
+						<span class="spec-value">BMEG360 Junior Design</span>
 					</div>
 					<div class="spec-item">
-						<span class="spec-label">CAD</span>
-						<span class="spec-value">SolidWorks</span>
+						<span class="spec-label">Sponsor</span>
+						<span class="spec-value">Dr. Hisham Sherif, MD, PhD</span>
 					</div>
 					<div class="spec-item">
-						<span class="spec-label">Fabrication</span>
-						<span class="spec-value">3D Printing, Laser Cutting, Soldering</span>
+						<span class="spec-label">Team</span>
+						<span class="spec-value">C. Collier, S. Burrowes, B. Maniyatte, B. Bober</span>
 					</div>
 					<div class="spec-item">
-						<span class="spec-label">Clinical Context</span>
-						<span class="spec-value">Radial arterial line placement</span>
+						<span class="spec-label">Prototype</span>
+						<span class="spec-value">PETG, 3D printed</span>
+					</div>
+					<div class="spec-item">
+						<span class="spec-label">Standards</span>
+						<span class="spec-value">ISO 14971, IEC 62366, ISO 10555</span>
 					</div>
 				</div>
 
-				<p>Radial arterial line placement is a common clinical procedure requiring the wrist to be held in consistent dorsiflexion to tension the radial artery and bring it close to the skin surface for catheter access. Currently, this is often achieved with improvised padding or manually held positioning — both of which introduce variability in wrist angle, insertion site stability, and patient comfort across providers and patient anatomies.</p>
-				<p>This junior design project addresses that gap with a purpose-built wrist support device. The design maintains optimal wrist extension angle, stabilizes the insertion site, and accommodates variation in patient anatomy through structural adaptability — ensuring reliable catheter access geometry for clinical staff across a range of use conditions.</p>
+				<p>Radial arterial line placement requires the wrist held in extension so the artery is tensioned and close to the surface. In practice this is improvised with rolled towels and tape, which drift during the procedure and leave the catheter and tubing unsecured.</p>
+				<p>Our team designed a brace that holds a locked, adjustable extension angle and integrates catheter securement into the same device. The prototype passed four of five verification requirements and all user validation criteria, but failed on cost, which is the deciding constraint for a disposable clinical product.</p>
 			</div>
 
-			<div class="project-image-placeholder">
-				<img src="../images/project_images/catheter-render.png" alt="Radial arterial catheterization wrist support — anterior and posterior configuration" style="width:100%; border-radius:8px;" />
-				<p class="caption">Wrist support device — dorsiflexion positioning with adjustable anatomical fit</p>
-			</div>
+			<figure class="project-figure">
+				<div class="fig-panel">
+					<img src="../images/project_images/catheter-prototype-configs.png" alt="Annotated photos of the final prototype in anterior and posterior configurations showing breathable slits, velcro straps, tubing clips, shoulder screw, catheter securement hub, and spring-loaded plunger." />
+				</div>
+				<figcaption class="fig-caption">Final prototype in both configurations, showing the shoulder screw pivot, spring-loaded plunger, catheter securement hub, and tubing clips.</figcaption>
+			</figure>
 
 			<div class="breakdown">
 				<h2>Design &amp; Development<br />Breakdown</h2>
 
-				<div class="breakdown-item">
-					<span class="breakdown-number">01</span>
-					<div class="breakdown-content">
-						<h3>Clinical Need &amp; Problem Definition</h3>
-						<p>The design process began with defining the clinical problem precisely: what wrist angle is optimal for radial arterial access, what forces and moments act on the wrist during the procedure, and what anatomical variation exists across the patient population. These requirements drove the structural and geometric design decisions throughout the project.</p>
+				<div class="breakdown-grid">
+
+					<div class="breakdown-item">
+						<h3>01 — Requirements &amp; Constraints</h3>
+						<p>Three functional requirements drove the design: maintain 0°–20° wrist extension under load, keep the insertion site openly accessible, and hold structural compliance. Adaptability was specified anthropometrically — wrist widths of 53.8–69.9 mm and hand lengths of 73.8–97.1 mm — alongside sub-two-minute setup, biocompatibility, and sterilization compatibility.</p>
 						<div class="breakdown-tags">
-							<span class="btag">Clinical Need</span>
 							<span class="btag">Requirements Definition</span>
-							<span class="btag">User Research</span>
+							<span class="btag">Anthropometric Data</span>
+							<span class="btag">ISO / IEC Standards</span>
+							<span class="btag">FMEA</span>
 						</div>
 					</div>
-				</div>
 
-				<div class="breakdown-item">
-					<span class="breakdown-number">02</span>
-					<div class="breakdown-content">
-						<h3>CAD Design in SolidWorks</h3>
-						<p>The device was modeled in SolidWorks through iterative concept generation and refinement. The geometry needed to maintain a fixed dorsiflexion angle while providing a stable platform under procedural loading. Key design features include a contoured wrist bed, adjustable strap anchors, and a flat base for table mounting stability.</p>
+					<div class="breakdown-item">
+						<h3>02 — Concept Convergence</h3>
+						<p>An initial pool of 37 components was narrowed to six through successive requirement screens — extension angle and catheter access first, then a three-component construction limit, cost, and structural compliance. The survivors formed two viable concepts, and a weighted decision matrix selected the posterior brace at 29.4 over the anterior at 28.4.</p>
 						<div class="breakdown-tags">
-							<span class="btag">SolidWorks</span>
-							<span class="btag">Concept Generation</span>
-							<span class="btag">Parametric Modeling</span>
+							<span class="btag">Concept Screening</span>
+							<span class="btag">Decision Matrix</span>
+							<span class="btag">Design Iteration</span>
 						</div>
 					</div>
-				</div>
 
-				<div class="breakdown-item">
-					<span class="breakdown-number">03</span>
-					<div class="breakdown-content">
-						<h3>Fabrication &amp; Prototyping</h3>
-						<p>Physical prototypes were produced using a combination of FDM 3D printing for structural components, laser cutting for flat profile parts and fixtures, and soldering for any electronic or sensor integration elements. The multi-method fabrication approach allowed different components to be optimized for their specific functional requirements — printed parts for complex geometry, laser-cut parts for precision flat profiles.</p>
+					<div class="breakdown-item full-width split">
+						<figure class="split-media wide">
+							<div class="fig-panel">
+								<img src="../images/project_images/catheter-engineering-drawings.png" alt="Dimensioned engineering drawings of the hand and forearm components with isometric views and title blocks." />
+							</div>
+							<figcaption class="fig-caption">Hand and forearm component drawings, third angle projection, dimensions in inches.</figcaption>
+						</figure>
+						<div class="split-body">
+							<h3>03 — Final Design &amp; Fabrication</h3>
+							<p>The device resolves to a hand piece and a forearm piece joined by shoulder screws, with a ring-grip spring plunger setting and locking the extension angle. Breathable slits, adhesive foam padding, velcro straps, and tubing clips complete the assembly. Prototype components were 3D printed in PETG with brass heat-set inserts.</p>
+							<div class="breakdown-tags">
+								<span class="btag">CAD</span>
+								<span class="btag">Engineering Drawings</span>
+								<span class="btag">PETG</span>
+								<span class="btag">Heat-Set Inserts</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="breakdown-item full-width split media-right">
+						<figure class="split-media">
+							<div class="fig-panel">
+								<img src="../images/project_images/catheter-compliance-test.png" alt="Structural compliance test setup with the brace spanning two tables at 20 degrees extension and a suspended weight plate hanging from a dowel." />
+							</div>
+							<figcaption class="fig-caption">Compliance test: brace spanned between two tables at 20° extension with a 7.5 lb suspended load.</figcaption>
+						</figure>
+						<div class="split-body">
+							<h3>04 — Verification Testing</h3>
+							<p>The brace was spanned between two tables at 20° extension and loaded with a suspended 7.5 lb weight, holding its angle without yielding. Tube protection and sub-two-minute setup also passed. Cost was the single failure: at $45.25 per unit, the device sits well above the $10 target for a disposable product.</p>
+							<div class="breakdown-tags">
+								<span class="btag">Structural Compliance</span>
+								<span class="btag">Load Testing</span>
+								<span class="btag">Pass / Fail Criteria</span>
+								<span class="btag">Cost Analysis</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="breakdown-item full-width split">
+						<figure class="split-media wide">
+							<div class="fig-panel">
+								<img src="../images/project_images/catheter-validation-results.png" alt="Survey response charts showing comfort ratings and catheter access ease ratings from ten users." />
+							</div>
+							<figcaption class="fig-caption">User survey responses, n = 10, for comfort and ease of catheter access.</figcaption>
+						</figure>
+						<div class="split-body">
+							<h3>05 — User Validation</h3>
+							<p>Ten users applied the device without prior instruction. All ten fitted and adjusted it in under two minutes and rated it intuitive. Eight of ten gave the lowest possible discomfort score, and seven of ten rated catheter access easiest on the scale, with the insertion site remaining visible throughout.</p>
+							<div class="breakdown-tags">
+								<span class="btag">User Testing</span>
+								<span class="btag">Validation Survey</span>
+								<span class="btag">Usability</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="breakdown-item full-width">
+						<h3>06 — Outcome &amp; Future Work</h3>
+						<p>The design meets its clinical function but not its economics. Moving to injection-molded polypropylene would cut per-unit cost substantially, and the steel plunger and shoulder screws are the next targets — they account for roughly $20 of the build and also carry MRI compatibility risk flagged in the FMEA. Remaining work is quantitative flow rate testing and clinical evaluation with practitioners; without a viable cost path, the honest recommendation is not to proceed.</p>
 						<div class="breakdown-tags">
-							<span class="btag">3D Printing</span>
-							<span class="btag">Laser Cutting</span>
-							<span class="btag">Soldering</span>
-							<span class="btag">Rapid Prototyping</span>
+							<span class="btag">Design for Manufacturing</span>
+							<span class="btag">Injection Molding</span>
+							<span class="btag">Risk Analysis</span>
+							<span class="btag">Future Work</span>
 						</div>
 					</div>
-				</div>
 
-				<div class="breakdown-item">
-					<span class="breakdown-number">04</span>
-					<div class="breakdown-content">
-						<h3>Structural Adaptability</h3>
-						<p>A key design requirement was accommodating variation in patient anatomy — hand size, wrist width, and soft tissue compliance all vary significantly across patient populations. The device emphasizes structural adaptability through adjustable geometry rather than a fixed one-size form, ensuring consistent catheter access positioning regardless of individual patient anatomy. This distinguishes it from simpler fixed-angle positioning aids.</p>
-						<div class="breakdown-tags">
-							<span class="btag">Structural Adaptability</span>
-							<span class="btag">Anatomical Variation</span>
-							<span class="btag">Medical Device Design</span>
-						</div>
-					</div>
 				</div>
-
 			</div>
 
 			<div class="project-footer-nav">
