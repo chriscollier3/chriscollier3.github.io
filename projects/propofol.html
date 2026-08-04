@@ -18,22 +18,45 @@
 			.spec-value { font-size: 0.92rem; color: #fff; font-weight: 500; }
 			.project-overview { max-width: 860px; margin: 0 auto; padding: 0 2rem 3rem; }
 			.project-overview p { font-size: 1rem; line-height: 1.85; color: rgba(255,255,255,0.75); margin: 0 0 1.2rem 0; }
-			.project-image-placeholder { max-width: 860px; margin: 0 auto 3rem; padding: 0 2rem; }
-			.project-image-placeholder .placeholder { width: 100%; aspect-ratio: 16/9; background: rgba(155,241,255,0.04); border: 1px solid rgba(155,241,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-			.project-image-placeholder .placeholder span { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(155,241,255,0.25); }
-			.project-image-placeholder .caption { font-size: 0.78rem; color: rgba(255,255,255,0.3); margin-top: 0.6rem; text-align: center; }
+
+			/* ---- figures ---- */
+			.fig-panel { background: #fff; border-radius: 8px; border: 1px solid rgba(155,241,255,0.12); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+			.fig-panel img { width: 100%; height: 100%; object-fit: contain; display: block; }
+			.fig-caption { font-size: 0.78rem; line-height: 1.6; color: rgba(255,255,255,0.35); margin: 0.7rem 0 0 0; text-align: center; }
+
+			.project-figure { max-width: 860px; margin: 0 auto 3rem; padding: 0 2rem; }
+			.project-figure .fig-panel { aspect-ratio: 16 / 9; padding: 1.5rem; }
+
 			.breakdown { max-width: 860px; margin: 0 auto; padding: 0 2rem 4rem; }
 			.breakdown h2 { font-size: 1.6rem; font-weight: 700; color: #fff; margin: 0 0 2.5rem 0; line-height: 1.2; }
-			.breakdown-item { display: flex; gap: 2rem; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.06); }
-			.breakdown-number { font-size: 0.72rem; letter-spacing: 0.15em; color: #9bf1ff; flex-shrink: 0; padding-top: 0.25rem; width: 2rem; }
-			.breakdown-content h3 { font-size: 1.05rem; font-weight: 600; color: #fff; margin: 0 0 0.7rem 0; }
-			.breakdown-content p { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.65); margin: 0 0 1rem 0; }
-			.breakdown-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+			.breakdown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+			.breakdown-item { display: flex; flex-direction: column; padding: 2rem; border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; background: rgba(255,255,255,0.02); }
+			.breakdown-item.full-width { grid-column: 1 / -1; }
+			.breakdown-item h3 { font-size: 1.05rem; font-weight: 600; color: #fff; margin: 0 0 0.9rem 0; }
+			.breakdown-item p { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.65); margin: 0 0 1.2rem 0; }
+			.breakdown-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
 			.btag { background: rgba(155,241,255,0.08); color: #9bf1ff; border: 1px solid rgba(155,241,255,0.2); border-radius: 4px; font-size: 0.68rem; letter-spacing: 0.06em; padding: 0.2rem 0.6rem; text-transform: uppercase; }
+
+			/* ---- horizontal split cards ---- */
+			.breakdown-item.split { flex-direction: row; gap: 2rem; align-items: stretch; }
+			.breakdown-item.split.media-right { flex-direction: row-reverse; }
+			.split-media { flex: 0 0 40%; margin: 0; display: flex; flex-direction: column; justify-content: center; }
+			.split-media .fig-panel { aspect-ratio: 4 / 3; padding: 1rem; }
+			.split-media .fig-caption { font-size: 0.72rem; margin-top: 0.55rem; text-align: left; }
+			.split-body { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+
 			.project-footer-nav { max-width: 860px; margin: 0 auto; padding: 2rem 2rem 4rem; display: flex; gap: 1rem; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.08); }
 			.project-footer-nav a { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.6); font-size: 0.85rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.55rem 1.1rem; transition: color 0.2s, border-color 0.2s; }
 			.project-footer-nav a:hover { color: #9bf1ff; border-color: rgba(155,241,255,0.35); }
 			#menu { background: #2a2e35 !important; }
+
+			@media screen and (max-width: 736px) {
+				.breakdown-grid { grid-template-columns: 1fr; }
+				.breakdown-item.split,
+				.breakdown-item.split.media-right { flex-direction: column; gap: 0; }
+				.split-media { flex: none; margin-bottom: 1.3rem; }
+				.project-hero h1 { font-size: 2rem; }
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -59,103 +82,113 @@
 			</header>
 
 			<div class="project-hero">
-				<span class="project-label">04 &mdash; Pharmaceutical Modeling</span>
+				<span class="project-label">04 &mdash; Computational Modeling</span>
 				<h1>Pharmacokinetic Modeling<br />of Propofol</h1>
-				<p class="project-tagline">A three-compartment computational simulation of Propofol pharmacokinetics built in MATLAB — modeling drug distribution, redistribution, and elimination dynamics following IV administration.</p>
+				<p class="project-tagline">A three-compartment MATLAB simulation of propofol pharmacokinetics — ODE model, observability analysis, sampling schedule design, and a lognormal noise model for simulated clinical assays.</p>
 			</div>
 
 			<div class="project-overview">
 				<div class="specs-row">
 					<div class="spec-item">
-						<span class="spec-label">Course</span>
-						<span class="spec-value">Pharmaceutical Modeling</span>
-					</div>
-					<div class="spec-item">
 						<span class="spec-label">Software</span>
 						<span class="spec-value">MATLAB</span>
 					</div>
 					<div class="spec-item">
-						<span class="spec-label">Model Type</span>
-						<span class="spec-value">Three-Compartment PK Model</span>
+						<span class="spec-label">Model</span>
+						<span class="spec-value">Three-Compartment PK</span>
 					</div>
 					<div class="spec-item">
-						<span class="spec-label">Drug</span>
-						<span class="spec-value">Propofol (IV anesthetic)</span>
+						<span class="spec-label">Solver</span>
+						<span class="spec-value">ode15s</span>
 					</div>
 					<div class="spec-item">
-						<span class="spec-label">Method</span>
-						<span class="spec-value">ODE System — Compartmental Analysis</span>
+						<span class="spec-label">Dose</span>
+						<span class="spec-value">9.3 mg IV bolus, 70 kg adult</span>
+					</div>
+					<div class="spec-item">
+						<span class="spec-label">Parameters</span>
+						<span class="spec-value">Schüttler &amp; Ihmsen (2000)</span>
 					</div>
 				</div>
 
-				<p>Propofol is one of the most widely used intravenous anesthetics in clinical practice, valued for its rapid onset and short duration of action. Its pharmacokinetic behavior is well-described by a three-compartment model — a central plasma compartment connected to a rapidly-equilibrating peripheral compartment and a slowly-equilibrating deep tissue compartment. Understanding the kinetics across these compartments is essential for predicting plasma concentration over time and maintaining therapeutic dosing without toxicity.</p>
-				<p>This project built a full three-compartment PK simulation of Propofol from first principles in MATLAB, using a system of ordinary differential equations to model drug transfer between compartments and elimination from plasma. The simulation produces plasma concentration-time profiles that capture the characteristic rapid redistribution phase and slower elimination phase seen clinically after IV bolus administration.</p>
+				<p>Propofol's rapid distribution and short duration of action make it well suited to target-controlled infusion, where a computer-driven pump adjusts its rate to hold a specified plasma concentration. That depends on a pharmacokinetic model accurate enough to predict plasma levels between blood draws.</p>
+				<p>This project implemented the three-compartment model of Schüttler and Ihmsen — a population study of 4,112 plasma samples from 270 patients — in MATLAB, simulating a 9.3 mg IV bolus in a 70 kg adult over 240 minutes.</p>
+				<p>Beyond the simulation, the work tests whether the system is observable from plasma alone, designs a sampling schedule around the drug's three half-lives, and models measurement noise at clinically realistic levels.</p>
 			</div>
 
-			<div class="project-image-placeholder">
-				<div class="placeholder"><span>Simulation Output Coming Soon</span></div>
-				<p class="caption">Plasma concentration-time profile — Propofol three-compartment model simulation output</p>
-			</div>
+			<figure class="project-figure">
+				<div class="fig-panel">
+					<img src="../images/project_images/pk-concentration-profile.png" alt="Simulated propofol concentration versus time for the central, shallow peripheral, and deep peripheral compartments over 240 minutes." />
+				</div>
+				<figcaption class="fig-caption">Simulated concentration-time profile for all three compartments following a 9.3 mg IV bolus in a 70 kg adult. Plasma decays rapidly as drug redistributes into peripheral tissue.</figcaption>
+			</figure>
 
 			<div class="breakdown">
 				<h2>Model Design &amp;<br />Implementation</h2>
 
-				<div class="breakdown-item">
-					<span class="breakdown-number">01</span>
-					<div class="breakdown-content">
-						<h3>Three-Compartment Model Structure</h3>
-						<p>The model consists of three compartments connected by first-order rate constants: a central compartment (plasma and highly perfused tissues), a peripheral compartment (moderately perfused tissues), and a deep compartment (slowly perfused tissues like fat and muscle). Drug is administered as an IV bolus into the central compartment and eliminated from the central compartment via hepatic metabolism and renal excretion. Transfer between compartments is governed by intercompartmental clearance rate constants k12, k21, k13, and k31.</p>
-						<div class="breakdown-tags">
-							<span class="btag">Three-Compartment Model</span>
-							<span class="btag">Compartmental Analysis</span>
-							<span class="btag">Rate Constants</span>
-							<span class="btag">IV Bolus</span>
+				<div class="breakdown-grid">
+
+					<div class="breakdown-item full-width split media-left">
+						<figure class="split-media">
+							<div class="fig-panel">
+								<img src="../images/project_images/pk-compartment-model.png" alt="Schematic of the three-compartment pharmacokinetic model showing the central compartment, shallow and deep peripheral compartments, transfer rate constants, and elimination." />
+							</div>
+							<figcaption class="fig-caption">A₁ central (plasma), A₂ shallow peripheral (muscle), A₃ deep peripheral (adipose). R(t) is the IV input, k₁₀ the irreversible elimination.</figcaption>
+						</figure>
+						<div class="split-body">
+							<h3>01 — Compartmental Model &amp; ODEs</h3>
+							<p>Propofol follows a three-compartment structure: central plasma, shallow peripheral tissue such as muscle, and deep adipose tissue where the drug accumulates. Three coupled ODEs in drug mass were solved with ode15s over 240 minutes, with rate constants derived from published clearances and volumes.</p>
+							<div class="breakdown-tags">
+								<span class="btag">Compartmental Analysis</span>
+								<span class="btag">ODE System</span>
+								<span class="btag">MATLAB</span>
+								<span class="btag">ode15s</span>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="breakdown-item">
-					<span class="breakdown-number">02</span>
-					<div class="breakdown-content">
-						<h3>ODE System &amp; MATLAB Implementation</h3>
-						<p>The compartmental model translates directly into a system of three coupled ordinary differential equations describing the rate of change of drug mass in each compartment over time. The system was implemented in MATLAB using ode45 for numerical integration, with literature-validated pharmacokinetic parameters for Propofol (volumes of distribution, clearance values, and intercompartmental rate constants). Initial conditions reflect drug mass immediately after IV bolus injection.</p>
+					<div class="breakdown-item full-width">
+						<h3>02 — Observability &amp; Controllability</h3>
+						<p>Plasma is the only compartment sampled non-invasively, so the model measures the central compartment alone. Symbolic and numerical analysis both returned rank 3 with zero hidden modes, meaning tissue concentrations can be inferred from routine blood draws. Controllability returned rank 3 as well.</p>
 						<div class="breakdown-tags">
-							<span class="btag">MATLAB</span>
-							<span class="btag">ODE System</span>
-							<span class="btag">ode45</span>
-							<span class="btag">Numerical Integration</span>
+							<span class="btag">State-Space Analysis</span>
+							<span class="btag">Observability</span>
+							<span class="btag">Controllability</span>
+							<span class="btag">Matrix Rank</span>
 						</div>
 					</div>
-				</div>
 
-				<div class="breakdown-item">
-					<span class="breakdown-number">03</span>
-					<div class="breakdown-content">
-						<h3>Concentration-Time Profile Analysis</h3>
-						<p>Simulation outputs were converted from drug mass to plasma concentration using compartment volumes, producing the characteristic biphasic concentration-time curve seen clinically with Propofol. The initial steep decline reflects rapid redistribution from plasma into peripheral tissues, while the slower terminal phase reflects hepatic elimination. The simulation illustrates the narrow window between therapeutic plasma concentrations and toxic levels, highlighting why continuous infusion with dose adjustment is used for prolonged anesthesia.</p>
+					<div class="breakdown-item full-width split media-right">
+						<figure class="split-media">
+							<div class="fig-panel">
+								<img src="../images/project_images/pk-lognormal-noise.png" alt="Simulated plasma concentration with clean sample points and lognormal noisy measurement points at the scheduled sample times." />
+							</div>
+							<figcaption class="fig-caption">Continuous simulation with clean samples and lognormal noisy measurements at the scheduled draw times.</figcaption>
+						</figure>
+						<div class="split-body">
+							<h3>03 — Sampling Schedule &amp; Noise Model</h3>
+							<p>Draws were scheduled around the drug's three half-lives — 1.33, 27, and 335 minutes — with thirteen samples from 0 to 240 minutes, spaced one minute apart early to catch rapid distribution. Because HPLC concentrations are strictly positive, measurement error was modeled as lognormal, with the standard deviation taken from the widest measured-versus-predicted separation in the source study.</p>
+							<div class="breakdown-tags">
+								<span class="btag">Experimental Design</span>
+								<span class="btag">Half-Life Analysis</span>
+								<span class="btag">Lognormal Noise</span>
+								<span class="btag">HPLC Measurement</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="breakdown-item full-width">
+						<h3>04 — Results &amp; Clinical Interpretation</h3>
+						<p>Plasma peaks near 1 mg/L and drops sharply as drug redistributes into the shallow compartment, which peaks at five to ten minutes. The deep compartment rises slowly and stays elevated, reproducing the tissue accumulation typical of anesthetics. With plasma observable, muscle and fat concentrations can be estimated from blood alone — the logic behind target-controlled infusion.</p>
 						<div class="breakdown-tags">
-							<span class="btag">Plasma Concentration</span>
 							<span class="btag">Redistribution Kinetics</span>
-							<span class="btag">Elimination Phase</span>
+							<span class="btag">Target-Controlled Infusion</span>
 							<span class="btag">Data Visualization</span>
-						</div>
-					</div>
-				</div>
-
-				<div class="breakdown-item">
-					<span class="breakdown-number">04</span>
-					<div class="breakdown-content">
-						<h3>Clinical Relevance &amp; Interpretation</h3>
-						<p>The model demonstrates why Propofol's clinical behavior — rapid induction, short duration of action after a single bolus, and accumulation during prolonged infusion — emerges directly from its compartmental pharmacokinetics. Context-sensitive half-time, the time for plasma concentration to fall by 50% after stopping an infusion, increases with infusion duration as peripheral compartments saturate and return drug to plasma. These insights connect mathematical modeling directly to clinical anesthesia practice.</p>
-						<div class="breakdown-tags">
-							<span class="btag">Context-Sensitive Half-Time</span>
 							<span class="btag">Clinical Pharmacology</span>
-							<span class="btag">Anesthesia</span>
-							<span class="btag">Computational Modeling</span>
 						</div>
 					</div>
-				</div>
 
+				</div>
 			</div>
 
 			<div class="project-footer-nav">
