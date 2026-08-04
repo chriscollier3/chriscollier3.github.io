@@ -84,7 +84,7 @@
 			<div class="project-hero">
 				<span class="project-label">04 &mdash; Computational Modeling</span>
 				<h1>Pharmacokinetic Modeling<br />of Propofol</h1>
-				<p class="project-tagline">A three-compartment MATLAB simulation of propofol pharmacokinetics — ODE model, observability analysis, sampling schedule design, and a lognormal noise model for simulated clinical assays.</p>
+				<p class="project-tagline">A three-compartment MATLAB simulation of propofol pharmacokinetics using an ODE model, observability and controllability analysis, sampling schedule design, and a lognormal noise model for simulated clinical data.</p>
 			</div>
 
 			<div class="project-overview">
@@ -112,7 +112,7 @@
 				</div>
 
 				<p>Propofol's rapid distribution and short duration of action make it well suited to target-controlled infusion, where a computer-driven pump adjusts its rate to hold a specified plasma concentration. That depends on a pharmacokinetic model accurate enough to predict plasma levels between blood draws.</p>
-				<p>This project implemented the three-compartment model of Schüttler and Ihmsen — a population study of 4,112 plasma samples from 270 patients — in MATLAB, simulating a 9.3 mg IV bolus in a 70 kg adult over 240 minutes.</p>
+				<p>This project implemented the three-compartment model of Schüttler and Ihmsen, a population study of 4,112 plasma samples from 270 patients. Using MATLAB, I simulated a 9.3 mg IV bolus in a 70 kg adult over 240 minutes.</p>
 				<p>Beyond the simulation, the work tests whether the system is observable from plasma alone, designs a sampling schedule around the drug's three half-lives, and models measurement noise at clinically realistic levels.</p>
 			</div>
 
@@ -167,7 +167,7 @@
 						</figure>
 						<div class="split-body">
 							<h3>03 — Sampling Schedule &amp; Noise Model</h3>
-							<p>Draws were scheduled around the drug's three half-lives — 1.33, 27, and 335 minutes — with thirteen samples from 0 to 240 minutes, spaced one minute apart early to catch rapid distribution. Because HPLC concentrations are strictly positive, measurement error was modeled as lognormal, with the standard deviation taken from the widest measured-versus-predicted separation in the source study.</p>
+							<p>Draws were scheduled around the drug's three half-lives: 1.33, 27, and 335 minutes, with thirteen samples from 0 to 240 minutes, spaced one minute apart early to catch rapid distribution. Because HPLC concentrations are strictly positive, measurement error was modeled as lognormal, with the standard deviation taken from the widest measured vs. predicted separation in the source study.</p>
 							<div class="breakdown-tags">
 								<span class="btag">Experimental Design</span>
 								<span class="btag">Half-Life Analysis</span>
@@ -179,7 +179,7 @@
 
 					<div class="breakdown-item full-width">
 						<h3>04 — Results &amp; Clinical Interpretation</h3>
-						<p>Plasma peaks near 1 mg/L and drops sharply as drug redistributes into the shallow compartment, which peaks at five to ten minutes. The deep compartment rises slowly and stays elevated, reproducing the tissue accumulation typical of anesthetics. With plasma observable, muscle and fat concentrations can be estimated from blood alone — the logic behind target-controlled infusion.</p>
+						<p>Plasma peaks near 1 mg/L and drops sharply as drug redistributes into the shallow compartment, which peaks at five to ten minutes. The deep compartment rises slowly and stays elevated, reproducing the tissue accumulation typical of anesthetics. With plasma observable, muscle and fat concentrations can be estimated from blood alone representing the logic behind target-controlled infusion.</p>
 						<div class="breakdown-tags">
 							<span class="btag">Redistribution Kinetics</span>
 							<span class="btag">Target-Controlled Infusion</span>
