@@ -206,7 +206,7 @@
 			<div class="project-hero">
 				<span class="project-label">02 &mdash; Engineering Research &amp; Development</span>
 				<h1>Hollow Fiber Membrane<br />Oxygenator</h1>
-				<p class="project-tagline">A scalable oxygenator built from stacked Oxyplus PMP hollow fiber membrane sheets — developed through systematic design iteration, 3D prototyping, and centrifugal potting at the BRITE Lab, Nemours Children's Hospital.</p>
+				<p class="project-tagline">A novel bonding system for stacked Oxyplus PMP hollow fiber membrane sheets — developed through systematic approach elimination, robotic UV adhesive dispensing, and custom tooling design at the BRITE Lab, Nemours Children's Hospital.</p>
 			</div>
 
 			<!-- Specs -->
@@ -221,8 +221,16 @@
 						<span class="spec-value">Oxyplus PMP 90/200 (3M Membrana)</span>
 					</div>
 					<div class="spec-item">
-						<span class="spec-label">Potting Method</span>
-						<span class="spec-value">Centrifugal, bent fiber geometry</span>
+						<span class="spec-label">Bonding Method</span>
+						<span class="spec-value">UV Adhesive Robotic Dispensing</span>
+					</div>
+					<div class="spec-item">
+						<span class="spec-label">Dispensing Robot</span>
+						<span class="spec-value">Nordson EFD E3V</span>
+					</div>
+					<div class="spec-item">
+						<span class="spec-label">Adhesive</span>
+						<span class="spec-value">Panacol Vitralit UV</span>
 					</div>
 					<div class="spec-item">
 						<span class="spec-label">CAD</span>
@@ -230,12 +238,16 @@
 					</div>
 					<div class="spec-item">
 						<span class="spec-label">Prototyping</span>
-						<span class="spec-value">FDM 3D Printing</span>
+						<span class="spec-value">FDM 3D Printing (Bambu X1 Carbon)</span>
+					</div>
+					<div class="spec-item">
+						<span class="spec-label">Status</span>
+						<span class="spec-value">Mock sheet validation complete, Oxyplus sheets pending</span>
 					</div>
 				</div>
 
-				<p>The hollow fiber membrane oxygenator project involves the design and development of a scalable gas exchange device using stacked sheets of Oxyplus PMP hollow fiber membranes from 3M Membrana. PMP (polymethylpentene) is the industry standard material for high-performance oxygenator membranes due to its excellent gas permeability, low plasma leakage resistance, and established biocompatibility profile.</p>
-				<p>The core engineering challenge is potting — the process of sealing the fiber bundle ends to create separated blood and gas compartments while preserving every fiber lumen. My work involved systematically evaluating bonding and sealing strategies before converging on a centrifugal potting approach with bent fiber geometry, a solution independently developed and subsequently validated against established industrial methods in the literature.</p>
+				<p>The hollow fiber membrane oxygenator project involves developing a novel bonding system for stacking sheets of Oxyplus PMP 90/200 hollow fiber membranes from 3M Membrana into a functional multi-layer oxygenator. PMP (polymethylpentene) is the industry standard material for high-performance oxygenator membranes due to its excellent gas permeability, low plasma leakage resistance, and established biocompatibility profile.</p>
+				<p>The core engineering challenge is sealing stacked fiber sheets together without causing corner flow stasis — a known thrombosis risk in rectangular membrane geometries — while ensuring bonds are verifiable layer by layer and that no adhesive wicks into the fiber lumens. My work involved systematically evaluating and eliminating candidate bonding approaches, then developing and validating an automated UV adhesive dispensing system using a Nordson EFD E3V robot to deposit a precise circular adhesive ring on each sheet, eliminating corner stasis by design. Bond strength was validated on PLA mock sheets, with substrate-level failure observed on peel testing — indicating adhesive bond strength exceeding the substrate material.</p>
 			</div>
 
 			<!-- Image placeholder -->
@@ -251,13 +263,13 @@
 				<div class="breakdown-item">
 					<span class="breakdown-number">01</span>
 					<div class="breakdown-content">
-						<h3>Device Geometry &amp; CAD Modeling</h3>
-						<p>Iterative 3D CAD modeling in OnShape was used to develop and refine the device housing geometry, fiber stack arrangement, and potting chamber design. Physical prototypes were printed in FDM using polycarbonate and polypropylene to test assembly fit, fiber alignment, and potting compound fill behavior before committing to final geometry. The design went through multiple major revisions as potting approach requirements evolved.</p>
+						<h3>Problem Definition &amp; Approach Elimination</h3>
+						<p>Before committing to any bonding strategy, candidate approaches were systematically evaluated and eliminated against a defined set of constraints: no axial fiber compression (which crushes lumens and eliminates CO2 transfer, per Heyer et al. 2025), no unverifiable interior bonds, no leachable materials in the blood path, and a circular/elliptical blood flow boundary to eliminate corner stasis. Approaches ruled out included adhesive transfer tape (leaching risk), mechanical gasket compression (fiber crushing), TPU printed rings (no adhesion to PMP-like surfaces), and edge potting (no flow boundary geometry control).</p>
 						<div class="breakdown-tags">
-							<span class="btag">OnShape</span>
-							<span class="btag">3D Printing</span>
-							<span class="btag">Design Iteration</span>
-							<span class="btag">Polycarbonate</span>
+							<span class="btag">Design Constraints</span>
+							<span class="btag">Literature Review</span>
+							<span class="btag">Systematic Elimination</span>
+							<span class="btag">Biocompatibility</span>
 						</div>
 					</div>
 				</div>
@@ -265,13 +277,14 @@
 				<div class="breakdown-item">
 					<span class="breakdown-number">02</span>
 					<div class="breakdown-content">
-						<h3>Potting Strategy Development</h3>
-						<p>Potting is the most technically demanding aspect of HFM oxygenator fabrication. The potting compound must seal every fiber end, bond to the housing, and set without wicking into fiber lumens — which would permanently block gas transfer. Several bonding and sealing approaches were systematically evaluated and eliminated based on practical constraints including axial fiber compression, unverifiable interior bonds, and potential for blood-contacting leachables.</p>
+						<h3>Robotic UV Adhesive Dispensing System</h3>
+						<p>The validated approach uses a Nordson EFD E3V automated dispensing robot programmed in its proprietary SRC command language to deposit a precise circular bead of Panacol Vitralit UV-curable adhesive on each sheet. The circular bead geometry eliminates corner stasis by design — the adhesive ring defines a circular blood flow channel, with the sheet corners sitting outside the active flow path. The full program automates dispensing, two-stage UV cure sweeps, layer wait periods, and Z-axis stepping for each successive sheet, requiring only manual sheet placement between cycles. Bond strength on PLA mock sheets exceeded substrate strength on peel testing.</p>
 						<div class="breakdown-tags">
-							<span class="btag">Potting</span>
-							<span class="btag">Adhesive Evaluation</span>
-							<span class="btag">Biomaterials</span>
-							<span class="btag">Systematic Testing</span>
+							<span class="btag">Nordson EFD E3V</span>
+							<span class="btag">SRC Programming</span>
+							<span class="btag">UV Adhesive</span>
+							<span class="btag">Panacol Vitralit</span>
+							<span class="btag">Automation</span>
 						</div>
 					</div>
 				</div>
@@ -279,13 +292,13 @@
 				<div class="breakdown-item">
 					<span class="breakdown-number">03</span>
 					<div class="breakdown-content">
-						<h3>Centrifugal Potting with Bent Fiber Geometry</h3>
-						<p>The final approach uses centrifugal force to drive potting compound into the fiber bundle ends while the device spins. The fibers are arranged in a bent geometry — curving away from the potting face — which eliminates corner flow stasis zones in the blood path and produces a curved open flow channel through the fiber bundle. This solution preserves fiber lumen integrity during potting and was independently converged upon before being validated against centrifugal potting methods documented in the HFM oxygenator literature for Oxyplus PMP fibers specifically.</p>
+						<h3>UV Cure Protocol Development</h3>
+						<p>UV adhesive curing required developing a precise two-stage protocol. A fast initial sweep (175 mm/s) gels the adhesive to a tacky state without over-curing the surface — over-curing eliminates surface reactivity and prevents the next sheet from bonding. A second sweep after sheet placement and compression locks the sheet before a 30-second full cure at a fixed position directly above the sheet. Ambient light degradation of the adhesive in the syringe was identified as a key process variable and mitigated by wrapping the syringe in aluminum foil from the point of loading. PSI and sweep speed parameters were systematically optimized through experimental iteration on mock sheets.</p>
 						<div class="breakdown-tags">
-							<span class="btag">Centrifugal Potting</span>
-							<span class="btag">Bent Fiber Geometry</span>
-							<span class="btag">Flow Path Design</span>
-							<span class="btag">Literature Validation</span>
+							<span class="btag">UV Curing</span>
+							<span class="btag">Two-Stage Protocol</span>
+							<span class="btag">Process Optimization</span>
+							<span class="btag">UWAVE UTARGET-365</span>
 						</div>
 					</div>
 				</div>
@@ -293,13 +306,14 @@
 				<div class="breakdown-item">
 					<span class="breakdown-number">04</span>
 					<div class="breakdown-content">
-						<h3>Mock Material Testing</h3>
-						<p>PMP is not a printable material, making direct prototype fabrication impossible. Polypropylene filament was identified as the closest printable analog to PMP based on surface energy characteristics — both are low-surface-energy polyolefins that present similar adhesive bonding challenges. Mock material testing on polypropylene prints allows adhesive candidates and bonding protocols to be evaluated before committing to actual Oxyplus membrane material.</p>
+						<h3>UV Pen Mount Design</h3>
+						<p>A custom mount was designed in OnShape and printed on the Bambu X1 Carbon to hold the UWAVE UTARGET-365 UV pen on the Nordson EFD E3V Z-axis carriage. The mount design had to accommodate the pen's tapered body geometry — wider at the emitter end and narrower toward the top — requiring a stepped bore and set screw to lock the pen in place without it slipping through under gravity. The CL04 optical head was also identified and quoted from UWAVE to reduce the beam spot from 7-9mm to 2-3mm at 8-10mm working distance, enabling more precise ring-width curing in future iterations.</p>
 						<div class="breakdown-tags">
-							<span class="btag">Mock Materials</span>
-							<span class="btag">Polypropylene</span>
-							<span class="btag">Adhesive Testing</span>
-							<span class="btag">PMP Analog</span>
+							<span class="btag">OnShape</span>
+							<span class="btag">FDM 3D Printing</span>
+							<span class="btag">Custom Tooling</span>
+							<span class="btag">UWAVE CL04</span>
+							<span class="btag">Nordson Integration</span>
 						</div>
 					</div>
 				</div>
