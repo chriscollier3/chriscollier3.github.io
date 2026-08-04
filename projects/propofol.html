@@ -44,6 +44,8 @@
 			.split-media .fig-panel { aspect-ratio: 4 / 3; padding: 1rem; }
 			.split-media .fig-caption { font-size: 0.72rem; margin-top: 0.55rem; text-align: left; }
 			.split-body { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+			.split.media-right .split-media { flex: 0 0 55%; }
+			.split.media-right .split-media .fig-panel { padding: 0.5rem; }
 
 			.project-footer-nav { max-width: 860px; margin: 0 auto; padding: 2rem 2rem 4rem; display: flex; gap: 1rem; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.08); }
 			.project-footer-nav a { display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.6); font-size: 0.85rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0.55rem 1.1rem; transition: color 0.2s, border-color 0.2s; }
@@ -128,7 +130,6 @@
 							<p>Propofol follows a three-compartment structure: central plasma, shallow peripheral tissue such as muscle, and deep adipose tissue where the drug accumulates. Three coupled ODEs in drug mass were solved with ode15s over 240 minutes, with rate constants derived from published clearances and volumes.</p>
 							<div class="breakdown-tags">
 								<span class="btag">Compartmental Analysis</span>
-								<span class="btag">ODE System</span>
 								<span class="btag">MATLAB</span>
 								<span class="btag">ode15s</span>
 							</div>
@@ -158,7 +159,6 @@
 							<p>Draws were scheduled around the drug's three half-lives: 1.33, 27, and 335 minutes, with thirteen samples from 0 to 240 minutes, spaced one minute apart early to catch rapid distribution. Because HPLC concentrations are strictly positive, measurement error was modeled as lognormal, with the standard deviation taken from the widest measured vs. predicted separation in the source study.</p>
 							<div class="breakdown-tags">
 								<span class="btag">Experimental Design</span>
-								<span class="btag">Half-Life Analysis</span>
 								<span class="btag">Lognormal Noise</span>
 								<span class="btag">HPLC Measurement</span>
 							</div>
@@ -170,7 +170,6 @@
 						<p>Plasma peaks near 1 mg/L and drops sharply as drug redistributes into the shallow compartment, which peaks at five to ten minutes. The deep compartment rises slowly and stays elevated, reproducing the tissue accumulation typical of anesthetics. With plasma observable, muscle and fat concentrations can be estimated from blood alone representing the logic behind target-controlled infusion.</p>
 						<div class="breakdown-tags">
 							<span class="btag">Redistribution Kinetics</span>
-							<span class="btag">Target-Controlled Infusion</span>
 							<span class="btag">Data Visualization</span>
 							<span class="btag">Clinical Pharmacology</span>
 						</div>
