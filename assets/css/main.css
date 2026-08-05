@@ -3554,11 +3554,16 @@ input, select, textarea {
 
 		#header.alt {
 			background: transparent;
+			pointer-events: none;
 		}
 
 			#header.alt h1 {
 				pointer-events: none;
 				opacity: 0;
+			}
+
+			#header.alt nav {
+				pointer-events: auto;
 			}
 
 /* Banner */
