@@ -302,6 +302,7 @@
 				border-color: rgba(95,214,126,0.4);
 			}
 			body.landing { background: #000; }
+			#page-wrapper { background: #000 !important; }
 			#header:not(.alt) { background: rgba(0,0,0,0.95) !important; }
 			#footer { background: #000 !important; }
 			#menu {
@@ -322,11 +323,12 @@
 				transition: opacity 0.2s ease, transform 0.2s ease !important;
 				box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
 			}
-			#menu.visible {
+			body.is-menu-visible #menu {
 				transform: translateY(0) !important;
 				opacity: 1 !important;
 				pointer-events: auto !important;
 			}
+			
 			#menu ul { margin: 0 !important; padding: 0 !important; }
 			#menu ul li { border: none !important; padding: 0 !important; }
 			#menu ul li a {
