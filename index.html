@@ -99,7 +99,16 @@
 			    justify-content: center !important;
 			    text-align: center !important;
 			}
-			
+
+			/* ── LEARN MORE ARROW BOUNCE ── */
+			@keyframes moreArrowBounce {
+				0%, 100% { transform: translateY(0); }
+				50% { transform: translateY(6px); }
+			}
+			#banner .more:after {
+				animation: moreArrowBounce 1.8s ease-in-out infinite;
+			}
+
 			/* ── ABOUT SECTION ── */
 			.about-layout {
 				display: flex;
