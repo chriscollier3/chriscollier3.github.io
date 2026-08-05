@@ -33,7 +33,7 @@
 			.project-card-image {
 				width: 100%;
 				aspect-ratio: 16/9;
-				background: rgba(155,241,255,0.05);
+				background: rgba(95,214,126,0.05);
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -48,7 +48,7 @@
 				font-size: 0.75rem;
 				letter-spacing: 0.15em;
 				text-transform: uppercase;
-				color: rgba(155,241,255,0.3);
+				color: rgba(95,214,126,0.3);
 			}
 			.project-card-body {
 				padding: 1.2rem 1.4rem 1.4rem;
@@ -221,12 +221,12 @@
 				position: relative;
 			}
 			.timeline::before {
-				content: \'\';
+				content: '';
 				position: absolute;
 				left: 0.95rem;
 				top: 0; bottom: 0;
 				width: 1px;
-				background: rgba(155,241,255,0.2);
+				background: rgba(95,214,126,0.2);
 			}
 			.timeline-item {
 				display: flex;
@@ -467,7 +467,7 @@
 						points.push({ worldX: t, y: ekgY(t) });
 						points = points.filter(p => (t - p.worldX) < W - 120 + 20);
 						ctx.clearRect(0, 0, W, H);
-						ctx.strokeStyle = 'rgba(155,241,255,0.05)';
+						ctx.strokeStyle = 'rgba(95,214,126,0.05)';
 						ctx.lineWidth = 0.5;
 						for (let gx = 0; gx < W; gx += 28) { ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke(); }
 						for (let gy = 0; gy < H; gy += 22) { ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke(); }
@@ -482,7 +482,7 @@
 							if (midX < FADE_OUT) alpha = Math.max(0, (midX - 150) / (FADE_OUT - 150));
 							if (midX > W - 120 - FADE_IN) alpha = Math.min(alpha, Math.max(0, (W - 120 - midX) / FADE_IN));
 							ctx.beginPath();
-							ctx.strokeStyle = `rgba(155,241,255,${alpha * 0.9})`;
+							ctx.strokeStyle = `rgba(95,214,126,${alpha * 0.9})`;
 							ctx.lineWidth = 1.8;
 							ctx.moveTo(px0, points[i-1].y);
 							ctx.lineTo(px1, points[i].y);
@@ -491,7 +491,7 @@
 						const tipY = ekgY(t);
 						ctx.beginPath();
 						ctx.arc(W - 120, tipY, 3, 0, Math.PI*2);
-						ctx.fillStyle = 'rgba(155,241,255,0.9)';
+						ctx.fillStyle = 'rgba(95,214,126,0.9)';
 						ctx.fill();
 						if (isSpikePeak(t) && t - lastSpike > PERIOD * 0.85) {
 							lastSpike = t;
